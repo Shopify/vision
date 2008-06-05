@@ -1,0 +1,25 @@
+<div id="product-left">
+	{% for image in product.images %}{% if forloop.first %}<div id="product-image">
+		<a href="{{ image | product_img_url: 'large' }}" rel="lightbox[images]" title="{{ product.title | escape }}"><img src="{{ image | product_img_url: 'medium' }}" alt="{{ product.title | escape }}" /></a>
+	</div>{% else %}
+	<div class="product-images">
+		<a href="{{ image | product_img_url: 'large' }}" rel="lightbox[images]" title="{{ product.title | escape }}"><img src="{{ image | product_img_url: 'small' }}" alt="{{ product.title | escape }}" /></a>
+	</div>{% endif %}{% endfor %}
+</div>
+<div id="product-right">
+	<h1>{{ product.title }}</h1>
+	{{ product.description }}{% if product.available %}
+	<form action="/cart/add" method="post">
+		<div id="product-variants">
+			<ul>{% for variant in product.variants %}
+				<li class="{% cycle 'odds': 'odd', 'even' %}">{% if variant.available %}<input type="radio" name="id" value="{{ variant.id }}" id="radio_{{ variant.id }}" {% if forloop.first %}checked="checked"{% endif %} /> <label for="radio_{{ variant.id }}" class="radio"> <strong>{{ variant.title | escape }}</strong> for <span class="bold-blue">{{ variant.price | money }}</span> {% if variant.price < variant.compare_at_price %}<del>{{ variant.compare_at_price | money }}</del>{% endif %}</label>{% else %}<input type="radio" name="id" value="{{ variant.id }}" id="radio_{{ variant.id }}" disabled="disabled" /><label for="radio_{{ variant.id }}" class="radio"> <strong>{{ variant.title }}</strong> is temporarily unavailable</label>{% endif %}</li>{% endfor %}
+			</ul>
+		</div>
+		<input type="image" src="{{ 'purchase.png' | asset_url }}" name="add" value="Purchase" id="purchase" />
+	</form>{% else %}
+	<p class="bold-red">This product is temporarily unavailable</p>{% endif %}
+	<div id="product-details">
+		<strong>Continue Shopping</strong><br />
+		Browse more {{ product.type | link_to_type }} or additional {{ product.vendor | link_to_vendor }} products.
+	</div>
+</div>

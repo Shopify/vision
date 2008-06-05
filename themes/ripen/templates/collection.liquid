@@ -10,7 +10,7 @@
     {% for product in collection.products %}
     <li class="single-product clearfix">
       <div class="small">
-        <div class="prod-image"><a href="{{product.url}}"><img src="{{ product.featured_image | product_img_url: 'small' }}" alt="{{ product.title }}" /></a></div>
+        <div class="prod-image"><a href="{{product.url}}"><img src="{{ product.featured_image | product_img_url: 'small' }}" alt="{{ product.title | escape }}" /></a></div>
       </div>
       <div class="prod-list-description">
         <h3><a href="{{product.url}}">{{product.title}}</a></h3>

@@ -26,10 +26,10 @@
         <li id="item-{{item.id}}" class="clearfix">
           <div class="thumb">
   				  <div class="prodimage">
-            <a href="{{item.product.url}}" title="View {{item.title}} Page"><img src="{{item.product.featured_image | product_img_url: 'thumb' }}" alt="{{item.title}}" /></a>
+            <a href="{{item.product.url}}" title="View {{item.title | escape }} Page"><img src="{{item.product.featured_image | product_img_url: 'thumb' }}" alt="{{item.title | escape }}" /></a>
           </div></div>
           <h3 style="width:400px;">
-  			<a href="{{item.product.url}}" title="View {{item.title}} Page">
+  			<a href="{{item.product.url}}" title="View {{item.title | escape }} Page">
   				{{ item.title }}
   				{% if item.variant.title != 'Default' %}
   				   ({{item.variant.title}})
@@ -39,7 +39,7 @@
           <small class="itemcost">Costs {{ item.price | money }} each, <span class="money">{{item.line_price | money }}</span> total.</small>
           <p class="right">
             <label for="updates_{{item.variant.id}}">How many? </label> 
-            <input type="text" size="4" name="updates[]" id="updates_{{item.variant.id}}" value="{{item.quantity}}" onfocus="this.select();"/><br />
+            <input type="text" size="4" name="updates[{{item.variant.id}}]" id="updates_{{item.variant.id}}" value="{{item.quantity}}" onfocus="this.select();"/><br />
             <a href="#" onclick="remove_item({{item.variant.id}}); return false;" class="remove"><img style="padding:15px 0 0 0;margin:0;" src="{{ 'delete.gif' | asset_url }}" alt="" /></a>
           </p>
         </li>

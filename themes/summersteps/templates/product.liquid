@@ -5,7 +5,7 @@
 	
       <div class="pimage">
         <a href="{{ product.featured_image | product_img_url: 'large' }}" class="lbOn">
-          <img src="{{product.featured_image | product_img_url: 'medium'}}" alt="{{product.title}}" />
+          <img src="{{product.featured_image | product_img_url: 'medium'}}" alt="{{product.title | escape }}" />
         </a>
       </div>
     

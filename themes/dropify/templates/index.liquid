@@ -2,7 +2,7 @@
 <h2 style="display: none;">Featured Items</h2>
 {% for product in collections.frontpage.products limit:1 offset:0 %}
   <div class="productmain">
-   <a href="{{ product.url }}"><img src="{{ product.featured_image | product_img_url: 'small' }}" alt="{{ product.title }}" /></a>
+   <a href="{{ product.url }}"><img src="{{ product.featured_image | product_img_url: 'small' }}" alt="{{ product.title | escape }}" /></a>
    <h3><a href="{{ product.url }}">{{ product.title }}</a></h3>
    <div class="description">{{ product.description | strip_html | truncatewords: 18 }}</div>
 	<p class="money">{{ product.price_min | money }}</p>
@@ -10,7 +10,7 @@
 {% endfor %}
 {% for product in collections.frontpage.products offset:1 %}
   <div class="product">
-   <a href="{{ product.url }}"><img src="{{ product.featured_image | product_img_url: 'thumb' }}" alt="{{ product.title }}" /></a>
+   <a href="{{ product.url }}"><img src="{{ product.featured_image | product_img_url: 'thumb' }}" alt="{{ product.title | escape }}" /></a>
    <h3><a href="{{ product.url }}">{{ product.title }}</a></h3>
      <p class="money">{{ product.price_min | money }}</p>
   </div>

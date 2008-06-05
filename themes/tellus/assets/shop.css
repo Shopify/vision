@@ -220,7 +220,8 @@ li.productv .pbody ul.attributes li {
   	margin-right: 10px;
   	padding-top: 20px !important;
 	}
-li.productv ul.buttons {list-style: none; margin: 10px 0;}
+ul.buttons {list-style: none;}
+li.productv ul.buttons {margin: 10px 0;}
 li.productv ul.buttons li {display: inline;}
 li.productv ul.buttons li a {
   	display: block;
@@ -448,7 +449,7 @@ ul.hlist {list-style: none;}
 	visibility: hidden;
 	}
 
-.clearfix {display: inline-table;}
+.clearfix {display: inline-block;}
 
 /* Hides from IE-mac \*/
 * html .clearfix {height: 1%;}

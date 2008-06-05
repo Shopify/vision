@@ -2,7 +2,7 @@
 <h2>Featured Products</h2>
 <table id="products" cellspacing="0" cellpadding="0">
 {% tablerow product in collections.frontpage.products cols:3  %}
-   <a href="{{product.url}}"><img src="{{ product.featured_image | product_img_url: 'small' }}" /></a>
+   <a href="{{product.url}}">{{ product.featured_image | product_img_url: 'small' | img_tag }}</a>
    <h3><a href="{{product.url}}">{{product.title}}</a></h3>
    <ul class="attributes">
      <li><span class="money">{{product.price_min | money}}</span></li>

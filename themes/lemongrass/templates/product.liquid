@@ -14,13 +14,13 @@
       {% if forloop.first %}
       <div class="pimage fl">
         <a href="{{ image | product_img_url: 'large' }}" class="lbOn">
-          <img src="{{ image | product_img_url: 'medium'}}" alt="{{product.title}}" />
+          <img src="{{ image | product_img_url: 'medium'}}" alt="{{product.title | escape }}" />
         </a>
       </div>
       {% else %}
       <div class="pimage-small fl">
         <a href="{{ image | product_img_url: 'large' }}" class="lbOn">
-          <img src="{{ image | product_img_url: 'small'}}" alt="{{product.title}}" />
+          <img src="{{ image | product_img_url: 'small'}}" alt="{{product.title | escape }}" />
         </a>
       </div>
       {% endif %}

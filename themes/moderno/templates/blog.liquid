@@ -1,0 +1,16 @@
+{% paginate blog.articles by 10 %}<div id="sidebar">
+	<ul id="blog-list">{% for article in blog.articles %}
+		<li><a href="{{ article.url }}">{{ article.title }}</a></li>{% endfor %}
+	</ul>{% if paginate.pages > 1 %}
+	<div id="pagination">
+		{{ paginate | default_pagination }}
+	</div>{% endif %}
+</div>
+<div id="content">{% for article in blog.articles limit: 1 %}
+	<a name="article-{{ article.id }}"></a>
+	<div class="article">
+		<h1>{{ article.title }}</h1>
+		{{ article.content }}
+		<p class="details">Written by {{ article.author }} on {{ article.created_at | date: "%B %d, %Y" }}</p>
+	</div>{% endfor %}
+</div>{% endpaginate %}

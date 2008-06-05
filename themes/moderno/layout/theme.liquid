@@ -1,0 +1,39 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+	<title>{{ shop.name }} &#124; {{ page_title }}</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	{{ 'pink.css' | asset_url | stylesheet_tag }}{% if template == "product" %}
+	{{ 'mootools.js' | global_asset_url | script_tag }}
+	{{ 'slimbox.js'  | global_asset_url | script_tag }}{% endif %}
+	{{ content_for_header }}
+</head>
+
+<body>
+	<div id="container">
+		<div id="header">
+			<h1><a href="/" title="{{ shop.name }}">{{ shop.name }}</a></h1>
+			<div id="nav">{% capture active_url %}{% if template == "index" %}/{% elsif template == "collection" %}/collections/{{ collection.handle }}{% elsif template == "product" %}{% if collection %}/collections/{{ collection.handle }}{% endif %}/products/{{ product.handle }}{% elsif template == "page" %}/pages/{{ page.handle }}{% elsif template == "blog" %}/blogs/{{ blog.handle }}{% elsif template == "cart" %}/cart{% elsif template == "search" %}/search{% endif %}{% endcapture %}
+				<ul>
+				  {% for link in linklists.main-menu.links %}
+					  <li{% if forloop.last %}{% if cart.item_count == 0 %} id="end"{% endif %}{% endif %}><a href="{{ link.url }}"{% if link.url == active_url %} class="active"{% endif %}>{{ link.title }}</a></li>
+					{% endfor %}
+					{% if cart.item_count > 0 %}
+					  <li><a href="/cart"{% if template == "cart" %} class="active"{% else %} id="end"{% endif %}>Checkout ({{ cart.item_count }} {{ cart.item_count | pluralize: 'item', 'items' }})</a></li>
+					{% endif %}
+				</ul>
+			</div>
+		</div>
+		<div id="{{ template }}">
+			{{ content_for_layout }}
+		</div>
+		<div id="footer">
+			<p id="left-foot">{% for link in linklists.footer.links %}
+				<a href="{{ link.url }}">{{ link.title }}</a>{% endfor %}
+			</p>
+			<p id="right-foot">&copy; {{ "now" | date: "%Y" }} <a href="/">{{ shop.name }}</a>. Powered by <a href="http://shopify.com">Shopify</a>. </p>
+		</div>
+	</div>
+</body>
+</html>

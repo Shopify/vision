@@ -1,0 +1,33 @@
+<div id="product-left">
+	<h2>{{ product.title }} by {{ product.vendor }} <span>{{ product.price | money }}</span></h2>
+	{{ product.description }}
+	<div id="product-select">
+		<form action="/cart/add" method="post" name="cartadd">
+			<div id="product-variants">
+				<select name="id">{% for variant in product.variants %}{% if variant.available %}
+					<option value="{{ variant.id }}">{{ variant.title }}{% if variant.price > product.price_min %} - {{ variant.price | money }}{% endif %}</option>{% else %}
+					<option value="{{ variant.id }}" disabled="disabled">{{ variant.title }} - SOLD OUT</option>{% endif %}{% endfor %}
+				</select> 
+				<span>(<a href="{{ 'sizechart.jpg' | asset_url }}" rel="lightbox" title="">size chart</a>)</span>
+			</div>{% if product.available %}
+			<a href="javascript:document.cartadd.submit();" id="addit">ADD TO CART</a>
+			<noscript><input type="submit" name="add" id="add" value="Add to Cart" /></noscript>{% else %}
+			<h6>TEMPORARILY UNAVAILABLE</h6>{% endif %}
+		</form>
+	</div>{% if collection %}
+	<div id="navigate-collection">
+		<ul>{% if collection.previous_product %}
+			<li id="back">{{ 'PREV' | link_to: collection.previous_product }} <span>&#124;</span> </li>{% endif %}
+			<li><a href="/collections/{{ collection.handle }}">{{ collection.title | upcase }}</a></li>{% if collection.next_product %}
+			<li id="forward"> <span>&#124;</span> {{ 'NEXT' | link_to: collection.next_product }}</li>{% endif %}
+		</ul>
+	</div>{% endif %}
+</div>
+<div id="product-right">{% for image in product.images limit: 1 %}
+	<div id="product-image">
+		<img src="{{ image | product_img_url: 'large' }}" alt="{{ product.title | escape }}" />
+	</div>{% endfor %}
+	<div id="thumbs">{% for image in product.images %}
+		<a href="{{ image | product_img_url: 'original' }}" rel="lightbox[images]" title="{{ product.title }}"{% if forloop.first %} class="show"{% endif %}>{{ forloop.index }}</a>{% endfor %}
+	</div>
+</div>

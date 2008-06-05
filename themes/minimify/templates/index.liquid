@@ -12,7 +12,7 @@
 <div id="frontproducts">
 	{% for product in collections.frontpage.products %}
 	  <div class="productmain">
-	   <a href="{{ product.url }}"><img src="{{ product.featured_image | product_img_url: 'small' }}" alt="{{ product.title }}" /></a>
+	   <a href="{{ product.url }}"><img src="{{ product.featured_image | product_img_url: 'small' }}" alt="{{ product.title | escape }}" /></a>
 	   <h3><a href="{{ product.url }}">{{ product.title }}</a></h3>
 	   <div class="description">{{ product.description | truncatewords: 10 }}</div>
 		<p class="money">{{ product.price_min | money }}</p>

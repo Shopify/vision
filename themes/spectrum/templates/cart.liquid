@@ -25,7 +25,7 @@
       {% for item in cart.items %}
       <li id="item-{{item.id}}" class="clearfix">
         <div class="c-thumb">
-          <img src="{{item.product.featured_image | product_img_url: 'thumb' }}" alt="{{item.title}}" title="{{item.title}}" />
+          <img src="{{item.product.featured_image | product_img_url: 'thumb' }}" alt="{{item.title | escape }}" title="{{item.title | escape }}" />
         </div>
         <h3>{{ item.title }}</h3>
         <span class="money">{{ item.price | money}} each.</span>

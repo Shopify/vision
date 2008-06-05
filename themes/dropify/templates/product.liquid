@@ -4,11 +4,11 @@
 		{% for image in product.images %}
 			{% if forloop.first %}
 				<a href="{{ image | product_img_url: 'large' }}" class="lbOn productimage">
-				  <img src="{{ image | product_img_url: 'medium'}}" alt="{{product.title}}" />
+				  <img src="{{ image | product_img_url: 'medium'}}" alt="{{product.title | escape }}" />
 				</a>
 			{% else %}
 				<a href="{{ image | product_img_url: 'large' }}" class="lbOn productimage-small">
-				  <img src="{{ image | product_img_url: 'small'}}" alt="{{product.title}}" />
+				  <img src="{{ image | product_img_url: 'small'}}" alt="{{product.title | escape }}" />
 				</a>
 			{% endif %}
 		{% endfor %}

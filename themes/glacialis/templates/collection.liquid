@@ -3,7 +3,7 @@
 <ul class="featured-products products collection">
 	{% for product in collection.products  %}
 	<li class="{% cycle 'first', '', '' %}">
-		<div class="image"><a href="{{product.url}}"><img src="{{ product.featured_image | product_img_url: 'small' }}" alt="{{ product.title }}"/></a></div>
+		<div class="image"><a href="{{product.url}}"><img src="{{ product.featured_image | product_img_url: 'small' }}" alt="{{ product.title | escape }}"/></a></div>
 		<div class="info">
 			<h4><a href="{{product.url}}">{{product.title}}</a></h4>
 	    {% if product.compare_at_price %} 

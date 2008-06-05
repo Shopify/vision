@@ -21,10 +21,10 @@
       <li id="item-{{item.id}}" class="clearfix">
         <div class="thumb">
 				  <div class="prodimage">
-          <a href="{{item.product.url}}" title="View {{item.title}} Page"><img src="{{item.product.featured_image | product_img_url: 'thumb' }}" alt="{{item.title}}" /></a>
+          <a href="{{item.product.url}}" title="View {{item.title}} Page"><img src="{{item.product.featured_image | product_img_url: 'thumb' }}" alt="{{item.title | escape }}" /></a>
         </div></div>
         <h3 style="width:400px;">
-			<a href="{{item.product.url}}" title="View {{item.title}} Page">
+			<a href="{{item.product.url}}" title="View {{item.title | escape }} Page">
 				{{ item.title }}
 				{% if item.variant.available == true %}
 				   ({{item.variant.title}})

@@ -1,0 +1,18 @@
+<div id="index-left">
+	<div id="excerpt">
+		<h3>{{ pages.about-us.title }}</h3>
+		{{ pages.about-us.content }}
+		<p><a href="/pages/about-us">More about {{ shop.name | upcase }}</a></p>
+	</div>
+	<div id="featured">
+		<h3>{{ collections.frontpage.title }}</h3>
+		<ul>{% for product in collections.frontpage.products limit: 5 offset: 0 %}
+			<li><span class="category">{{ product.type | upcase }}</span> <a href="{{ product.url | within: collections.all }}">{{ product.title }} for <span class="price">{{ product.price | money }}</span></a></li>{% endfor %}
+		</ul>
+		<p><a href="/collections/all">Browse all Products</a></p>
+	</div>
+</div>
+<div id="index-right">{% for product in collections.frontpage.products limit: 1 %}
+	<h5>{{ product.title }} by {{ product.vendor }}</h5>{% for image in product.images limit: 1 %}
+	<a href="{{ product.url | within: collections.all }}" title=""><img src="{{ image | product_img_url: 'original' }}" alt="{{ product.title | escape }}" /></a>{% endfor %}{% endfor %}
+</div>

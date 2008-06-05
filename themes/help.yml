@@ -1,0 +1,13 @@
+cart.liquid:
+  name: Shopping Cart
+  desc: Where stuff is listed which your customers are going to take of your hands
+index.liquid:
+  desc: Your shops frontpage...
+theme.liquid:
+  desc: The layout is the shell of your site.  All of your content pages will be rendered inside of it.  
+product.liquid:
+  desc: This is a content page description
+page.liquid:
+  desc: Content pages & Blogs
+collection.liquid:
+  desc: Collection of products

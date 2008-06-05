@@ -4,7 +4,7 @@
     {% for product in collection.products %}
       <li class="productv clearfix">
         <div class="thumb">
-          <a href="{{product.url}}"><img src="{{ product.featured_image | product_img_url: 'small' }}" /></a>
+          <a href="{{product.url}}">{{ product.featured_image | product_img_url: 'small' | img_tag }}</a>
           <p class="money">{{ product.price_min | money }}{% if product.price_varies %} - {{ product.price_max | money }}{% endif %}</p>
         </div>
         <div class="pbody">

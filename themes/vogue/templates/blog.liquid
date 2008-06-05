@@ -1,0 +1,13 @@
+{% paginate blog.articles by 10 %}
+	{% for article in blog.articles %}<a name="article-{{ article.id }}"></a>
+	<div class="{% if forloop.first %}{% if blog.articles.size > 1 %}blog-first{% else %}blog-last{% endif %}{% elsif forloop.last %}blog-last{% else %}blog{% endif %}">
+		<h1><a href="{{ article.url }}">{{ article.title }}</a></h1>
+		{{ article.content }}
+		<div class="blog-details">
+			Posted by {{ article.author }} on {{ article.created_at | date: "%B %d, %Y" }}. {% if blog.articles.size > 1 %}<a href="{{ article.url }}">Continue Reading</a>{% endif %}
+		</div>
+	</div>{% endfor %}{% if paginate.pages > 1 %}
+	<div id="paginate">
+		{{ paginate | default_pagination }}
+	</div>{% endif %}
+{% endpaginate %}

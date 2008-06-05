@@ -4,7 +4,7 @@
 		{% for product in collections.frontpage.products %}
 			<div class="featured-prod-item">
 			    <p>
-				<a href="{{product.url}}"><img src="{{ product.featured_image | product_img_url: 'small' }}" alt="{{ product.title }}"/></a>	
+				<a href="{{product.url}}"><img src="{{ product.featured_image | product_img_url: 'small' }}" alt="{{ product.title | escape }}"/></a>	
 				</p>
 				<h4><a href="{{product.url}}">{{product.title}}</a></h4>
 				{% if product.compare_at_price %} 
