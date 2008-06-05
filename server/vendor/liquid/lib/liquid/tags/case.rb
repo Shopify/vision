@@ -1,7 +1,7 @@
 module Liquid
   class Case < Block
     Syntax     = /(#{QuotedFragment})/
-    WhenSyntax = /(#{QuotedFragment})/
+    WhenSyntax = /(#{QuotedFragment})(?:(?:\s+or\s+|\s*\,\s*)(#{QuotedFragment}.*))?/
 
     def initialize(tag_name, markup, tokens)      
       @blocks = []
@@ -51,14 +51,18 @@ module Liquid
     private
     
     def record_when_condition(markup)                
-      # Create a new nodelist and assign it to the new block
-      if not markup =~ WhenSyntax
-        raise SyntaxError.new("Syntax Error in tag 'case' - Valid when condition: {% when [condition] %} ")
-      end
+      while markup
+      	# Create a new nodelist and assign it to the new block
+      	if not markup =~ WhenSyntax
+      	  raise SyntaxError.new("Syntax Error in tag 'case' - Valid when condition: {% when [condition] [or condition2...] %} ")
+      	end
 
-      block = Condition.new(@left, '==', $1)        
-      block.attach(@nodelist)
-      @blocks.push(block)            
+      	markup = $2
+
+      	block = Condition.new(@left, '==', $1)        
+      	block.attach(@nodelist)
+      	@blocks.push(block)
+      end
     end
 
     def record_else_condition(markup)            

@@ -87,15 +87,10 @@ module Liquid
     def render_all(list, context)
       list.collect do |token|
         begin        
-          if token.respond_to?(:render)
-            token.render(context) 
-          else
-            token.to_s
-          end
+          token.respond_to?(:render) ? token.render(context) : token
         rescue Exception => e          
           context.handle_error(e)
-        end
-          
+        end          
       end      
     end
   end  

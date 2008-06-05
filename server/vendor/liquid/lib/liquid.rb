@@ -32,10 +32,11 @@ module Liquid
   VariableSegment             = /[\w\-]\??/
   VariableStart               = /\{\{/
   VariableEnd                 = /\}\}/
+  VariableIncompleteEnd       = /\}\}?/
   QuotedFragment              = /"[^"]+"|'[^']+'|[^\s,|]+/
   TagAttributes               = /(\w+)\s*\:\s*(#{QuotedFragment})/
-  TemplateParser              = /(#{TagStart}.*?#{TagEnd}|#{VariableStart}.*?#{VariableEnd})/
-  VariableParser              = /(?=\[)#{VariableSegment}+(?=\])|#{VariableSegment}+/
+  TemplateParser              = /(#{TagStart}.*?#{TagEnd}|#{VariableStart}.*?#{VariableIncompleteEnd})/
+  VariableParser              = /\[[^\]]+\]|#{VariableSegment}+/
 end
 
 require 'liquid/drop'
@@ -52,6 +53,7 @@ require 'liquid/template'
 require 'liquid/htmltags'
 require 'liquid/standardfilters'
 require 'liquid/condition'
+require 'liquid/module_ex'
 
 # Load all the tags of the standard library 
 #

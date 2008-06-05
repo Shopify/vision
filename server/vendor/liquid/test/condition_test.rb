@@ -2,6 +2,11 @@ require File.dirname(__FILE__) + '/helper'
 
 class ConditionTest < Test::Unit::TestCase
   include Liquid
+  
+  def test_basic_condition
+    assert_equal false, Condition.new('1', '==', '2').evaluate
+    assert_equal true,  Condition.new('1', '==', '1').evaluate
+  end
 
   def test_default_operators_evalute_true
     assert_evalutes_true '1', '==', '1'
@@ -53,7 +58,36 @@ class ConditionTest < Test::Unit::TestCase
     
     assert_evalutes_false "array", 'contains', '"1"'        
     
+  end  
+
+  def test_or_condition     
+    condition = Condition.new('1', '==', '2')
+
+    assert_equal false, condition.evaluate
+
+    condition.or Condition.new('2', '==', '1')
+    
+    assert_equal false, condition.evaluate
+
+    condition.or Condition.new('1', '==', '1')  
+    
+    assert_equal true, condition.evaluate
   end
+  
+  def test_and_condition     
+    condition = Condition.new('1', '==', '1')
+
+    assert_equal true, condition.evaluate
+
+    condition.and Condition.new('2', '==', '2')
+    
+    assert_equal true, condition.evaluate
+
+    condition.and Condition.new('2', '==', '1')  
+    
+    assert_equal false, condition.evaluate
+  end
+  
 
   def test_should_allow_custom_proc_operator
     Condition.operators['starts_with'] = Proc.new { |cond, left, right| left =~ %r{^#{right}}}

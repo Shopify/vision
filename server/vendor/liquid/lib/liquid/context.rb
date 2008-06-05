@@ -1,8 +1,5 @@
 module Liquid
   
-  class ContextError < StandardError
-  end
-  
   # Context keeps the variable stack and resolves variables, as well as keywords
   #
   #   context['variable'] = 'testing'
@@ -45,10 +42,12 @@ module Liquid
     def handle_error(e)
       errors.push(e)
       raise if @rethrow_errors
-      
+        
       case e
-      when SyntaxError then "Liquid syntax error: #{e.message}"        
-      else "Liquid error: #{e.message}"
+      when SyntaxError 
+        "Liquid syntax error: #{e.message}"        
+      else 
+        "Liquid error: #{e.message}"
       end
     end
     
@@ -63,6 +62,7 @@ module Liquid
 
     # push new local scope on the stack. use <tt>Context#stack</tt> instead
     def push
+      raise StackLevelError, "Nesting too deep" if @scopes.length > 100
       @scopes.unshift({})
     end
     
@@ -128,7 +128,9 @@ module Liquid
       when 'true'
         true
       when 'false'
-        false
+        false               
+      when 'blank'
+        :blank?        
       when 'empty'
         :empty?
       # Single quoted strings
@@ -175,40 +177,55 @@ module Liquid
     #  assert_equal 'tobi', @context['hash[name]']
     #
     def variable(markup)
-      parts   = markup.scan(VariableParser)      
+      parts = markup.scan(VariableParser)
+      square_bracketed = /^\[(.*)\]$/
       
-      if object = find_variable(parts.shift)
+      first_part = parts.shift
+      if first_part =~ square_bracketed
+        first_part = resolve($1)
+      end
+      
+      if object = find_variable(first_part)
             
         parts.each do |part|        
 
           # If object is a hash we look for the presence of the key and if its available 
           # we return it
-
-          # Hash
-          if object.respond_to?(:has_key?) and object.has_key?(part)
           
-            # if its a proc we will replace the entry in the hash table with the proc
-            res = object[part]
-            res = object[part] = res.call(self) if res.is_a?(Proc) and object.respond_to?(:[]=)
-            object = res.to_liquid
-
-          # Array
-          elsif object.respond_to?(:fetch) and part =~ /^\d+$/ 
-            pos = part.to_i
-
-            object[pos] = object[pos].call(self) if object[pos].is_a?(Proc) and object.respond_to?(:[]=)
-            object = object[pos].to_liquid
-          
-          # Some special cases. If no key with the same name was found we interpret following calls
-          # as commands and call them on the current object
-          elsif object.respond_to?(part) and ['size', 'first', 'last'].include?(part)
-          
-            object = object.send(part.intern).to_liquid
-        
-          # No key was present with the desired value and it wasn't one of the directly supported
-          # keywords either. The only thing we got left is to return nil
+          if part =~ square_bracketed
+            part = resolve($1)
+            
+            object[pos] = object[part].call(self) if object[part].is_a?(Proc) and object.respond_to?(:[]=)
+            object      = object[part].to_liquid
+            
           else
-            return nil
+
+            # Hash
+            if object.respond_to?(:has_key?) and object.has_key?(part)
+          
+              # if its a proc we will replace the entry in the hash table with the proc
+              res = object[part]
+              res = object[part] = res.call(self) if res.is_a?(Proc) and object.respond_to?(:[]=)
+              object = res.to_liquid
+
+            # Array
+            elsif object.respond_to?(:fetch) and part =~ /^\d+$/ 
+              pos = part.to_i
+
+              object[pos] = object[pos].call(self) if object[pos].is_a?(Proc) and object.respond_to?(:[]=)
+              object = object[pos].to_liquid
+          
+            # Some special cases. If no key with the same name was found we interpret following calls
+            # as commands and call them on the current object
+            elsif object.respond_to?(part) and ['size', 'first', 'last'].include?(part)
+          
+              object = object.send(part.intern).to_liquid
+        
+            # No key was present with the desired value and it wasn't one of the directly supported
+            # keywords either. The only thing we got left is to return nil
+            else
+              return nil
+            end
           end
                 
           # If we are dealing with a drop here we have to         

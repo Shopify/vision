@@ -21,4 +21,11 @@ class HtmlTagTest < Test::Unit::TestCase
     
   end
   
+  def test_html_col_counter
+    assert_template_result("<tr class=\"row1\">\n<td class=\"col1\">1</td><td class=\"col2\">2</td></tr>\n<tr class=\"row2\"><td class=\"col1\">1</td><td class=\"col2\">2</td></tr>\n<tr class=\"row3\"><td class=\"col1\">1</td><td class=\"col2\">2</td></tr>\n",
+                           '{% tablerow n in numbers cols:2%}{{tablerowloop.col}}{% endtablerow %}', 
+                           'numbers' => [1,2,3,4,5,6])
+    
+  end
+  
 end

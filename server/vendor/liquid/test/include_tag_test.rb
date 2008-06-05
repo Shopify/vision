@@ -20,6 +20,9 @@ class TestFileSystem
       
     when "nested_product_template"
       "Product: {{ nested_product_template.title }} {%include 'details'%} "
+
+    when "recursively_nested_template"
+      "-{% include 'recursively_nested_template' %}"
       
     else
       template_path
@@ -83,7 +86,23 @@ class IncludeTagTest < Test::Unit::TestCase
                  Template.parse("{% include 'nested_product_template' for products %}").render("products" => [{"title" => 'Draft 151cm'}, {"title" => 'Element 155cm'}])
     
   end
-
+  
+  def test_recursively_included_template_does_not_produce_endless_loop
+        
+    infinite_file_system = Class.new do  
+      def read_template_file(template_path)
+        "-{% include 'loop' %}"
+      end
+    end                   
+    
+    Liquid::Template.file_system = infinite_file_system.new
+                   
+    assert_raise(Liquid::StackLevelError) do
+      Template.parse("{% include 'loop' %}").render!
+    end
+    
+  end
+            
   def test_dynamically_choosen_template
 
     assert_equal "Test123", Template.parse("{% include template %}").render("template" => 'Test123')

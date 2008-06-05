@@ -31,9 +31,10 @@ class RegexpTest < Test::Unit::TestCase
   def test_variable_parser
     assert_equal ['var'],                 'var'.scan(VariableParser)
     assert_equal ['var', 'method'],       'var.method'.scan(VariableParser)
-    assert_equal ['var', 'method'],       'var[method]'.scan(VariableParser)
-    assert_equal ['var', 'method', '0'],  'var[method][0]'.scan(VariableParser)
-    assert_equal ['var', 'method', '0', 'method'],  'var[method][0].method'.scan(VariableParser)    
+    assert_equal ['var', '[method]'],       'var[method]'.scan(VariableParser)
+    assert_equal ['var', '[method]', '[0]'],  'var[method][0]'.scan(VariableParser)
+    assert_equal ['var', '["method"]', '[0]'],  'var["method"][0]'.scan(VariableParser)
+    assert_equal ['var', '[method]', '[0]', 'method'],  'var[method][0].method'.scan(VariableParser)    
   end
  
 end

@@ -96,15 +96,7 @@ HERE
   
   def test_for_and_if
     assigns = {'array' => [1,2,3] }
-    assert_template_result(' yay     ',
-                           '{%for item in array%} {% if forloop.first %}yay{% endif %} {%endfor%}',
-                           assigns)
-    assert_template_result(' yay  boo  boo ',
-                          '{%for item in array%} {% if forloop.first %}yay{% else %}boo{% endif %} {%endfor%}',
-                          assigns)
-    assert_template_result('   boo  boo ',
-                          '{%for item in array%} {% if forloop.first %}{% else %}boo{% endif %} {%endfor%}',
-                          assigns)
+    assert_template_result('+--', '{%for item in array%}{% if forloop.first %}+{% else %}-{% endif %}{%endfor%}', assigns)
   end
   
   def test_limiting
@@ -112,11 +104,14 @@ HERE
     assert_template_result('12','{%for i in array limit:2 %}{{ i }}{%endfor%}',assigns)
     assert_template_result('1234','{%for i in array limit:4 %}{{ i }}{%endfor%}',assigns)
     assert_template_result('3456','{%for i in array limit:4 offset:2 %}{{ i }}{%endfor%}',assigns)
-    assert_template_result('3456','{%for i in array limit: 4 offset: 2 %}{{ i }}{%endfor%}',assigns)    
-    
+    assert_template_result('3456','{%for i in array limit: 4 offset: 2 %}{{ i }}{%endfor%}',assigns)        
+  end
+  
+  def test_dynamic_variable_limiting
+    assigns = {'array' => [1,2,3,4,5,6,7,8,9,0]}
     assigns['limit'] = 2
     assigns['offset'] = 2
-    assert_template_result('34','{%for i in array limit: limit offset: offset %}{{ i }}{%endfor%}',assigns)    
+    assert_template_result('34','{%for i in array limit: limit offset: offset %}{{ i }}{%endfor%}',assigns)        
   end
   
   def test_nested_for
@@ -189,26 +184,28 @@ HERE
   
   def test_pause_resume_BIG_offset
     assigns = {'array' => {'items' => [1,2,3,4,5,6,7,8,9,0]}}
-    markup = <<-MKUP
-      {%for i in array.items limit:3 %}{{i}}{%endfor%}
+    markup = %q({%for i in array.items limit:3 %}{{i}}{%endfor%}
       next
       {%for i in array.items offset:continue limit:3 %}{{i}}{%endfor%}
       next
-      {%for i in array.items offset:continue limit:3 offset:1000 %}{{i}}{%endfor%}
-      MKUP
-    expected = <<-XPCTD
-      123
+      {%for i in array.items offset:continue limit:3 offset:1000 %}{{i}}{%endfor%})
+    expected = %q(123
       next
       456
       next
-      
-      XPCTD
+      )
       assert_template_result(expected,markup,assigns)
   end
   
   def test_assign
     assigns = {'var' => 'content' }
     assert_template_result('var2:  var2:content','var2:{{var2}} {%assign var2 = var%} var2:{{var2}}',assigns)
+    
+  end
+
+  def test_hyphenated_assign
+    assigns = {'a-b' => '1' }
+    assert_template_result('a-b:1 a-b:2','a-b:{{a-b}} {%assign a-b = 2 %}a-b:{{a-b}}',assigns)
     
   end
 
@@ -289,6 +286,36 @@ HERE
     assert_equal "womenswear", template.render("collection" => {'handle' => 'y'})
     assert_equal "womenswear", template.render("collection" => {'handle' => 'z'})
   end
+
+  def test_case_when_or
+    code = '{% case condition %}{% when 1 or 2 or 3 %} its 1 or 2 or 3 {% when 4 %} its 4 {% endcase %}'
+    assert_template_result(' its 1 or 2 or 3 ', code, {'condition' => 1 })
+    assert_template_result(' its 1 or 2 or 3 ', code, {'condition' => 2 })
+    assert_template_result(' its 1 or 2 or 3 ', code, {'condition' => 3 })
+    assert_template_result(' its 4 ', code, {'condition' => 4 })
+    assert_template_result('', code, {'condition' => 5 })
+    
+    code = '{% case condition %}{% when 1 or "string" or null %} its 1 or 2 or 3 {% when 4 %} its 4 {% endcase %}'
+    assert_template_result(' its 1 or 2 or 3 ', code, {'condition' => 1 })
+    assert_template_result(' its 1 or 2 or 3 ', code, {'condition' => 'string' })
+    assert_template_result(' its 1 or 2 or 3 ', code, {'condition' => nil })
+    assert_template_result('', code, {'condition' => 'something else' })    
+  end
+
+  def test_case_when_comma
+    code = '{% case condition %}{% when 1, 2, 3 %} its 1 or 2 or 3 {% when 4 %} its 4 {% endcase %}'
+    assert_template_result(' its 1 or 2 or 3 ', code, {'condition' => 1 })
+    assert_template_result(' its 1 or 2 or 3 ', code, {'condition' => 2 })
+    assert_template_result(' its 1 or 2 or 3 ', code, {'condition' => 3 })
+    assert_template_result(' its 4 ', code, {'condition' => 4 })
+    assert_template_result('', code, {'condition' => 5 })
+    
+    code = '{% case condition %}{% when 1, "string", null %} its 1 or 2 or 3 {% when 4 %} its 4 {% endcase %}'
+    assert_template_result(' its 1 or 2 or 3 ', code, {'condition' => 1 })
+    assert_template_result(' its 1 or 2 or 3 ', code, {'condition' => 'string' })
+    assert_template_result(' its 1 or 2 or 3 ', code, {'condition' => nil })
+    assert_template_result('', code, {'condition' => 'something else' })    
+  end
   
   def test_assign
     assert_equal 'variable', Liquid::Template.parse( '{% assign a = "variable"%}{{a}}'  ).render            
@@ -347,6 +374,11 @@ HERE
     assert_template_result('',     '{% if true == null %}?{% endif %}', {})         
     assert_template_result('',     '{% if empty == true %}?{% endif %}', {})         
     assert_template_result('',     '{% if null == true %}?{% endif %}', {})         
+  end
+  
+  def test_for_reversed
+    assigns = {'array' => [ 1, 2, 3] }
+    assert_template_result('321','{%for item in array reversed %}{{item}}{%endfor%}',assigns)    
   end
   
   def test_ifchanged

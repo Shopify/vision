@@ -44,9 +44,9 @@ class FiltersTest < Test::Unit::TestCase
     @context.add_filters(CanadianMoneyFilter)  
     assert_equal ' 1000$ CAD ', Variable.new("var | money").render(@context)    
   end
-
+  
   def test_size
-    @context['var'] = 1000
+    @context['var'] = 'abcd'
     @context.add_filters(MoneyFilter)
     assert_equal 4, Variable.new("var | size").render(@context)
   end

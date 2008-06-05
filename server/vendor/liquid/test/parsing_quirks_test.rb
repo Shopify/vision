@@ -12,6 +12,13 @@ class ParsingQuirksTest < Test::Unit::TestCase
     assert_equal [String], template.root.nodelist.collect {|i| i.class}
   end
   
+  def test_raise_on_single_close_bracet
+    assert_raise(SyntaxError) do
+      Template.parse("text {{method} oh nos!")      
+    end
+  end
+  
+  
   def test_error_on_empty_filter
     assert_nothing_raised do
       Template.parse("{{test |a|b|}}")      

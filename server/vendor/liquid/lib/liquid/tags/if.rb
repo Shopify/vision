@@ -10,10 +10,9 @@ module Liquid
   #
   #    There are {% if count < 5 %} less {% else %} more {% endif %} items than you need.
   #
-  # Note you can't use "and" within the If block. You should wrap complex logic in 
-  # the Drop class or in a helper method.
   #
   class If < Block
+    SyntaxHelp = "Syntax Error in tag 'if' - Valid syntax: if [expression]"
     Syntax = /(#{QuotedFragment})\s*([=!<>a-z_]+)?\s*(#{QuotedFragment})?/
     
     def initialize(tag_name, markup, tokens)    
@@ -47,18 +46,32 @@ module Liquid
     private
     
     def push_block(tag, markup)            
-      
       block = if tag == 'else'
         ElseCondition.new
-      elsif markup =~ Syntax
-        Condition.new($1, $2, $3)        
-      else
-        raise SyntaxError.new("Syntax Error in tag '#{tag}' - Valid syntax: #{tag} [condition]") 
+      else        
+        
+        expressions = markup.split(/\b(and|or)\b/).reverse
+        raise(SyntaxError, SyntaxHelp) unless expressions.shift =~ Syntax 
+
+        condition = Condition.new($1, $2, $3)               
+        
+        while not expressions.empty?
+          operator = expressions.shift 
+          
+          raise(SyntaxError, SyntaxHelp) unless expressions.shift.to_s =~ Syntax    
+          
+          new_condition = Condition.new($1, $2, $3)
+          new_condition.send(operator.to_sym, condition)     
+          condition = new_condition          
+        end                        
+                  
+        condition
       end
             
       @blocks.push(block)      
       @nodelist = block.attach(Array.new) 
     end
+    
     
   end
 

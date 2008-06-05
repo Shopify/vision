@@ -84,6 +84,9 @@ class StandardFiltersTest < Test::Unit::TestCase
     assert_equal '2006-07-05 10:00:00', @filters.date("2006-07-05 10:00:00", nil)    
 
     assert_equal '07/05/2006', @filters.date("2006-07-05 10:00:00", "%m/%d/%Y")    
+    
+    assert_equal "07/16/2004", @filters.date("Fri Jul 16 01:00:00 EDT 2004", "%m/%d/%Y")
+    
     assert_equal nil, @filters.date(nil, "%B")    
   end
   
@@ -95,9 +98,25 @@ class StandardFiltersTest < Test::Unit::TestCase
     assert_equal nil, @filters.last([])    
   end
   
+  def test_replace
+    assert_equal 'b b b b', @filters.replace("a a a a", 'a', 'b')    
+    assert_equal 'b a a a', @filters.replace_first("a a a a", 'a', 'b')
+    assert_template_result 'b a a a', "{{ 'a a a a' | replace_first: 'a', 'b' }}"        
+  end
   
+  def test_remove
+    assert_equal '   ', @filters.remove("a a a a", 'a')    
+    assert_equal 'a a a', @filters.remove_first("a a a a", 'a ')        
+    assert_template_result 'a a a', "{{ 'a a a a' | remove_first: 'a ' }}"
+  end
+                                                                                     
+  def test_strip_newlines
+    assert_template_result 'abc', "{{ source | strip_newlines }}", 'source' => "a\nb\nc"
+  end
   
-  
+  def test_newlines_to_br
+    assert_template_result "a<br />\nb<br />\nc", "{{ source | newline_to_br }}", 'source' => "a\nb\nc"
+  end
   
   
   

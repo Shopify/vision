@@ -4,15 +4,15 @@ require File.dirname(__FILE__) + '/helper'
 
 class ErrorDrop < Liquid::Drop
   def standard_error
-    raise StandardError, 'standard error'
+    raise Liquid::StandardError, 'standard error'
   end  
 
   def argument_error
-    raise ArgumentError, 'argument error'
+    raise Liquid::ArgumentError, 'argument error'
   end  
   
   def syntax_error
-    raise SyntaxError, 'syntax error'
+    raise Liquid::SyntaxError, 'syntax error'
   end  
   
 end
@@ -57,8 +57,32 @@ class ErrorHandlingTest < Test::Unit::TestCase
       
     end
     
+  end            
+  
+  def test_missing_endtag_parse_time_error
+    
+    assert_raise(Liquid::SyntaxError) do
+      
+      template = Liquid::Template.parse(' {% for a in b %} ... ')
+      
+    end
+    
   end
   
+  
+  def test_unrecognized_operator
+    
+    assert_nothing_raised do
+      
+      template = Liquid::Template.parse(' {% if 1 =! 2 %}ok{% endif %} ')
+      assert_equal ' Liquid error: Unknown operator =! ', template.render
+      
+      assert_equal 1, template.errors.size
+      assert_equal Liquid::ArgumentError, template.errors.first.class
+      
+    end
+    
+  end
   
 end
 
