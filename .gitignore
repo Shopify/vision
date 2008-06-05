@@ -34,3 +34,6 @@ db/schema.rb
 
 # ignore backups
 db/backup
+
+exports/**/*
+pkg/**/*

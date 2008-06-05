@@ -13,7 +13,7 @@ spec = Gem::Specification.new do |s|
   s.version = Vision.version
   s.has_rdoc = false
   s.files  = Dir.glob('**/*', File::FNM_DOTMATCH).reject do |f| 
-     [ /\.$/, /^public/, /^exports/, /^misc/, /Rakefile$/, /\.log$/, /^pkg/, /\.svn/, /\~$/, /\/\._/, /\.DS/].any? {|regex| f =~ regex }
+     [ /\.$/, /^public/, /^exports/, /^misc/, /Rakefile$/, /\.log$/, /^pkg/, /\.git/, /\.svn/, /\~$/, /\/\._/, /\.DS/].any? {|regex| f =~ regex }
   end
   s.require_path = '.'
   s.summary = 'Shopify Design Server'
