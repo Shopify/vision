@@ -1,0 +1,110 @@
+h3. product
+
+h4. featured_image
+
+The image set as featured in the adminisration.  This will be the main image that represents the product.  Returns the url of the featured image.
+
+<pre><code>
+ &lt;img src=&quot;{{product.featured_image}}&quot; /&gt; 
+</code></pre>
+
+h4. inventory
+
+Determines whether a product is under inventory control. This will return true or false
+
+<pre><code>
+ {% if product.inventory %}
+ 	\Do stuff
+ {% endif %} 
+</code></pre>
+
+h4. inventory_policy
+
+If the shop owner would like to allow users to purchase items out of stock, this will return allow, otherwise it will return deny.
+
+<pre><code>
+ {% if product.inventory_policy == 'allow' %} 
+</code></pre>
+
+h4. inventory_quantity
+
+Returns the amount of items left in stock if this product is under inventory control.  If this product has variations, each one of those variations will also have an inventory policy.
+
+<pre><code>
+ // For a product with a single variation
+ product.inventory_quantity
+
+ //For a product with multiple variations
+ {% for variation in product.variations %}
+ 	variation.inventory_quantity
+ {% endfor %} 
+</code></pre>
+
+h4. max_price
+
+The highest price of all product variants
+
+<pre><code>
+ product.max_price 
+</code></pre>
+
+h4. min_price
+
+The lowest price of all product variations
+
+<pre><code>
+ product.min_price 
+</code></pre>
+
+h4. price
+
+The price of your product
+
+<pre><code>
+ product.price 
+</code></pre>
+
+h4. title
+
+Title of your product
+
+<pre><code>
+ product.title 
+</code></pre>
+
+h4. variants
+
+Returns all variations of a product.  You must also loop through these to access the individual variants.
+
+<pre><code>
+ {% for variant in product.variants %}
+ 	{{variant.title}}
+ {% endfor %} 
+</code></pre>
+
+h4. weight
+
+Weight of the product
+
+<pre><code>
+ product.weight 
+</code></pre>
+
+h3. shop
+
+h4. currency
+
+3 letter representation of your currency
+
+<pre><code>
+ shop.currency 
+</code></pre>
+
+h4. name
+
+Name of your shop
+
+<pre><code>
+ shop.name 
+</code></pre>
+

@@ -1,0 +1,11 @@
+<table id="products" cellspacing="0" cellpadding="0">
+{% tablerow product in products cols:3  %}
+  <div class="product">
+     <h3><a href="{{product.url}}">{{product.title}}</a></h3>
+     <div class="product-image"><a href="{{product.url}}"><img src="{{ product.featured_image | product_img_url: 'small' }}" alt="{{ product.title }}" /></a></div>
+     <div class="money">{{product.price_min | money}}
+     {% if product.price_min != product.compare_at_price %}<div class="original-price">{{product.compare_at_price | money}}</div>{% endif %}
+     </div>
+  </div>
+{% endtablerow %}
+</table>

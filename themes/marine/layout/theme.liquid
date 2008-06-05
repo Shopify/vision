@@ -1,0 +1,105 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<title>{{ shop.name }}</title>
+
+	{{ 'textile.css'  | global_asset_url | stylesheet_tag }}	
+	{{ 'lightbox.css' | global_asset_url | stylesheet_tag }}
+	{{ 'prototype.js' | global_asset_url | script_tag }}
+	{{ 'lightbox.js'  | global_asset_url | script_tag }}
+
+	{{ 'style.css'    | asset_url | stylesheet_tag }}	
+	{{ 'shop.js'      | asset_url | script_tag }}
+	
+	{{ content_for_header }}
+</head>
+
+<body id="page-{{ template }}">
+	<div id="container">
+		<!-- Header Section	 -->
+		<div id="header">
+			
+			<div id="title-container">
+				<div id="title">
+					{{ shop.name | link_to: '/' }}	
+				</div>
+				<!-- Put your subtitle here. if you have none comment out this -->
+				<div id="subtitle">
+					Here it comes!
+				</div>
+				<!-- End to disable subtitle -->
+			</div>
+			<img src="{{ 'background-title-2.gif' | asset_url }}" alt="" style="float: left;" />
+			
+			<div id="top-bars-container">
+				<div id="top-footer-links">
+					{% for link in linklists.footer.links %}
+				         {{ link.title | link_to: link.url , link.title }} {% if forloop.rindex != 1 %} | {% endif %}
+				    {% endfor %}
+				</div>
+				<div id="top-cart-items">
+					{% if template != 'cart' and cart.item_count %}
+						<a  href="/cart" title="&raquo; You have {{cart.item_count}} {{ cart.item_count | pluralize: 'item', 'items' }} in your cart">&raquo; You have {{cart.item_count}} {{ cart.item_count | pluralize: 'item', 'items' }} in your cart</a>
+					{% endif %}
+					<div class="clear"></div>
+				</div>
+			</div>
+		
+		</div>
+		<!-- Content Section  -->
+		<div id="content-container">
+	 	  <div id="sidebar">
+		  <h2>Navigation</h2>
+		  
+	 	  	 {% for link in linklists.main-menu.links %}
+	 			<a href="{{ link.url }}" title="{{ link.title }}" id='link-{{link.id}}'>{{ link.title }}</a>
+	         {% endfor %}
+	      <div class="clear"> </div>
+
+      {% if tags %}
+      <h2>Tags</h2>
+
+        {% for tag in collection.tags %}  
+          {{ tag | highlight_active_tag | link_to_tag: tag }}
+        {% endfor %}
+	      <div class="clear"> </div>
+      {% endif %}
+
+
+		  <h2>Search</h2>
+		
+			<div id="search">
+			  <form action="/search" method="get">
+		        <input type="text" name="q" />
+		        <input type="submit" value="Search" />
+		      </form>
+		    </div>
+			<div class="clear"> </div>
+	 	
+	     </div>
+	 	  
+	      <div id="content">
+			{% case template %}	
+	 	     	{% when 'lable' %}
+	 	     		<h2>{{ lable.title }}</h2>
+	 	     	{% when 'product' %}
+	 	     		<h2>{{ product.vendor | link_to_vendor }} | {{ product.title }}</h2>
+				{% when 'page' %}
+				   <h2>{{ page.title }}</h2>
+	 	   	{% endcase %}
+		    {{ content_for_layout }}
+		    <div class="clear"> </div>
+			<div id="footer">
+			  <a href="http://shopify.com" title="powered by Shopify">powered by Shopify</a>
+			</div>
+			<div class="clear"> </div>
+	 	  </div>
+		
+		</div>
+	</div>
+
+</body>
+</html>

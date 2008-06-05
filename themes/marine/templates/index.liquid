@@ -1,0 +1,35 @@
+<div id="featured-products">
+{% if lables.frontpage.size != 0 %}
+<h2><a href="/labels/frontpage" alt="More featured products &raquo;">Featured Products</a></h2>
+<!-- Maybe replace the following lines by the random thing and delete this comment... ? 	 -->
+{% for product in collections.frontpage.products limit: 2 %} 
+  <div class="product-{% cycle 'left','right' %}">
+     <h3><a href="{{product.url}}" alt="{{ product.title }}">{{product.title}}</a></h3>
+     <div class="product-image">
+	<a href="{{product.url}}">
+		<img src="{{ product.featured_image | product_img_url: 'small' }}" alt="{{ product.title }}"/>
+	</a>
+	</div>
+     <div class="money">{{product.price_min | money}}
+     {% if product.price_min != product.compare_at_price %}<div class="original-price">{{product.compare_at_price | money}}</div>{% endif %}
+    
+     </div>
+<div class="more">
+	<a href="{{product.url}}" alt="View details">View Details</a>
+</div>  
+</div>
+{% endfor %}
+<div class="clear"> </div>
+{% endif %}
+</div>
+
+<div id="articles">
+  {% for article in blogs.frontpage.articles  %}
+
+    <h2>{{ article.title }}</h2>
+    <div class="article-body textile">
+      {{ article.content }}
+    </div>    
+
+  {% endfor %}
+</div>

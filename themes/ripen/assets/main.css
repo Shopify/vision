@@ -1,0 +1,442 @@
+/*-----------------------------------------------------------------------------
+Stylesheet for Shopify
+
+theme name: Ripen
+version: 1.0
+date:      February 2007
+author:    John Rawsterne
+email:     jrawsterne at gmail dot com
+website:   http://www.rawsterne.co.uk
+-----------------------------------------------------------------------------*/
+
+body {
+background:#fff url('body_bg.png') 50% 0 repeat-y;
+color: #555;
+margin: 0;
+padding: 0;
+font: small 'Lucida Grande', Tahoma, Verdana, Arial, Helvetica, sans-serif;
+text-align: center;
+line-height: 1.5em;
+}
+
+html, body {height:100%;} /* footerstickalt*/
+a {color: #666;}
+a:hover {color: #c00;}
+em {color: #666;}
+img {border:none;}
+
+
+/*General Global classes
+-----------------------------------------------------------------------------*/
+.hide {display:none;}
+
+.clearfix:after {
+content: ".";
+display: block;
+height: 0;
+clear: both;
+visibility: hidden;
+}
+
+.clearfix {display: inline-block;}
+
+/* Hides from IE-mac \*/
+* html .clearfix {height: 1%;}
+.clearfix {display: block;}
+/* End hide from IE-mac */
+
+.heading-shaded {
+font-size:110%;
+letter-spacing:0.2em;
+color:#a00;
+width:100%;
+background:#fff url(heading_shaded.gif) repeat-x;
+margin:0;
+padding: 5px 0 5px 20px;
+border-top:#ddd 1px solid;
+border-bottom:#eee 1px solid;
+}
+
+
+/* Typography
+-----------------------------------------------------------------------------*/
+h3 a {
+text-decoration: none;
+letter-spacing: -0.1em;
+color: #555;
+}
+h3 a:hover {
+color: #a00;
+}
+
+
+/* Layout
+-----------------------------------------------------------------------------*/
+#wrapper {
+min-height:100%;    /* footerstickalt*/
+width: 750px;
+margin: 0 auto;
+padding: 0;
+text-align: left;
+}
+#content {
+position:relative;
+width: 750px;
+margin: 0;
+padding: 0;
+}
+
+* html #wrapper {height: 100%;} /* footerstickalt*/
+
+#left-col {
+float: left;
+width: 490px;
+margin: 0;
+padding: 0;
+display:inline;
+}
+#right-col {
+float: right;
+width: 200px;
+margin: 10px 20px 0 0;
+padding: 0;
+display:inline;
+}
+
+#single-page,#blog-page,#cart-page,#collection-page,#product-page,#home-page {
+margin: 10px 0 0 20px;
+}
+
+/* for footerstickalt*/
+#content-padding {
+clear:both;
+height:80px;
+}
+
+
+/* Header
+-----------------------------------------------------------------------------*/
+#header {
+width: 710px;
+height:8em;
+margin: 0 20px 20px 20px;
+padding: 0;
+border-top:#fff 20px solid;
+background:#f00 url('header_bg1.gif') no-repeat bottom right;
+}
+#header .img {
+margin: 0;
+padding: 0;
+line-height: 0;
+}
+#header h2 a {
+font-size:140%;
+color:#fff;
+text-decoration:none;
+padding:1em;
+position:absolute;
+}
+
+
+/* Footer
+-----------------------------------------------------------------------------*/
+#footer {
+clear:both;
+padding-top:0.5em;
+position:relative;
+width: 710px;
+background: #555 url('footer_bg.png') repeat-x;
+text-align:center;
+height:4em;                    /* footerstickalt*/
+margin: -4em auto 0 auto;      /* footerstickalt*/
+}
+
+* html #footer {margin: -2.5em;}  /* footersticka t*/
+
+#footer a, #footer a:visited {
+padding:0;
+margin:0;
+display:inline;
+font-size:85%;
+color:#ccc;
+}
+
+#footer a:hover {color:#fff;}
+
+
+/* Navigation
+-----------------------------------------------------------------------------*/
+#navigation dl, #search dl, #cart-right-col dl {
+float:right;
+width: 200px;
+margin: 0;
+padding: 0;
+}
+#navigation dt, #search dt, #cart-right-col dt{
+margin:0;
+font-size: 90%;
+padding:0.5em 1.5em;
+color: #ddd;
+background: #a00 url(nav_heading_bg.gif) repeat-x;
+}
+#navigation dd, #search dd, #cart-right-col dd {
+margin:0;
+padding:0;
+color: #555;
+font-size: 90%;
+border-bottom:1px solid #fff;
+border-top:1px solid #ccc;
+background: #eee;
+}
+.navbar a, .navbar a:visited {
+color:#555;
+text-decoration:none;
+display:block;
+padding:5px 5px 5px 20px;
+background: #eee url(arrow.gif) 10px 50% no-repeat;
+width:175px;
+}
+.navbar a:hover {
+background: #333 url(arrowr.gif) 10px 50% no-repeat;
+color:#fff;
+}
+
+
+/*Search form
+-----------------------------------------------------------------------------*/
+form,fieldset {
+border:0;
+padding:0;
+margin:5px 0;
+}
+.search-input {
+width: 140px;
+color: #555;
+height: 2em;
+margin: 5px 0 5px 10px;
+padding: 5px 0 0 26px;
+background: url(search_icon.png) no-repeat 5px 50%;
+background-color: #fff;
+border: 0;
+font-size:90%;
+}
+
+
+/* Content
+-----------------------------------------------------------------------------*/
+#articles {
+clear:both;
+padding:0px;
+margin:0;
+display:inline;
+}
+#product-collection {
+list-style: none;
+margin: 0;
+padding: 0;
+}
+li.single-product {
+margin-bottom: 20px;
+padding-bottom: 5px;
+}
+.single-product .small {
+float: left;
+text-align: center;
+width: 25%;
+}
+.small .prod-image a {
+padding: 0.5em;
+border:#ddd 1px dotted;
+float: left;
+}
+.small .prod-image a:hover {
+background: #eee;
+border-color: #aaa;
+}
+.single-product h3 a {
+margin: 0;
+padding: 0;
+font-size: 115%;
+color:#777;
+}
+.single-product h3{
+margin: 0;
+padding: 0;
+}
+.single-product .prod-list-description {
+margin-left: 27%;
+}
+.prod-list-description p {
+padding:0;
+margin:0;
+font-size:85%;
+}
+#pagination {
+font-size: 80%;
+text-align: center;
+}
+#product-images {
+width: 250px;
+margin: 0;
+padding:0;
+float: right;
+}
+a.product-image {
+width: 243px;
+margin: 5px 0px 5px 5px;
+padding: 10px 0;
+text-align: center;
+float: left;
+border: 1px solid #eee;
+}
+a.product-image-small {
+width: 118px;
+margin: 5px 0px 5px 5px;
+padding: 10px 0;
+text-align: center;
+float: left;
+border: 1px solid #eee;
+}
+a.product-image:hover, a.product-image-small:hover {
+border-color: #aaa;
+}
+#product-details {
+margin:20px 0 0 0;
+width: 100%;
+float: left;
+}
+#product-options {
+float:left;
+border-top:#ddd 1px solid;
+border-bottom:#ddd 1px solid;
+padding: 0;
+margin: 10px 0;
+width:210px;
+}
+.product-description {
+clear:left;
+}
+ul#product-variants {
+list-style: none;
+font-size:85%;
+margin: 0;
+padding: 0;
+}
+ul#product-variants li {
+line-height: 2em;
+}
+ul#product-variants li input, ul#product-variants li label { vertical-align: middle; }
+
+.add-to-cart { margin: 10px 0 0 35px;}
+
+ul#product-info {
+list-style-type: none;
+margin: 0;
+padding: 0;
+}
+ul#product-info li {
+margin-right: 5px;
+font-style: italic;
+}
+
+/* featured products*/
+.featured-prod-row {
+clear:both;
+width: 490px;
+margin: 0 0 20px 0;
+padding: 0;
+float: left;
+display: inline;
+background: url(featured-prod-bg3.jpg) top left no-repeat;
+border-bottom:#ddd 1px solid;
+}
+.featured-prod-item {
+text-align:center;
+width: 163px;
+height: 185px;
+margin: 0 0 0 0;
+padding: 5px 0 15px 0;
+float: left;
+display: inline;
+}
+.featured-prod-item h4, .featured-prod-item p {
+margin: 0;
+}
+.featured-prod-item h4 a {
+font-size:90%;
+color: #555;
+text-decoration: none;
+}
+.featured-prod-item h4 a:hover {
+color: #a00;
+}
+.featured-prod-item p {
+margin-top: 8px;
+}
+.featured-prod-item img{
+padding:5px;
+background:#fff;
+border:#ddd 1px solid;
+}
+.prd-price, .featured-prod-item p.prd-price ins {
+font-size: 85%;
+text-decoration: none;
+font-weight: bold;
+color:#888;
+}
+.featured-prod-item p.prd-price ins {
+font-size: 110%;
+color: #a00;
+}
+
+
+/* Shopping Cart
+-----------------------------------------------------------------------------*/
+table.cart {
+width:100%;
+border-spacing:1px;
+margin:0;
+}
+table.cart th, table.cart td {
+padding:2px 5px;
+vertical-align:middle;
+}
+table.cart th.short, table.cart td.short {
+text-align:center;
+}
+table.cart th {
+background:#a00 url(nav_heading_bg.gif) repeat-x;
+color:#fff;
+text-align:left;
+}
+
+table.cart tr.even td {background:#eee;}
+
+input.quantity {
+width:20px;
+font-size:100%;
+}
+p.updatebtn {
+float:left;
+margin:10px 0 0 0;
+}
+p.subtotal {
+float:right;
+clear:both;
+padding:0;
+margin:20px 0;
+}
+p.checkout {
+clear:both;
+float:right;
+}
+
+.cart-price {font-size:100%;}
+
+#cart-right-col dd {
+padding:5px 10px 5px 20px;
+}
+#cart-right-col a {
+color:#333;
+font-size:110%;
+}

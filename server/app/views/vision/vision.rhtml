@@ -1,0 +1,31 @@
+<div id="vision">
+  <div id="v-sbar">
+    <ul id="controls">
+      <li>
+        <a href="#" id="collapse" onclick="Element.remove('vision'); return false;"></a>
+        <a href="/dashboard/">Dashboard</a>
+      </li>
+      <li id="theme-list">
+        <label for="themes">Theme:</label> 
+        <select name="themes" id="themes" onchange="Cookie.set('theme', this.value); window.location.reload(); return false;">
+        <% for theme in @themes %>
+          <option value="<%= theme %>" <%= 'selected="selected"' if theme == @current_theme %>><%= theme %></option>
+        <% end %>
+        </select>
+      </li>
+      <li>
+        <label for="templates">Template:</label> 
+        <select name="templates" id="templates" onchange="eval(this.value); return false;">
+        <% for template in @templates %>
+          <option value="<%= template.first %>" <%= 'selected="selected"' if File.basename(template.last)  == @current_template + '.liquid' %>> <%= template.last %></option>
+        <% end %>
+        </select>
+      </li>
+    </ul>
+    <ul id="searches">
+      <li>
+        <a href="http://help.shopify.com/design/show/<%= @current_template %>.liquid" target="vision-help"><%= @current_template %>.liquid</a> help or <form target="vision-help" id="search-form" method="GET" action="http://help.shopify.com/design/search/"><input type="text" name="query" value="Search Liquid Docs..." id="find" />
+      </li>
+    </ul>
+  </div>
+</div>

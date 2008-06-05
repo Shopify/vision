@@ -1,0 +1,35 @@
+{% paginate collection.products by 20 %}
+
+<ul id="productsv">
+  {% for product in collection.products %}
+  <li>
+    <div class="collection-body">
+
+      <div class="collection-price">{{product.price_min | money}}</div>
+      <h3><a href="{{product.url}}">{{product.title}}</a></h3>
+
+
+      <div class="product-img" style="float:left">
+        <a href="{{product.url}}"><img src="{{ product.featured_image | product_img_url: 'small' }}" /></a>
+      </div>
+
+      <div class="collection-body-paragraph">       
+        {{ product.description | strip_html | truncatewords: 50 }}
+      </div>
+
+      <ul class="buttons clearfix" style="clear:left;margin: 5px 5px 5px 460px;">
+        <li><a href="{{ product.url }}" title="View Details">View Details <img src="{{ 'arrow.gif' | asset_url }}" /></a></li>
+      </ul>
+
+      <p class="collection-link"><em></em></p>
+    </div>
+    
+  </li>
+  {% endfor %}
+</ul>
+
+<div id="pagination">
+    {{ paginate | default_pagination }}
+</div>
+
+{% endpaginate %}

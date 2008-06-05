@@ -1,0 +1,110 @@
+body {
+  margin: 0;
+  text-align: center;
+  padding: 0;
+  background: #222;
+  color: #fff;
+  font: 1em/1.5em "Lucida Grande", Helvetica, sans-serif;
+}
+
+a {
+  color: #030;
+}
+
+a:hover {
+  background: #000;
+  color: #fff;
+  padding: 1px;
+}
+
+h2 {
+  font-size: 200%;
+  letter-spacing: 0.03em;
+  text-align: center;
+}
+
+#wizard {
+  font-size: 70%;
+  text-align: left;
+  margin: 0 auto;
+  margin-top: 100px;
+  padding: 50px;
+  color: #000;
+  border-top: 5px solid #fff;
+  border-bottom: 5px solid #fff;
+  background: #ffd200 url(../images/logo.gif) no-repeat;
+  height: 200px;
+}
+
+#tasks {
+  margin: 0 auto;
+}
+
+#tasks li {
+  padding: 20px 5px;
+  display: block;
+  margin-right: 10px;
+  float: left;
+  height: 100px;
+  width: 28%;
+  color: #000;
+  text-align: center;
+  background: #f2f2f2;
+  border: 3px solid #fff;
+  line-height: 140%;
+}
+
+
+dl, dt, dd {
+  margin: 0;
+  padding: 0;
+}
+
+.big {
+  font-size: 190%;
+}
+
+label {
+  font-weight: bold;
+  font-size: 110%;
+  color: #000;
+  text-shadow: 2px 2px #fff;
+}
+
+.file {
+  width: 100px;
+  margin: 0 auto;
+}
+
+/*
+ *=UTILITY
+ */
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 0 0 10px 0;
+}
+
+h1 { font-size: 140%; }
+h2 { font-size: 190%; color: #030;}
+h3 { 
+  font-size: 190%;
+  font-weight: normal;
+  color: #690;
+  text-shadow: 2px 2px #fff;
+}
+img { border: 0; }
+
+.cfix:after {
+    content: "."; 
+    display: block; 
+    height: 0; 
+    clear: both; 
+    visibility: hidden;
+}
+
+.cfix {display: inline-table;}
+
+/* Hides from IE-mac \*/
+* html .cfix {height: 1%;}
+.cfix {display: block;}
+/* End hide from IE-mac */

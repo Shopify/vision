@@ -1,0 +1,7 @@
+/* Wedit generated resource file */
+#ifdef __LCC__
+#include <windows.h>
+#endif
+#include "vision.h"
+
+IDICON100 ICON "c:\\code\\c\\vision\\vision.ico"

@@ -1,0 +1,348 @@
+body {
+  margin: 0;
+  padding: 0;
+  font: 1.0em/1.4em "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+p,h1,pre {
+	margin:0px 10px 10px 10px;
+	}
+
+img { border: 0; }
+
+.small {
+  font-size: 85%;
+}
+
+.big {
+  font-size: 145%;
+}
+
+.fl {
+  float: left;
+}
+
+.button {
+  margin: 10px 0;
+}
+
+.noliststyle {
+  list-style-type: none;
+}
+
+.clear {
+  clear: both;
+}
+
+.product {
+  width: 180px;
+  margin: 15px 0;
+  padding: 3px 0;
+  text-align: center;
+  float: left;
+}
+
+.product a:link, .product a:visited, .product a:active, .product a:hover {
+  text-decoration: none;
+}
+
+.product h3 {
+  font-weight: normal;
+  margin: 7px;
+}
+
+.product-image {
+  width: 114px;
+  height: 114px;
+  margin: auto;
+}
+
+.original-price {
+  text-decoration: line-through;
+  font-size: 70%;
+}
+
+.money {
+  font-size: 120%;
+  height: 50px;
+}
+
+#frame {
+	width:837px;
+	margin:30px auto;
+	padding:0px;
+	text-align:left;
+}
+	
+#contentleft {
+	width:180px;
+	padding:0px;
+	float:left;
+}
+
+#contentcenter {
+  background: url('shade.gif') top left no-repeat;
+	width:637px;
+	padding: 0 0 0 20px;
+	float:left;
+}
+
+#contentcenter h2 {
+  font-weight: normal;
+}
+
+#header {
+  padding: 8px;
+}
+
+#header a:link, #header a:visited, #header a:hover, #header a:active {
+  font: 1em/1.3em Verdana, Helvetica, Arial, sans-serif;
+  font-size: 200%;
+  text-decoration: none;
+}
+	
+#shopping-cart {
+  height: 27px;
+  text-align: right;
+  font-size: 75%;
+  padding-right: 7px;
+}
+	
+#contentheader h1 {
+	font-size:14px;
+	padding:10px;
+	margin:0px;
+}
+
+#footer {
+  clear: left;
+	text-align: center;
+	list-style-type: none;
+	margin: 8px 0 8px -24px;
+	padding: 0;
+}
+
+#footer li {
+	display: inline;
+	font-size: 75%;
+	background: url('link.gif') center left no-repeat;
+  padding-left: 12px;
+	margin: 0 3px;
+}
+
+#shopify {
+  clear: both;
+  font-size: 65%;
+  text-align: center;
+  margin: 10px 20px;  
+}
+
+ul.side-links {
+  list-style-type: none;
+  margin: 10px;
+  padding: 0;
+}
+
+ul.side-links em {
+  font-style: normal;
+}
+
+ul.side-links a:link, ul.side-links a:visited, ul.side-links a:hover, ul.side-links a:active {
+  background: url('link.gif') center left no-repeat;
+  padding-left: 15px;
+  padding-right: 5px;
+  font-size: 75%;
+  text-decoration: none;
+}
+
+.search {
+	width: 120px;
+}
+
+#search button{
+	width:20px;
+	height:20px;
+	text-indent:-9999px;
+	background:url(search.gif) 0 0 no-repeat;
+	border:none;
+	margin-left:2px;
+	vertical-align:top;
+	margin-top:2px;
+}
+
+p#tags {
+  display:inline;
+  font-size: 80%;
+}
+
+ul#tag-links {
+  list-style-type: none;
+  padding: 3px 10px;
+  float: right;
+  margin: 0 0 10px 0;
+  font-size: 70%;
+  font-weight: bold;
+}
+
+ul#tag-links li {
+  display: inline;
+}
+
+ul#tag-links a:link, ul#tag-links a:visited, ul#tag-links a:hover, ul#tag-links a:active {
+  text-decoration: none;
+  font-weight: normal;
+}
+
+ul#tag-links a:hover {
+  text-decoration: underline;
+}
+
+#pagination {
+  font-size: 80%;
+  text-align: center;
+}
+
+
+/* PRODUCT.LIQUID */
+
+#products {
+  float: left;
+}
+
+#articles {
+  clear: left;
+  margin: 0;
+  padding: 15px;
+  font-family: "Times New Roman", Georgia, serif;
+}
+
+#image-tab {
+  width: 300px;
+}
+
+.pimage {
+  width: 260px;
+  height: 260px;
+  margin: 15px 20px 5px 0px;
+  text-align: center;
+}
+
+.pimage img {
+  vertical-align: middle;
+}
+
+.pimage-small {
+  width: 123px;
+  height: 123px;
+  margin: 5px 10px 5px 0px;
+  text-align: center;
+}
+
+.pimage-small img {
+  vertical-align: middle;
+}
+
+#product a:link, #product a:visited, #product a:active, #product a:hover {
+  text-decoration: none;
+}
+
+ul#details {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+ul#variants {
+  list-style-type: none;
+  margin: 10px 0;
+  padding: 0;
+}
+
+#description {
+  padding: 15px 0;
+}
+
+#variant-add {
+  margin: 15px 0;
+}
+
+/* CART.LIQUID */
+
+#shoppingcart h2 {
+  margin-bottom: 4px;
+}
+
+#shoppingcart h2>a:link, #shoppingcart h2>a:visited, #shoppingcart h2>a:hover, #shoppingcart h2>a:active {
+  text-decoration: none;
+}
+
+#shoppingcart-table {
+  width: 600px;
+}
+
+.lineitem {
+  clear: left;
+  margin: 10px 10px 10px 0;
+}
+
+.checkout-product-image {
+  width: 58px;
+  height: 58px;
+  margin: auto;
+}
+
+#checkout {
+  margin: 35px 0;
+  text-align: center;
+  height: 50px;
+}
+
+
+/* PAGE.LIQUID */
+
+.article {
+  font-family: "Times New Roman", Georgia, serif;
+  font-weight: normal;
+}
+
+.article h3 {
+  padding: 3px 8px;
+}
+
+/* BLOG.LIQUID */
+
+#page {
+  padding: 15px 0;
+}
+
+.headline {
+  margin: 24px 0;
+}
+
+.headline h3 {
+  float: left;
+  font-size: 125%;
+  margin: 5px 5px 5px 15px;
+  padding-bottom: 10px;
+}
+
+.title {
+  height: 48px;
+}
+
+.date {
+  height: 48px;
+  width: 48px;
+  float: left;
+  text-align: center;
+}
+
+.date h4 {
+  margin: 0;
+}
+
+.article-body {
+  clear: left;
+  margin: 12px 0;
+  padding-top: 8px;
+}

@@ -1,0 +1,4 @@
+CFBundleName = "Vision";
+CFBundleShortVersionString = "1.0";
+CFBundleGetInfoString = "Vision version 1.0 Copyright 2006 Tobias Luetke";
+NSHumanReadableCopyright = "Copyright 2006 Tobias Luetke.";

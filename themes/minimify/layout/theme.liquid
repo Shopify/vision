@@ -1,0 +1,88 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<title>{{shop.name}} - {{page_title}}</title>
+
+	{{ 'layout.css'		| asset_url | stylesheet_tag }}
+	{{ 'lightbox/v2/lightbox.css'	| global_asset_url | stylesheet_tag }}
+	{{ 'lightbox/v2/lightbox.js'	| global_asset_url | script_tag }}
+	
+	<script type="text/javascript">
+	var loadingImage = '{{ 'lightbox/v2/loading.gif' | global_asset_url }}';		
+	var closeButton  = '{{ 'lightbox/v2/close.gif' | global_asset_url }}';		
+	</script>
+	
+	{{ content_for_header }}
+</head>
+
+<body id="page-{{template}}">
+    
+<p class="hide"><a href="#rightsiders">Skip to navigation.</a></p>
+
+  <div id="container">
+  
+  
+<div id="header" class="clearfix">
+	<h1 id="logo"><a href="/" title="Go Home">{{shop.name}}</a></h1>
+  <div id="cartlinks">
+	  <h2 id="cartcount"><a href="/cart">Cart</a><sup>{{ cart.item_count }}</sup></h2>
+  </div>  	  
+</div>
+<hr />
+	
+
+<div id="main">
+
+	<div id="searchbox">
+		<form action="/search" method="get">
+			<input id="search-input" type="text" name="q" /> <input type="image" src="{{ 'search_button.gif' | asset_url }}" alt="Search" />
+		</form>
+	</div>
+	
+  	<div id="content">
+		<div id="innercontent">
+		  {{ content_for_layout }}
+	  	</div>
+  	</div>
+    
+	<hr />
+  	<div id="rightsiders">
+  	  <h3>Categories</h3>
+      <ul class="rightlinks">
+        {% for link in linklists.main-menu.links %}
+           <li>{{ link.title | link_to: link.url }}</li>
+        {% endfor %}
+      </ul>
+        
+      {% if tags %}
+  	  <h3>Tags</h3>
+        <ul class="rightlinks">
+          {% for tag in collection.tags %}  
+            <li>{{ tag | link_to_tag: tag }}</li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+      
+  	</div>
+
+	<hr /><br style="clear:both;" />
+	
+	  <div id="footer">
+	  	<div class="footerinner">
+			All prices are in {{ shop.currency }} |
+			{% for link in linklists.footer.links %}
+        {{ link.title | link_to: link.url }} | 
+      {% endfor %} 
+			Powered by <a href="http://shopify.com" title="powered by Shopify">Shopify</a>
+		</div>
+	  </div>
+	  
+	</div>
+</div>
+
+</body>
+</html>
+

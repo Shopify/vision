@@ -1,0 +1,1 @@
+<vision current="<%= @version %>" href="http://vision.shopify.com/update.html" />

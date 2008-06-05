@@ -1,0 +1,66 @@
+shop:
+  name:
+    description: Name of your shop
+    syntax: shop.name
+  currency:
+    description: 3 letter representation of your currency
+    syntax: shop.currency
+
+product:
+  title:
+    description: Title of your product
+    syntax: product.title
+  price:
+    description: The price of your product
+    syntax: product.price
+  min_price:
+    description: The lowest price of all product variations
+    syntax: product.min_price
+  max_price: 
+    description: The highest price of all product variants
+    syntax: product.max_price
+  featured_image: 
+    description:
+      The image set as featured in the adminisration.  This will be the 
+      main image that represents the product.  Returns the url of the featured 
+      image.
+    syntax: '<img src="{{product.featured_image}}" />'
+  weight:
+    description: Weight of the product
+    syntax: product.weight
+  inventory:
+    description: 
+      Determines whether a product is under inventory control.
+      This will return true or false
+    syntax:
+      "{% if product.inventory %}\n
+       \t//Do stuff\n
+      {% endif %}"
+  inventory_quantity:
+      description: 
+        Returns the amount of items left in stock if this product is under
+        inventory control.  If this product has variations, each one of those 
+        variations will also have an inventory policy.
+      syntax: 
+        "// For a product with a single variation\n
+         product.inventory_quantity\n\n
+         //For a product with multiple variations\n
+         {% for variation in product.variations %}\n
+         \tvariation.inventory_quantity\n
+         {% endfor %}"
+  inventory_policy:
+    description:
+      If the shop owner would like to allow users to purchase items out of stock, this will return 
+      allow, otherwise it will return deny.
+    syntax:
+      "{% if product.inventory_policy == 'allow' %}"
+  variants:
+    description: 
+      Returns all variations of a product.  You must also loop through 
+      these to access the individual variants.
+    syntax:
+      "{% for variant in product.variants %}\n
+        \t{{variant.title}}\n
+      {% endfor %}"
+    
+  

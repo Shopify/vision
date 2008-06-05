@@ -1,0 +1,19 @@
+<h2 id="page-title">{{page.title}}</h2>
+
+{% paginate blog.articles by 20 %}
+
+  {% for article in blog.articles  %}
+
+      <h3>{{ article.title }}</h3>
+      <p> posted {{ article.created_at | date: "%Y %h" }} by {{ article.author }}</p>
+      <div class="article-body textile">
+        {{ article.content }}
+      </div>    
+  
+  {% endfor %}
+  
+  <div id="pagination">
+    {{ paginate | default_pagination }}
+  </div>
+
+{% endpaginate %}

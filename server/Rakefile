@@ -1,0 +1,97 @@
+require 'rubygems'
+require 'rake'
+require 'rake/testtask'
+require 'rake/rdoctask'
+require 'rake/gempackagetask'
+require 'rake/contrib/rubyforgepublisher'
+
+PKG_VERSION = "0.1"
+PKG_NAME = "search"
+PKG_FILE_NAME = "#{PKG_NAME}-#{PKG_VERSION}"
+
+PKG_FILES = FileList[
+    "lib/**/*", "test/*", "[A-Z]*", "rakefile"
+].exclude(/\bCVS\b|~$/)
+
+desc "Default Task"
+task :default => [ :test ]
+
+desc "Delete tar.gz / zip / rdoc"
+task :cleanup => [ :rm_packages, :clobber_rdoc ]
+
+# Run the unit tests
+
+task :syntax do 
+  `find . -name '*.rb' -print | xargs ruby -c`
+end
+
+task :update_liquid do
+  `svn export --force svn://home.leetsoft.com/liquid/trunk/liquid vendor/liquid`
+end
+
+desc "Transform yml docs to textile"
+task :docs_to_textile do
+  File.open("db/docs.textile", "w") do |f|
+    f.puts textile_from_docs(load_docs)
+  end
+end
+
+def load_docs
+  YAML.load(File.read("db/docs.yml"))
+end
+
+def textile_from_docs(docs)
+  result = []
+  docs.sort.each do |key, val|
+    
+    result << "h3. #{key}\n\n" if %w(product shop variant).include?(key)
+    result << "h4. #{key}\n\n" unless %w(syntax description product shop variant).include?(key)
+    
+    val = key == 'syntax' ? "\n\n<pre><code>\n #{val} \n</code></pre>\n\n" : val
+    key = key == 'description' ? '' : key
+    
+    result <<  "#{val.kind_of?(Hash) ? textile_from_docs(val) : val}"
+  end
+  result
+end
+
+# def listify_docs(docs)
+#   result = ["<ul>"]
+#   docs.sort.each do |key, val|
+#     result << "<li>"
+#     val = key == 'syntax' ? "<pre><code> #{val} </code></pre>" : val
+#     key = key == 'description' ? '' : key
+#     result <<  "<span>#{key}</span> #{val.kind_of?(Hash) ? listify_docs(val) : val}"
+#     result << "</li>"
+#   end
+#   
+#   result << "</ul>"
+# end
+# Genereate the RDoc documentation
+
+Rake::RDocTask.new { |rdoc|
+  rdoc.rdoc_dir = 'doc'
+  rdoc.title    = "Search Server"
+  rdoc.options << '--line-numbers --inline-source'
+  rdoc.rdoc_files.include('README')
+  rdoc.rdoc_files.include('lib/**/*.rb')
+}
+
+task :lines do
+  lines = 0
+  codelines = 0
+  Dir.foreach("lib") { |file_name| 
+    next unless file_name =~ /.*rb/
+
+    f = File.open("lib/" + file_name)
+
+    while line = f.gets
+      lines += 1
+      next if line =~ /^\s*$/
+      next if line =~ /^\s*#/
+      codelines += 1
+    end
+  }
+  puts "Lines #{lines}, LOC #{codelines}"
+end
+

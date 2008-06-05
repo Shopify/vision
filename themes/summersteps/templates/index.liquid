@@ -1,0 +1,38 @@
+<!-- LIST 3 PER ROW -->
+<table id="products" cellspacing="0" cellpadding="0">
+{% tablerow product in collections.frontpage.products cols:4  %}
+ 
+  <div class="product-body">
+
+    <div class="product-img">
+      <a href="{{product.url}}"><img src="{{ product.featured_image | product_img_url: 'small' }}" /></a>
+    </div>
+
+    <div class="product-body-paragraph">       
+  
+    </div>
+    
+    <div class="product-information">
+        <h3><a href="{{product.url}}">{{product.title}}</a></h3>
+        {{product.price_min | money}} <a href="{{product.url}}"><img src="{{ 'arrow.gif' | asset_url }}" /></a>
+    </div>
+    
+    <p class="product-link"><em>&nbsp;</em></p>
+  </div>
+
+{% endtablerow %}
+</table>
+<!-- /LIST 3 PER ROW  -->
+
+  <div id="articles">
+    {% for article in blogs.frontpage.articles  %}
+    <div class="article">
+      <h3>{{ article.title }}</h3>
+      <div class="article-body textile">
+        {{ article.content }}
+      </div>
+    </div>
+    {% endfor %}
+
+  </div>
+

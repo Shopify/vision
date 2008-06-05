@@ -1,0 +1,10 @@
+#!/usr/bin/ruby
+
+vision = File.dirname(__FILE__) + '/../../../vision.rb'
+
+if File.exists?(vision)
+  require vision
+else
+  puts " => Could not find vision.rb"
+  puts " => Please copy Vision.app in the same directory as the vision.rb and the themes directory."
+end

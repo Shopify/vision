@@ -1,0 +1,7 @@
+<div id="blog-page">
+  <h2 class="heading-shaded">{{page.title}}</h2>
+   {% for article in blog.articles  %}
+      <h4>{{ article.created_at | date: '%d %b' }} {{ article.title }}</h4>
+      {{ article.content }}
+  {% endfor %}
+</div>

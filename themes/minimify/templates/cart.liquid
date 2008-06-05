@@ -1,0 +1,65 @@
+<script type="text/javascript">
+  function remove_item(id) {
+      document.getElementById('updates_'+id).value = 0;
+      document.getElementById('cartform').submit();
+  }
+</script>
+
+<div>
+
+  {% if cart.item_count == 0 %} 
+    <div id="cart">
+      <h4>Your shopping cart is looking rather empty&hellip;</h4>
+      <p>Looking for something specific?</p>
+    	<form action="/search" method="get">
+    	<input id="search-input-body" type="text" name="q" /> <input type="button" value="Search" />
+    	</form>
+      <script type="text/javascript">document.getElementById('search-input-body').focus()</script>	
+    </div>
+  {% else %}
+    <form action="/cart" method="post" id="cartform">
+
+    <div id="cart">
+  
+      <ul id="line-items">
+        {% for item in cart.items %}
+        <li id="item-{{item.id}}" class="clearfix">
+          <div class="thumb">
+  				  <div class="prodimage">
+            <a href="{{item.product.url}}" title="View {{item.title}} Page"><img src="{{item.product.featured_image | product_img_url: 'thumb' }}" alt="{{item.title}}" /></a>
+          </div></div>
+          <h3 style="width:400px;">
+  			<a href="{{item.product.url}}" title="View {{item.title}} Page">
+  				{{ item.title }}
+  				{% if item.variant.title != 'Default' %}
+  				   ({{item.variant.title}})
+  				{% endif %}
+  			</a>	
+  		</h3>
+          <small class="itemcost">Costs {{ item.price | money }} each, <span class="money">{{item.line_price | money }}</span> total.</small>
+          <p class="right">
+            <label for="updates_{{item.variant.id}}">How many? </label> 
+            <input type="text" size="4" name="updates[]" id="updates_{{item.variant.id}}" value="{{item.quantity}}" onfocus="this.select();"/><br />
+            <a href="#" onclick="remove_item({{item.variant.id}}); return false;" class="remove"><img style="padding:15px 0 0 0;margin:0;" src="{{ 'delete.gif' | asset_url }}" alt="" /></a>
+          </p>
+        </li>
+        {% endfor %}
+
+        <li id="total">
+          <input type="image" id="update-cart" name="update" value="Update My Cart" src="{{ 'update.gif' | asset_url }}" />
+          Subtotal: 
+          <span class="money">{{ cart.total_price | money_with_currency }}</span>
+        </li>
+
+      </ul>
+
+    </div>
+  
+      <div class="info">
+  		<input type="image" value="Checkout!" name="checkout" src="{{ 'checkout.gif' | asset_url }}" />
+      </div>
+  
+    </form>
+  {% endif %}
+
+</div>

@@ -1,0 +1,60 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+	<head>
+		<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+		<meta http-equiv="Content-Language" content="en-us" />
+		<title>Vision Setup</title>
+		<link rel="stylesheet" href="/stylesheets/wizard.css" type="text/css" media="screen" title="Wizard" charset="utf-8" />
+	</head>
+	
+	<body>
+    
+    <div id="wizard" class="cfix">
+      <h2>Welcome to Vision <%= Vision.version %></h2>
+      <% if not Vision.uptodate? %>
+      <p class="center"><strong>Please <a href="<%= Vision.update_url  %>">update to Vision <%= Vision.latest_version %></a> </strong></p>
+      <% end %>
+      <ul id="tasks">
+        <li>
+          <h3>Create</h3>
+          <p>Create a new theme to work on.</p>
+          <a href="/dashboard/create">Create a new theme &raquo;</a>
+        </li>
+        <li>
+          <h3>Modify</h3>
+          <p>Choose an existing theme to work with.</p>
+          <form method="get" action="/dashboard/choose">
+            <select name="theme" onchange="this.parentNode.submit();">
+              <option value="">---</option>
+              <% @themes.each do |theme| %>
+              <option value="<%= theme %>"><%= theme %></option> 
+              <% end %>        
+            </select>
+          </form>
+        </li>
+        <li>
+          <h3>Export</h3>
+          <p>Package your theme for release.</p>
+          <form action="/dashboard/export_theme" method="get">
+            <select name="theme" onchange="this.parentNode.submit();">
+              <option value="">---</option>
+              <% @themes.each do |theme| %>
+              <option value="<%= theme %>"><%= theme %></option>
+              <% end %>
+            </select>
+          </form>
+        </li>
+      </ul>
+    </div>
+    <p>All themes are located at <em><%= File.expand_path(THEMES) %></em></p>
+
+    </body>
+</html>
+
+
+
+
+
+
+

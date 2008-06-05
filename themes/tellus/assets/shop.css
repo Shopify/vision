@@ -1,0 +1,534 @@
+
+/* ------ NOTES ---------------------------------------------------------------
+
+Tellus theme for Shopify, made by Jimmy Nordlund (http://www.digitalvenues.se).
+
+Comes in a few different colour variations (see section 8).
+
+
+--------- CONTENTS ------------------------------------------------------------
+
+1: BODY AND UNIVERSAL RESET
+2: PAGE STRUCTURE
+	a) Containers
+	b) Header
+	c) Sidebar
+	d) Footer
+3: ARTICLES
+4: PRODUCTS
+5: CART
+6: GLOBALS
+	a) Links
+	b) Typography
+7: MISC
+8: COLOUR VARIATIONS
+	a) Lime Green
+	b) Strawberry Pink
+	c) Sunset Orange
+
+---------------------------------------------------------------------------- */
+
+
+
+/* 1: BODY AND UNIVERSAL RESET
+============================================================================ */
+
+body {
+	margin: 0;
+  	padding: 0;
+  	background: #eee url(bg-body.gif) repeat-x;
+	font: 12px/160% "Lucida Grande", Helvetica, Arial, Verdana, sans-serif;
+	}
+	
+/* Set margin and padding to 0 for all elements */
+ 
+* {margin: 0; padding: 0;}
+
+
+/* 2. PAGE STRUCTURE
+============================================================================ */
+
+/* a) Containers */
+
+#container {width: 916px; margin: 0 auto;}
+* html #container {width: 916px; margin: 2px auto;}
+
+#content {
+	display: inline;
+	float: left;
+	width: 800px;
+	margin: 0 58px;
+	padding-bottom: 30px;
+	background: url(bg-content.gif) repeat-y;
+	}
+	
+#main {
+  	float: left;
+  	width: 597px;
+  	padding: 30px 5px 0;
+	background: url(bg-main.gif) top left no-repeat;
+	color: #777;
+	}
+	
+/* b) Header */
+
+#header {height: 40px; padding: 50px 83px 0;}
+#header h1 {
+  	font-size: 240%;
+	font-family: "Myriad Pro", Myriad, Helvetica, Arial, sans-serif;
+  	text-shadow: -3px 3px #a4d4ef;
+	text-transform: uppercase;
+	}
+#header h1 a {border: none; color: #000; text-decoration: none;}
+#header h1 a:hover {background: transparent; color: #35718f;}
+#header #subtitle {
+  	font-size: 11px;
+  	margin: 2px;
+  	padding: 0;
+  	color: #fff;
+	}	
+
+/* c) Sidebar */
+
+#sidebar {
+	float: right;
+  	width: 193px;
+  	background: url(bg-sidebar.gif) top left no-repeat;
+  	color: #333;
+	font-size: 12px;
+	}
+#sidebar h3 {
+	margin: 0 0 0 -4px;
+	padding: 20px 0 20px 15px;
+	color: #333;
+	font-size: 13px;
+	font-weight: bold;
+	font-family: "Lucida Grande", Arial, Verdana, sans-serif;
+	text-shadow: -3px 3px #fff;
+	}
+#sidebar .vlink-list {
+	list-style: none;
+	margin-left: -4px;
+	padding-bottom: 1px;
+	background: url(sidebar-devider.gif) bottom left no-repeat;
+	}
+#sidebar .vlink-list a {
+  	display: block;
+	width: 193px;
+	padding: 9px 0 9px 15px;
+  	color: #7ab8da;
+  	text-decoration: none;
+	border: none;
+	background: url(sidebar-menu.jpg) left top no-repeat;
+	}
+#sidebar .vlink-list a:hover {
+	color: #35718f;
+	background-position: left -120px;
+	}
+
+#sidebar form {display: inline; float: right; margin: 10px 10px 20px;}
+#sidebar input {float: right; margin: 7px 0; color: #888;}
+#sidebar input.searchfield {width: 100%;}
+#sidebar label {display: block; font-size: 11px;}
+
+/* d) Footer */
+
+#footer {
+	clear: left;
+	width: 723px;
+  	padding: 0 0 15px;
+  	margin: 0 0 40px;
+	background: url(bg-footer.gif) bottom left no-repeat;
+  	color: #777;
+  	font-size: 11px;
+  	text-align: center;
+	}
+#footer ul {
+	list-style: none;
+	margin: 0 63px;
+	padding-top: 10px;
+	border-top: 1px solid #ddd;
+	}
+#footer li {display: inline; margin: 0 5px;}
+#footer a {border-color: #bbb; color: #333;}
+#footer a:hover {border-color: #333; background: #333; color: #fff;}
+
+
+/* 3: ARTICLES
+============================================================================ */
+
+.article .pbody {padding-left: 10px;}
+.article h3 {padding-bottom: 0.7em;}
+
+h2#page-title {margin-bottom: 30px;}
+
+p.posted {padding: 0 30px 1em; color: #35718f; font-size: 11px;}
+
+.article-body {padding: 0 30px;}
+
+
+/* 4: PRODUCTS
+============================================================================ */
+
+#products {width: 100%;}
+#products h3 {
+	margin: 0.5em 0;
+	padding: 0;
+	font-size: 13px;
+	font-weight: bold;
+	font-family: "Lucida Grande", Arial, Verdana, sans-serif;
+	}
+#products td {
+  	text-align: center;
+  	border-left: 1px solid #ddd;
+  	border-bottom: 1px solid #ddd;
+  	padding: 30px 10px;
+	}
+#products td.col1 {border-left: 0;}
+
+ul.attributes {
+  	color: #555;
+  	list-style: none;
+  	line-height: 150%;
+	}
+ul.attributes li {font-weight: bold;}
+ul.attributes li span.money {
+	color: #c00;
+	font-size: 16px;
+	font-weight: normal;
+	}
+
+/* List one product per row in an unordered list */
+
+#productsv {list-style: none; padding: 20px 30px 10px;}
+	
+li.productv {padding: 0 0 30px;}
+li.productv .thumb {float: left; width: 25%; text-align: center;}
+li.productv .thumb .money {
+	margin-top: 0.7em;
+	color: #c00;
+	font-size: 17px;
+	}
+li.productv .pbody {margin-left: 28%;}
+li.productv .pbody h3 {
+	margin-bottom: 0.5em;
+	padding: 0;
+	font-size: 20px;
+	}
+li.productv .pbody ul.attributes li {
+  	display: inline;
+  	margin-right: 10px;
+  	padding-top: 20px !important;
+	}
+li.productv ul.buttons {list-style: none; margin: 10px 0;}
+li.productv ul.buttons li {display: inline;}
+li.productv ul.buttons li a {
+  	display: block;
+  	float: left;
+  	margin-right: 5px;
+  	padding: 2px 4px;
+  	border: 1px solid #7ab8da;
+  	background: #f5f5f5;
+	color: #7ab8da;
+	}
+li.productv ul.buttons li a:hover {
+  	background: #7ab8da;
+  	color: #fff;
+	}
+
+/* b) Main (single) product page */
+
+#product h3 {
+	margin-top: 40px;
+	padding: 0 0 1em;
+	font-weight: normal;
+	font-size: 18px;
+	font-family: "Myriad Pro", Myriad, Helvetica, Arial, Verdana, sans-serif;
+	}
+	 
+.pimage {
+  	float: right;
+		width: 240px;
+		margin: 60px 10px 20px 10px;
+  	text-align: center;
+	}
+
+.pimage a {
+  border: none;
+  background: none;
+}
+
+#pimage-select {
+  float: right;
+  clear: right;
+  width: 240px;
+  text-align: center;
+}
+
+#description {margin: 0 30% 0 30px;}
+
+#price {
+	padding: 30px 0 30px 60px;
+	color: #c00;
+	font-size: 26px;
+	}
+
+ul#details {font-size: 11px; padding: 10px 0 0 30px;}
+ul#details li {margin-right: 5px;}
+
+#variants {list-style: none; margin: 0 0 30px 10px;}
+#variants li {margin-bottom: 8px;}
+#variants span.variant-price {color: #c00;}
+#variants span.soldout {background: #ffd; color: #c00;}
+
+input#add {margin-bottom: 40px;}
+
+
+/* 5: CART
+============================================================================ */
+
+.info {
+  	padding: 10px 30px;
+  	border: 1px solid #c00;
+	border-width: 1px 0;
+  	background: #ffd;
+  	color: #c00;
+  	line-height: 130%;
+  	text-align: right;
+	}
+
+#cart {margin: 30px 0;}
+#cart .money {color: #c00; font-size: 16px;}
+#cart h3.small {
+	margin: 0;
+  	padding: 5px 30px;
+	border-bottom: 1px solid #ccc;
+  	color: #c60;
+	font-size: 12px;
+	font-weight: normal;
+	font-family: "Lucida Grande", Arial, Verdana, sans-serif;
+  	text-align: right;
+	}
+#cart .right {
+  	position: absolute;
+  	top: 10px;
+  	right: 30px;
+  	text-align: right;
+	}
+
+#cartform {margin: 30px 0;}
+
+#line-items {list-style: none; margin: 5px 0;}
+#line-items li {
+	position: relative;
+  	padding: 10px 30px;
+  	margin-bottom: 2px;
+  	border-bottom: 1px solid #ccc;
+	}
+#line-items h3 {padding: 5px 0 0; font-size: 18px;}
+
+.c-thumb {
+  	float: left;
+  	width: 50px;
+  	margin-right: 5px;
+  	padding: 2px;
+  	text-align: center;
+	}
+
+li#total {
+	margin: 30px 0 60px;
+	border: 1px solid #c60;
+  	border-width: 1px 0;
+  	background: #ffd;
+  	color: #444;
+	font-size: 14px;
+  	font-weight: bold;
+  	text-align: right;
+	}
+li#total .money {font-size: 20px;}
+
+#update-cart { position: relative; right:180px;}
+
+/* Cart status box */
+
+#in-cart {
+	display: inline;
+	float: right;
+	position: static;
+	height: 26px;
+	margin: 7px 255px 13px;
+  	padding: 5px 14px 0;
+	border: 1px solid #5e8ba6;
+	background: #6b9fbd;
+  	color: #000;
+	}
+
+#cart-count {
+	float: left;
+  	margin-left: 10px;
+	padding-right: 20px;
+  	font-size: 11px;
+	}
+#cart-count a {border-color: #fff; color: #fff;}
+#cart-count a:hover {border: none; background: none;}
+
+
+/* 6: GLOBALS
+============================================================================ */
+
+/* a) Links */
+
+a {
+	padding: 1px 0;
+	border-bottom: 1px solid #bfe8ff;
+	color: #7ab8da;
+	text-decoration: none;
+	}
+a:hover {
+	background: #7ab8da;
+	border-bottom: 1px solid #7ab8da;
+	color: #fff;
+	}
+a.img {border: none; background: none;}
+
+/* b) Typography */
+
+h2 {
+	padding: 10px 30px;
+	border: 1px solid #ddd;
+	border-width: 1px 0;
+	background: #f5f5f5;
+	color: #444;
+	font-weight: normal;
+	font-size: 25px;
+	font-family: "Myriad Pro", Myriad, Helvetica, Arial, Verdana, sans-serif;
+	text-shadow: -3px 3px #fff;
+	}
+
+h3 {
+	padding: 30px 30px 0.1em;
+	color: #35718f;
+	font-weight: normal;
+	font-size: 20px;
+	font-family: "Myriad Pro", Myriad, Helvetica, Arial, Verdana, sans-serif;
+	}
+
+/* c) Misc */
+
+img {border: 0;}
+
+.money {font-family: Georgia, "Times New Roman", serif;}
+
+ul.hlist {list-style: none;}
+.hlist li {display: inline;}
+
+#shopify {
+	text-align: center;
+	font-size: 85%;
+	margin-bottom: 5px;
+}
+
+#pagination a {
+  color: #000 !important;
+  text-decoration: underline;
+  border: none;
+}
+
+
+/* 7: HACKS AND FIXES
+============================================================================ */
+
+/* Clear floats */
+
+.clearfix:after {
+	content: "."; 
+	display: block; 
+	height: 0; 
+	clear: both; 
+	visibility: hidden;
+	}
+
+.clearfix {display: inline-table;}
+
+/* Hides from IE-mac \*/
+* html .clearfix {height: 1%;}
+.clearfix {display: block;}
+/* End hide from IE-mac */
+
+/* A few special rules for the stupid one */
+
+* html #sidebar {width: 189px;}
+* html #sidebar h3 {border-bottom: 1px solid #ddd;}
+* html #sidebar .vlink-list {background: none;}
+* html #sidebar .vlink-list a {
+	width: 182px;
+	background: none;
+	border-bottom: 1px solid #ddd;
+	}
+* html #in-cart {padding: 3px 14px 0;}
+
+
+/* 8: COLOUR VARIATIONS
+============================================================================ */
+
+/*---- INSTRUCTIONS -------------------------------------------------------- 
+
+Tellus comes in four different colour variations: Sky Blue (default), Lime 
+Green, Strawberry Pink and Sunset Orange. To change colour just delete the 
+last "/*" on the row that contains the name of the colour variation you want
+to use and save the file, i.e. to use Lime Green remove the last "/*" on 
+this row:
+
+"/* a) Lime Green */ /*" 
+
+To revert back to whatever colour you where using before, just add the last 
+"/*" back in. 
+
+---------------------------------------------------------------------------- */
+	
+/* a) Lime Green */ /*
+
+body {background: #eee url(bg-body-green.gif) repeat-x;}
+#header h1 {text-shadow: -3px 3px #b0e798;}
+#header h1 a:hover {color: #358f44;}
+#sidebar .vlink-list a {color: #8dd070;}
+#sidebar .vlink-list a:hover {color: #358f44;}
+p.posted {color: #358f44;}
+li.productv ul.buttons li a {border: 1px solid #8dd070; color: #8dd070;}
+li.productv ul.buttons li a:hover {background: #8dd070;}
+#in-cart {border: 1px solid #6d9e56; background: #7bb462;}
+a {border-bottom: 1px solid #c6efb3; color: #8dd070;}
+a:hover {background: #8dd070; border-bottom: 1px solid #8dd070;}
+h3 {color: #358f44;}
+
+	
+/* b) Strawberry Pink */ /*
+
+body {background: #eee url(bg-body-pink.gif) repeat-x;}
+#header h1 {text-shadow: -3px 3px #efb3e7;}
+#header h1 a:hover {color: #8f358a;}
+#sidebar .vlink-list a {color: #d17bc6;}
+#sidebar .vlink-list a:hover {color: #8f358a;}
+p.posted {color: #8f358a;}
+li.productv ul.buttons li a {border: 1px solid #d17bc6; color: #d17bc6;}
+li.productv ul.buttons li a:hover {background: #d17bc6;}
+#in-cart {border: 1px solid #9e5e97; background: #b46bab;}
+a {border-bottom: 1px solid #efc2ea; color: #d17bc6;}
+a:hover {background: #d17bc6; border-bottom: 1px solid #d17bc6;}
+h3 {color: #8f358a;}
+
+/* b) Sunset Orange */ /*
+
+body {background: #eee url(bg-body-orange.gif) repeat-x;}
+#header h1 {text-shadow: -3px 3px #f9c574;}
+#header h1 a:hover {color: #8f7535;}
+#sidebar .vlink-list a {color: #e3a138;}
+#sidebar .vlink-list a:hover {color: #8f7535;}
+p.posted {color: #8f7535;}
+li.productv ul.buttons li a {border: 1px solid #e3a138; color: #e3a138;}
+li.productv ul.buttons li a:hover {background: #e3a138;}
+#in-cart {border: 1px solid #ac792c; background: #c28b32;}
+a {border-bottom: 1px solid #ffcd7f; color: #e3a138;}
+a:hover {background: #e3a138; border-bottom: 1px solid #e3a138;}
+h3 {color: #8f7535;}
+

@@ -1,0 +1,36 @@
+# No log or backup files should be recorded 
+*.log
+rails_monitor.*
+*.orig
+
+# We ignore all subversion directories underneath test and vendor
+.svn
+vendor/*/.svn
+test/*/.svn
+
+
+# ignore generated docs
+doc/api*
+
+# ignore osx dsstore files
+.DS_Store
+
+# no compressed js/css files
+public/*/admin.*
+
+# no love for tmp files
+tmp/*
+
+# no local theme / product images either
+public/files
+private/files
+
+*.orig
+
+.dotest
+
+# ignore schema.rb -- update and restore from schema.versioned.rb when appropriate
+db/schema.rb
+
+# ignore backups
+db/backup

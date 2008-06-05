@@ -1,0 +1,22 @@
+<h2 id="page-title">{{page.title}}</h2>
+
+{% paginate blog.articles by 20 %}
+
+  {% for article in blog.articles  %}
+
+      <h3 class="blog">{{ article.title }}</h3>
+      <p class="posted"> posted {{ article.created_at | date: "%Y %h" }} by {{ article.author }}</p>
+      <div class="article-body textile">
+        {{ article.content }}
+      </div>    
+  
+  {% endfor %}
+  
+  
+  {% if paginate.pages > 1 %}
+    <div id="pagination" class="info" style="margin-top: 20px">
+      {{ paginate | default_pagination }}
+    </div>
+  {% endif %}
+
+{% endpaginate %}

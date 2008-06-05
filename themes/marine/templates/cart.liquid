@@ -1,0 +1,52 @@
+{% if cart.item_count == 0 %} 
+    <p>Your shopping cart is empty...</p>
+  {% else %}
+  <div id="cart">
+  <h3>You have selected the items below for purchase</h3>
+  <form action="/cart" method="post" id="cartform">
+    <table cellspacing="0">
+	<tr>
+		<th colspan="2">  Product </th>
+		<th> Quantity </th>
+		<th> Price </th>
+	</tr>
+      {% for item in cart.items %}
+    <tr id="item-{{item.id}}"  onmouseover="hover_color('item-{{item.id}}', '#E7EAEA', '');" onmouseout="hover_color('item-{{item.id}}', '#ffffff', '');">
+        <td align="center">
+		<div class="product-image">
+          <img src="{{item.product.featured_image | product_img_url: 'small' }}" alt="{{item.title}}" title="{{item.title}}" />
+		</div>
+        </td>
+        <td>
+			<a href="{{item.product.url}}" title="{{item.title}}">{{ item.title }}</a><br />
+			{{ item.variant.title }}<br />
+			<blockquote style="float: right;">Price for each: {{ item.variant.price | money }}</blockquote>
+		</td>
+		<td>
+			<a href="#" onclick="calc('-', 'updates_{{item.variant.id}}');"><img src="{{'minus_active.gif' | asset_url}}" width="12" height="12"></a>
+<input type="text" size="4" name="updates[]" id="updates_{{item.variant.id}}" value="{{item.quantity}}" onfocus="this.select();"/>
+       <a href="#" onclick="calc('+', 'updates_{{item.variant.id}}');"><img src="{{'plus_active.gif' | asset_url}}" width="12" height="12"></a>
+ 		</td>
+        <td class="money" align="right">{{ item.line_price | money_with_currency }}</td>
+      </tr>
+      {% endfor %}
+      <tr id="total">
+		<td colspan="2">
+        <input type="submit" id="update-cart" name="update" value="Update My Cart" />
+        </td>
+		<td align="right">
+		Subtotal: 
+		</td>
+        <td class="money" align="right">{{ cart.total_price | money_with_currency }}</td>
+      	</td>
+	</tr>
+    </table>
+
+	<div class="info">
+	  
+      <input style="float: right;"type="submit" value="Continue to checkout" name="checkout" class="primary" /> 
+    </div>
+  </form>
+
+  </div>
+{% endif %}

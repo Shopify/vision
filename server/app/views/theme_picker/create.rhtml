@@ -1,0 +1,39 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+	<head>
+		<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+		<meta http-equiv="Content-Language" content="en-us" />
+		<title>Vision Setup</title>
+		<link rel="stylesheet" href="/stylesheets/wizard.css" type="text/css" media="screen" title="Wizard" charset="utf-8" />
+	</head>
+	
+	<body>
+
+    <div id="wizard" style="text-align:center;margin: 70px auto;">
+      <h2>Create a new theme</h2>
+      <p>Choose a name for your new theme and choose the existing one which should serve as a base.</p>
+      
+      <div style="width:300px;text-align:left;margin:0 auto;">
+      <form action="create_theme" method="get">
+        <dl>
+          <dt>
+            <label for="name">Duplicate this theme</label>
+          </dt>
+          <dd>
+            <select name="from">
+              <% @themes.each do |theme| %>
+              <option value="<%= theme %>"><%= theme %></option> 
+              <% end %>        
+            </select>    
+          </dd>
+        <dt><label for="name">And name it this</label></dt>
+        <dd><input type="text" name="to" value="" id="name" class="big" /></dd>
+        
+        <dd><input type="submit" value="Create &rarr;" /> or <a href="/dashboard/">go back</a>
+      </dl>
+      </form>
+      </div>
+    </div>
+        
+</html>

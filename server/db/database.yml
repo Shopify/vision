@@ -1,0 +1,483 @@
+# =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+#   Variants
+# =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+
+product_variants: 
+  - &product-1-var-1
+    id: 1
+    title: 151cm
+    price: 29900
+    weight: 1000
+    compare_at_price: 49900
+    available: true
+    inventory_quantity: 5
+  - &product-1-var-2
+    id: 2
+    title: 155cm
+    price: 31900
+    weight: 1000
+    compare_at_price: 50900
+    available: true
+    inventory_quantity: 2
+  - &product-2-var-1
+    id: 3
+    title: 162cm
+    price: 29900
+    weight: 1000
+    compare_at_price: 52900
+    available: true
+    inventory_quantity: 3
+  - &product-3-var-1
+    id: 4
+    title: 159cm
+    price: 19900
+    weight: 1000
+    compare_at_price: 
+    available: true
+    inventory_quantity: 4
+  - &product-4-var-1
+    id: 5
+    title: 159cm
+    price: 19900
+    weight: 1000
+    compare_at_price: 32900
+    available: true
+    inventory_quantity: 6
+  - &product-1-var-3
+    id: 6
+    title: 158cm
+    price: 23900
+    weight: 1000
+    compare_at_price: 99900
+    available: false
+    inventory_quantity: 0
+  - &product-3-var-2
+    id: 7
+    title: 162cm
+    price: 19900
+    weight: 1000
+    compare_at_price: 
+    available: false
+    inventory_quantity: 0
+  - &product-3-var-3
+    id: 8
+    title: 165cm
+    price: 22900
+    weight: 1000
+    compare_at_price:
+    available: true
+    inventory_quantity: 4
+  - &product-5-var-1
+    id: 9
+    title: black
+    price: 11900
+    weight: 500
+    compare_at_price: 22900
+    available: true
+    inventory_quantity: 1
+
+# =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+#   Products
+# =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+  
+products:
+  - &product-1
+    id: 1
+    title: Arbor Draft
+    handle: arbor-draft
+    type: Snowboards
+    vendor: Arbor
+    price: 23900
+    price_max: 31900
+    price_min: 23900
+    price_varies: true
+    available: true    
+    tags: 
+      - season2005
+      - pro
+      - intermediate
+      - wooden      
+      - freestyle            
+    compare_at_price: 49900
+    compare_at_price_max: 50900
+    compare_at_price_min: 49900
+    compare_at_price_varies: true
+    url: /products/arbor-draft
+    featured_image: products/arbor_draft.jpg
+    images: 
+      - products/arbor_draft.jpg
+    description: 
+      The Arbor Draft snowboard wouldn't exist if Polynesians hadn't figured out how to surf hundreds of years ago. But the Draft does exist, and it's here to bring your urban and park riding to a new level. The board's freaky Tiki design pays homage to culture that inspired snowboarding. It's designed to spin with ease, land smoothly, lock hook-free onto rails, and take the abuse of a pavement pounding or twelve. The Draft will pop off kickers with authority and carve solidly across the pipe. The Draft features targeted Koa wood die cuts inlayed into the deck that enhance the flex pattern. Now bow down to riding's ancestors.
+    variants: 
+      - *product-1-var-1
+      - *product-1-var-2
+      - *product-1-var-3
+  - &product-2
+    id: 2
+    title: Arbor Element
+    handle: arbor-element
+    type: Snowboards
+    vendor: Arbor
+    price: 29900
+    price_max: 29900
+    price_min: 29900
+    price_varies: false
+    available: true    
+    tags: 
+      - season2005
+      - pro
+      - wooden          
+      - freestyle            
+    compare_at_price: 52900
+    compare_at_price_max: 52900
+    compare_at_price_min: 52900
+    compare_at_price_varies: false
+    url: /products/arbor-element
+    featured_image: products/element58.jpg
+    images:
+      - products/element58.jpg
+    description:
+      The Element is a technically advanced all-mountain board for riders who readily transition from one terrain, snow condition, or riding style to another. Its balanced design provides the versatility needed for the true ride-it-all experience. The Element is exceedingly lively, freely initiates, and holds a tight edge at speed. Its structural real-wood topsheet is made with book-matched Koa.
+    variants: 
+      - *product-2-var-1
+    
+  - &product-3
+    id: 3
+    title: Comic ~ Pastel 
+    handle: comic-pastel
+    type: Snowboards
+    vendor: Technine
+    price: 19900
+    price_max: 22900
+    price_min: 19900
+    tags: 
+      - season2006
+      - beginner
+      - intermediate
+      - freestyle      
+      - purple
+    price_varies: true
+    available: true    
+    compare_at_price: 
+    compare_at_price_max: 0
+    compare_at_price_min: 0
+    compare_at_price_varies: false
+    url: /products/comic-pastel
+    featured_image: products/technine1.jpg
+    images:
+      - products/technine1.jpg
+      - products/technine2.jpg
+      - products/technine_detail.jpg
+    description:
+      2005 Technine Comic Series Description The Comic series was developed to be the ultimate progressive freestyle board in the Technine line. Dependable edge control and a perfect flex pattern for jumping in the park or out of bounds. Landins and progression will come easy with this board and it will help your riding progress to the next level. Street rails, park jibs, backcountry booters and park jumps, this board will do it all.
+    variants: 
+      - *product-3-var-1
+      - *product-3-var-2
+      - *product-3-var-3
+
+  - &product-4
+    id: 4
+    title: Comic ~ Orange
+    handle: comic-orange
+    type: Snowboards
+    vendor: Technine
+    price: 19900
+    price_max: 19900
+    price_min: 19900
+    price_varies: false
+    available: true    
+    tags: 
+      - season2006
+      - beginner
+      - intermediate
+      - freestyle   
+      - orange 
+    compare_at_price: 32900
+    compare_at_price_max: 32900
+    compare_at_price_min: 32900
+    compare_at_price_varies: false
+    url: /products/comic-orange
+    featured_image: products/technine3.jpg
+    images:
+      - products/technine3.jpg
+      - products/technine4.jpg
+    description:
+      2005 Technine Comic Series Description The Comic series was developed to be the ultimate progressive freestyle board in the Technine line. Dependable edge control and a perfect flex pattern for jumping in the park or out of bounds. Landins and progression will come easy with this board and it will help your riding progress to the next level. Street rails, park jibs, backcountry booters and park jumps, this board will do it all.
+    variants: 
+      - *product-4-var-1
+      
+  - &product-5
+    id: 5
+    title: Burton Boots
+    handle: burton-boots
+    type: Boots
+    vendor: Burton
+    price: 11900
+    price_max: 11900
+    price_min: 11900
+    price_varies: false
+    available: true        
+    tags: 
+      - season2006
+      - beginner
+      - intermediate   
+      - boots 
+    compare_at_price: 22900
+    compare_at_price_max: 22900
+    compare_at_price_min: 22900
+    compare_at_price_varies: false
+    url: /products/burton-boots
+    featured_image: products/burton.jpg
+    images:
+      - products/burton.jpg
+    description:
+      The Burton boots are particularly well on snowboards. The very best thing about them is that the according picture is cubic. This makes testing in a Vision testing environment very easy.
+    variants: 
+      - *product-5-var-1
+      
+# =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+#   Line Items
+# =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+      
+line_items:
+  - &line_item-1
+    id: 1
+    title: 'Arbor Draft'
+    subtitle: '151cm'
+    price: 29900
+    line_price: 29900
+    quantity: 1
+    variant: *product-1-var-1
+    product: *product-1
+
+  - &line_item-2
+    id: 2
+    title: 'Comic ~ Orange'
+    subtitle: '159cm'
+    price: 19900
+    line_price: 39800
+    quantity: 2
+    variant: *product-4-var-1
+    product: *product-4
+    
+# =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+#   Link Lists
+# =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+links:
+  - &link-1
+    id: 1
+    title: Our Sale
+    url: /collections/sale
+  - &link-2
+    id: 2
+    title: Arbor Stuff
+    url: /collections/arbor
+  - &link-3
+    id: 3
+    title: All our Snowboards
+    url: /collections/snowboards
+  - &link-4
+    id: 4
+    title: Powered by Shopify
+    url: 'http://shopify.com'
+  - &link-5
+    id: 5
+    title: About Us
+    url: /pages/about
+  - &link-6
+    id: 6
+    title: Policies
+    url: /pages/shipping
+  - &link-7
+    id: 7
+    title: Contact Us
+    url: /contact
+  - &link-8
+    id: 8
+    title: Our blog
+    url: /blogs/bigcheese-blog
+  - &link-9
+    id: 9
+    title: New Boots
+    url: /products/burton-boots
+  - &link-10
+    id: 10
+    title: Paginated Sale
+    url: /collections/paginated-sale
+  - &link-11
+    id: 11
+    title: Our Paginated blog
+    url: /blogs/paginated-blog
+    
+
+# =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+#   Link Lists
+# =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+
+link_lists:
+  - &link-list-1
+    id: 1
+    title: 'Main Menu'
+    handle: 'main-menu'
+    links:
+      - *link-1
+      - *link-10
+      - *link-2
+      - *link-9
+      - *link-3
+      - *link-4
+  - &link-list-2
+    id: 1
+    title: 'Footer Menu'
+    handle: 'footer'
+    links:
+      - *link-5
+      - *link-6
+      
+# =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+#   Labels
+# =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+
+collections:
+  - &collection-1
+    id: 1
+    title: Frontpage
+    handle: frontpage
+    url: /collections/frontpage
+    products:
+      - *product-1
+      - *product-4
+      - *product-3
+
+  - &collection-2
+    id: 2
+    title: Arbor
+    handle: arbor
+    url: /collections/arbor
+    products: 
+      - *product-1
+      - *product-2
+
+  - &collection-3
+    id: 3
+    title: Snowboards
+    handle: snowboards
+    url: /collections/snowboards
+    products: 
+      - *product-1
+      - *product-2
+      - *product-3
+      - *product-4
+  
+  - &collection-4
+    id: 4
+    title: Items On Sale
+    handle: sale
+    url: /collections/sale
+    products: 
+      - *product-1
+      
+  - &collection-5
+    id: 5
+    title: Paginated Sale
+    handle: 'paginated-sale'
+    url: '/collections/paginated-sale'
+    products: 
+      - *product-1
+      - *product-2
+      - *product-3
+      - *product-4
+    products_count: 210
+          
+# =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+#   Pages and Blogs
+# =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+pages:
+  - &page-3
+    id: 2
+    title: About us
+    handle: about
+    url: /pages/about    
+    author: Tobi
+    content: <p>The <strong>About Us</strong> page of your shop is vital because it&#8217;s where users go when first trying to determine a level of trust.  Since trust is such an important part of selling online, it&#8217;s a good idea to give people an fair amount information about yourself and your shop.  Here are a few things you should touch on:</p><ul><li>Who are you</li><li>Why do you sell the items you sell</li><li>Where are you from</li><li>How long have you been in business</li><li>How long have you been running your online shop</li><li>Who are the people on your team</li></ul><p>To edit this information you can to the <a href="/admin/pages">Blogs &amp; Pages Tab</a> of the administration menu.</p>
+    created_at: 2005-04-04 12:00
+
+  - &page-4
+    id: 3
+    title: Shopping Cart
+    handle: shopping-cart
+    url: /pages/shopping-cart
+    author: Tobi
+    content: "<ul><li>Your order is safe with us. Our checkout uses industry standard security to protect your information.</li><li>Your order will be billed immediately upon checkout.</li><li><b>ALL SALES ARE FINAL:</b> Defective or damaged product will be exchanged</li><li>All orders are processed expediently: usually in under 24 hours.</li></ul>"
+    created_at: 2005-04-04 12:00
+    
+  - &page-5
+    id: 4
+    title: Shipping and Handling
+    handle: shipping
+    url: /pages/shipping    
+    author: Tobi
+    content: <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+    created_at: 2005-04-04 12:00
+
+blogs:
+  - &blog-1
+     id: 1
+     handle: frontpage
+     title: Frontpage
+     url: /blogs/frontpage
+     articles: 
+       - 
+         id: 3
+         title: 'Welcome to the new Foo Shop'
+         author: Daniel
+         content: <p><strong>Welcome to your Shopify store! The jaded Pixel crew is really glad you decided to take Shopify for a spin.</strong></p><p>To help you get you started with Shopify, here are a couple of tips regarding what you see on this page.</p><p>The text you see here is an article. To edit this article, create new articles or create new pages you can go to the <a href="/admin/pages">Blogs &amp; Pages</a> tab of the administration menu.</p><p>The Shopify t-shirt above is a product and selling products is what Shopify is all about. To edit this product, or create new products you can go to the <a href="/admin/products">Products Tab</a> in of the administration menu.</p><p>While you're looking around be sure to check out the <a href="/admin/collections">Collections</a> and <a href="/admin/links">Navigations</a> tabs and soon you will be well on your way to populating your site.</p><p>And of course don't forget to browse the <a href="admin/design/appearance/themes">theme gallery</a> to pick a new look for your shop!</p><p><strong>Shopify is in beta</strong><br />If you would like to make comments or suggestions please visit us in the <a href="http://forums.shopify.com/community">Shopify Forums</a> or drop us an <a href="mailto:feedback@shopify.com">email</a>.</p>
+         created_at: 2005-04-04 16:00
+       - 
+         id: 4
+         title: 'Breaking News: Restock on all sales products'
+         author: Tobi
+         content: Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+         created_at: 2005-04-04 12:00
+     articles_count: 2
+         
+  - &blog-2
+    id: 2
+    handle: bigcheese-blog
+    title: Bigcheese blog
+    url: /blogs/bigcheese-blog
+    articles: 
+      - 
+        id: 1
+        title: 'One thing you probably did not know yet...'
+        author: Justin
+        content: Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        created_at: 2005-04-04 16:00
+      - 
+        id: 2
+        title: Fascinating
+        author: Tobi
+        content: Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        created_at: 2005-04-06 12:00
+    articles_count: 2
+
+  - &blog-3
+    id: 3
+    handle: paginated-blog
+    title: Paginated blog
+    url: /blogs/paginated-blog
+    articles: 
+      - 
+        id: 1
+        title: 'One thing you probably did not know yet...'
+        author: Justin
+        content: Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        created_at: 2005-04-04 16:00
+      - 
+        id: 2
+        title: Fascinating
+        author: Tobi
+        content: Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        created_at: 2005-04-06 12:00
+    articles_count: 200
+  

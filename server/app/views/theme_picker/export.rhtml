@@ -1,0 +1,31 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+	<head>
+		<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+		<meta http-equiv="Content-Language" content="en-us" />
+		<title>Vision Setup</title>
+		<link rel="stylesheet" href="/stylesheets/wizard.css" type="text/css" media="screen" title="Wizard" charset="utf-8" />
+	</head>
+	
+	<body>
+
+    
+    <div id="wizard">
+      <h2>Choose the theme to export</h2>
+      <p>After you choose the theme to export you will be able to change the description.</p>
+      
+      <ul>
+      <% @themes.each do |theme| %>
+      <li><a href="export_theme?theme=<%= theme %>"><%= theme %></a></li>
+      <% end %>        
+      </ul>
+        
+    </div>
+        
+</html>
+
+
+
+
+

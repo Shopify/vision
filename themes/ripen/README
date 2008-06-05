@@ -1,0 +1,17 @@
+Usage instructions:
+
+ 1) Download vision from http://vision.shopify.com
+ 2) Unpack vision in a folder of your choice
+ 3) Unpack this theme to the vision directorie's themes folder
+    
+    Example
+    
+      vision/
+      vision/server
+      vision/themes
+      vision/themes/turtles.myshopify.com   <- PLACE HERE
+      vision/vision.rb
+      [...]
+      
+
+ 4) Start Vision with the appropriate executable for your platform and edit away!

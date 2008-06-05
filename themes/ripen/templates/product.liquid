@@ -1,0 +1,54 @@
+<div id="product-page">
+	<h2 class="heading-shaded">{{ product.title }}</h2>
+	<div id="product-details">
+	<div id="product-images">
+		{% for image in product.images %}
+			{% if forloop.first %}
+				<a href="{{ image | product_img_url: 'large' }}" class="product-image" rel="lightbox[ product]" title="">
+				  <img src="{{ image | product_img_url: 'medium'}}" alt="{{product.title}}" />
+				</a>
+			{% else %}
+				<a href="{{ image | product_img_url: 'large' }}" class="product-image-small" rel="lightbox[ product]" title="">
+				  <img src="{{ image | product_img_url: 'small'}}" alt="{{product.title}}" />
+				</a>
+			{% endif %}
+		{% endfor %}
+	</div>
+	
+	<ul id="product-info">
+		<li>Vendor: {{ product.vendor | link_to_vendor }}</li>
+		<li>Type: {{ product.type | link_to_type }}</li>
+	  </ul>
+	  
+	  <small>{{ product.price_min | money }}{% if product.price_varies %} - {{ product.price_max | money }}{% endif %}</small>
+		
+	  <div id="product-options">
+              {% if product.available %}
+
+		<form action="/cart/add" method="post">
+		  
+		  <ul id="product-variants">
+			{% for variant in product.variants %}
+			<li>
+			  {% if variant.available %}
+				<input type="radio" name="id" value="{{variant.id}}" id="radio_{{variant.id}}" style="vertical-align: middle;" {%if forloop.first%} checked="checked" {%endif%} />
+				<label for="radio_{{variant.id}}">{%if variant.title != 'Default' %}{{ variant.title }} for {%endif%} <span class="price">{{ variant.price | money_with_currency }}</span></label>
+			  {% else %}
+				<del style="margin-left: 26px">{{ variant.title }}</del>&nbsp;<span>Sold Out!</span>
+			  {% endif %}
+			</li>
+			{% endfor %}
+		  </ul>
+		
+			<div class="add-to-cart"><input type="image" name="add" value="Add to Cart" id="add" src="{{ 'add-to-cart.gif' | asset_url }}" /></div>
+		</form>
+              {% else %}
+                  <span>Sold Out!</span>
+              {% endif %}
+	  </div>
+	  
+	  <div class="product-description">
+		{{ product.description }}
+	  </div>
+  </div>
+</div>

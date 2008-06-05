@@ -1,0 +1,37 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+	<head>
+		<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+		<meta http-equiv="Content-Language" content="en-us" />
+		<title>Vision Setup</title>
+		<link rel="stylesheet" href="/stylesheets/wizard.css" type="text/css" media="screen" title="Wizard" charset="utf-8" />
+	</head>
+	
+	<body>
+    
+    <div id="wizard" style="text-align:center;">
+      <h2>Get your theme</h2>
+
+      <form action="zip_theme" method="post">
+      <dl>
+        <dt><label for="readme">Need to update your Readme?</label></dt>
+        <dd><textarea name="readme" rows="7" cols="54"><%= @readme %></textarea></dd>
+        
+        <dt>
+          <input type="hidden" name="theme" value="<%= @theme %>" />
+          <input type="submit" value="Download my theme" /> or go <a href="/dashboard/">Back</a>
+        </dt>
+        
+      </dl>
+      </form>
+      
+        
+    </div>
+        
+</html>
+
+
+
+
+
