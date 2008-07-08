@@ -123,7 +123,7 @@ class ThemePickerServlet < Servlet
       if RUBY_PLATFORM =~ /darwin/
         
         Dir.chdir(THEMES) do      
-          system("zip -r \"#{location}\" #{theme}/ -x \"*.svn*\"")
+          system("zip -r \"#{location}\" #{theme}/ -x \"*.svn*\" -x \"*.git*\"")
         end
         
       else
