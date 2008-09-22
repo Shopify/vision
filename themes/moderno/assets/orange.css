@@ -47,7 +47,7 @@ div#container:after, div#header:after, div#index:after, div#collection:after, di
 /* @group Header */
 
 div#header h1 a {
-	color: #0abbdb;
+	color: #e95200;
 	font-size: 187.5%;
 	font-weight: bold;
 	text-decoration: none;
@@ -89,7 +89,7 @@ div#nav a.cart {
 }
 
 div#nav a.active, div#nav a.active:hover, div#nav li#end a.active, div#nav li#end a.active:hover {
-	color: #0abbdb;
+	color: #e95200;
 	text-decoration: underline;
 	padding-right: 15px;
 }
@@ -110,7 +110,7 @@ div#index-left h3 {
 }
 
 div#index-left a {
-	color: #0abbdb;
+	color: #e95200;
 	text-decoration: underline;
 	margin-left: -4px;
 	padding: 1px 4px;
@@ -119,7 +119,7 @@ div#index-left a {
 div#index-left a:hover {
 	color: #fff;
 	text-decoration: none;
-	background-color: #0abbdb;
+	background-color: #e95200;
 }
 
 div#index-left p {
@@ -153,7 +153,7 @@ div#featured li a {
 }
 
 div#featured li a span.price {
-	color: #0abbdb;
+	color: #e95200;
 }
 
 div#featured li a:hover span.price {
@@ -244,7 +244,7 @@ div#collection-right p {
 }
 
 div#collection-desc p a {
-	color: #0abbdb;
+	color: #e95200;
 	text-decoration: underline;
 	margin-left: -4px;
 	padding: 1px 4px;
@@ -253,7 +253,7 @@ div#collection-desc p a {
 div#collection-desc p a:hover {
 	color: #fff;
 	text-decoration: none;
-	background-color: #0abbdb;
+	background-color: #e95200;
 }
 
 div#collection-right ul {
@@ -275,7 +275,7 @@ div#collection-right li a {
 
 div#collection-right li a:hover, div#collection-right li a.active, div#collection-right li a.active:hover {
 	color: #fff;
-	background-color: #0abbdb;
+	background-color: #e95200;
 }
 
 div.desc {
@@ -302,7 +302,7 @@ div#collection-right div.desc p a:hover {
 }
 
 div.desc p.desc-price {
-	color: #0abbdb;
+	color: #e95200;
 	font-weight: bold;
 }
 
@@ -325,7 +325,7 @@ div#paginate {
 }
 
 div#paginate a {
-	color: #0abbdb;
+	color: #e95200;
 	text-decoration: underline;
 	margin-right: 3px;
 }
@@ -355,7 +355,7 @@ div#product-left h2 {
 }
 
 div#product-left h2 span {
-	color: #0abbdb;
+	color: #e95200;
 	font-size: 63.65%;
 	padding-left: 3px;
 }
@@ -367,7 +367,7 @@ div#product-left p {
 }
 
 div#product-left p a {
-	color: #0abbdb;
+	color: #e95200;
 	text-decoration: underline;
 	margin-left: -4px;
 	padding: 1px 4px;
@@ -376,7 +376,7 @@ div#product-left p a {
 div#product-left p a:hover {
 	color: #fff;
 	text-decoration: none;
-	background-color: #0abbdb;
+	background-color: #e95200;
 }
 
 div#product-select {
@@ -392,12 +392,12 @@ div#product-variants {
 }
 
 div#product-variants span {
-	color: #0abbdb;
+	color: #e95200;
 	font-size: 68.75%;
 }
 
 div#product-variants a {
-	color: #0abbdb;
+	color: #e95200;
 	text-decoration: underline;
 	margin: 0 -4px;
 	padding: 1px 4px;
@@ -406,14 +406,14 @@ div#product-variants a {
 div#product-variants a:hover {
 	color: #fff;
 	text-decoration: none;
-	background-color: #0abbdb;
+	background-color: #e95200;
 }
 
 div#product-left a#addit {
 	color: #fff;
 	font: bold 75% Helvetica, Arial, sans-serif;
 	text-decoration: none;
-	background-color: #0abbdb;
+	background-color: #e95200;
 	padding: 6px 10px 4px 240px;
 	display: block;
 	float: left;
@@ -423,7 +423,7 @@ div#product-left input#add-cart {
 	color: #fff;
 	font: bold 75% Helvetica, Arial, sans-serif;
 	text-decoration: none;
-	background-color: #0abbdb;
+	background-color: #e95200;
 	margin: 0;
 	padding: 6px 10px 4px 240px;
 	cursor: pointer;
@@ -592,7 +592,7 @@ div#cart h1 a {
 }
 
 div#cart h1 a span {
-	color: #0abbdb;
+	color: #e95200;
 }
 
 div#cart h1 a:hover {
@@ -620,7 +620,7 @@ div.cart-desc h3 {
 }
 
 div.cart-desc h3 span {
-	color: #0abbdb;
+	color: #e95200;
 	font-size: 77.75%;
 	padding-left: 3px;
 }
@@ -662,7 +662,7 @@ div.updater span {
 }
 
 div.updater a {
-	color: #0abbdb;
+	color: #e95200;
 	font-size: 75%;
 	text-decoration: underline;
 	margin: 0 -4px;
@@ -670,7 +670,7 @@ div.updater a {
 }
 
 div.updater input#update-cart {
-	color: #0abbdb;
+	color: #e95200;
 	font-size: 75%;
 	font-family: Arial, Helvetica, sans-serif;
 	text-decoration: underline;
@@ -684,7 +684,7 @@ div.updater input#update-cart {
 div.updater a:hover, div.updater input#update-cart:hover {
 	color: #fff;
 	text-decoration: none;
-	background-color:#0abbdb;
+	background-color:#e95200;
 }
 
 div.cart-desc h6 {
@@ -696,7 +696,7 @@ div.cart-desc h6 span {
 }
 
 div#checkout {
-	background-color: #0abbdb;
+	background-color: #e95200;
 }
 
 div#checkout h4 {
@@ -707,14 +707,14 @@ div#checkout h4 {
 }
 
 div#checkout h4 span {
-	color: #0abbdb;
+	color: #e95200;
 }
 
 div#checkout input#getout {
 	color: #fff;
 	font: bold 75% Helvetica, Arial, sans-serif;
 	text-decoration: none;
-	background-color: #0abbdb;
+	background-color: #e95200;
 	margin: 0;
 	padding: 7px 10px 4px 50px;
 	cursor: pointer;
@@ -742,7 +742,7 @@ div#sidebar ul#blog-list {
 }
 
 div#sidebar ul#blog-list li a {
-	color: #0abbdb;
+	color: #e95200;
 	font-size: 75%;
 	line-height: 1.52em;
 	text-decoration: none;
@@ -785,7 +785,7 @@ div#content p.details {
 }
 
 div#content p a, div#page p a {
-	color: #0abbdb;
+	color: #e95200;
 	text-decoration: underline;
 	margin: 0 -2px;
 	padding: 1px 2px;
@@ -794,7 +794,7 @@ div#content p a, div#page p a {
 div#content p a:hover, div#page p a:hover {
 	color: #fff;
 	text-decoration: none;
-	background-color: #0abbdb;
+	background-color: #e95200;
 }
 
 div#content ul, div#content ol, div#page ul, div#page ol, div#excerpt ul, div#excerpt ol {
@@ -844,7 +844,7 @@ div#collections-listing li {
 }
 
 div#collections-listing li a {
-	color: #0abbdb;
+	color: #e95200;
 	text-decoration: underline;
 	margin: 0 -4px;
 	padding: 1px 4px;
@@ -853,7 +853,7 @@ div#collections-listing li a {
 div#collections-listing li a:hover {
 	color: #fff;
 	text-decoration: none;
-	background-color: #0abbdb;
+	background-color: #e95200;
 }
 
 small.hint {
@@ -896,7 +896,7 @@ div#searchresults h3 a:hover {
 
 strong.highlight {
 	color: #fff;
-	background-color: #0abbdb;
+	background-color: #e95200;
 	padding: 1px 4px;
 }
 
@@ -920,7 +920,7 @@ div#searchresults li span {
 }
 
 div#search .page a, div#search .prev a, div#search .next a {
-	color: #0abbdb;
+	color: #e95200;
 	text-decoration: underline;
 	margin-right: 5px;
 }
@@ -957,7 +957,7 @@ div#footer p#right-foot {
 }
 
 div#footer p#left-foot a {
-	color: #0abbdb;
+	color: #e95200;
 	text-decoration: underline;
 	margin: 0 20px 0 -4px;
 	padding: 2px 4px;
@@ -966,7 +966,7 @@ div#footer p#left-foot a {
 div#footer p#left-foot a:hover {
 	color: #fff;
 	text-decoration: none;
-	background-color: #0abbdb;
+	background-color: #e95200;
 }
 
 div#footer p#right-foot a {

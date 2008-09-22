@@ -1,6 +1,6 @@
 {% if cart.item_count == 0 %}<h6>Your cart is empty</h6>
 <h1><a href="/">SHOP<span>MORE</span>...</a></h1>{% else %}
-<form action="/cart/change" method="post" id="cartform" name="cartform">{% for item in cart.items %}
+<form action="/cart" method="post" id="cartform" name="cartform">{% for item in cart.items %}
 	<div class="cart-row">
 		<div class="cart-img">
 			<a href="{{ item.product.url | within: collections.all }}"><img src="{{ item.product.images.last | product_img_url: 'medium' }}" alt="{{ item.title | escape }}" /></a>
@@ -9,11 +9,9 @@
 			<h3><a href="{{ item.product.url | within: collections.all }}">{{ item.title }} <span>{{ item.price | money }}</span></a></h3>
 			<p>{{ item.product.description | strip_html | truncate: 450 }}</p>
 			<div class="updater">
-				<select name="updates[{{ item.variant.id }}]">{% for i in (1..item.variant.inventory_quantity) %}
-					<option value="{{ i }}" name="quantity"{% if i == item.quantity %} selected="selected"{% endif %}>{{ i }}</option>{% endfor %}
-				</select> 
+				<input type="text" class="field" name="updates[]" id="updates_{{ item.variant.id }}" value="{{ item.quantity }}" onfocus="this.select();" />
 				<input type="hidden" name="id" value="{{ item.variant.id }}" />
-				<a href="/cart/change/{{ item.variant.id }}">Update</a> <span>&#124;</span> 
+				<input type="submit" name="update" value="Update" id="update-cart"> <span>&#124;</span> 
 				<a href="/cart/change/{{ item.variant.id }}?quantity=0">Remove</a>
 			</div>
 			<h6>TOTAL: <span>{{ item.line_price | money }} excluding tax &amp; shipping</span></h6>
@@ -24,9 +22,7 @@
 		<div class="cart-desc">
 			<div id="checkout">
 				<h4>TOTAL: <span>{{ cart.total_price | money }} {{ shop.currency }}</span></h4>
-				<a href="javascript:document.cartform.submit();">PROCEED TO CHECKOUT</a>
-			</div>
-			<noscript><input type="submit" name="checkout" value="Checkout" /></noscript>
+				<input type="submit" id="getout" name="checkout" value="PROCEED TO CHECKOUT" />
 		</div>
 	</div>
 </form>{% endif %}

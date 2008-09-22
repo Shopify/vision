@@ -2,35 +2,23 @@
 	<h3>No products in this collection.</h3>{% else %}{% for product in collection.products %}
 	<div class="collection-image{% cycle 'images': ' left', '' %}">
 		<h6>{{ forloop.index }}</h6>
-		<a href="{{ product.url | within: collection }}"><img src="{{ product.images.last | product_img_url: 'medium' }}" alt="{{ product.title | escape }}" /></a>{% endfor %}
-	</div>{% endif %}
+		<a href="{{ product.url | within: collection }}"><img src="{{ product.images.last | product_img_url: 'medium' }}" alt="{{ product.title | escape }}" /></a>
+	</div>{% endfor %}{% endif %}
 </div>
 <div id="collection-right">
 	<div id="collection-desc">
 		<h3>{{ collection.title }}</h3>{% if collection.description.size > 0 %}
-		{{ collection.description }}
-		{% endif %}
-	</div>
-
-	  {% if collections.size > 0 %}
-	  <ul>
-	    {% for c in collections %}
-	      {% if c.handle != "frontpage" %}
-		      <li><a href="{{ c.url }}"{% if collection.url == c.url %} class="active"{% endif %}>{{ c.title | upcase }}</a></li>
-        {% endif %}
-		  {% endfor %}
-		</ul>
-    {% else %}
-    <h4 style="margin: 15px 0">Your collections will show up here</h4>
-    <p>Once you create a few collections <strong>(admin -> collections)</strong>, they will show up like this:</p>
-    <ul>
-      <li><a href="">EXAMPLE LINK 1</a></li>
-      <li><a href="">EXAMPLE LINK 2</a></li>
-      <li><a href="">EXAMPLE LINK 3</a></li>      
-    </ul>
-    
-    {% endif %}
-	{% if collection.products.size > 0 %}
+		{{ collection.description }}{% endif %}
+	</div>{% if collections.size > 0 %}
+	<ul>{% for c in collections %}{% if c.handle != "frontpage" %}
+		<li><a href="{{ c.url }}"{% if collection.url == c.url %} class="active"{% endif %}>{{ c.title | upcase }}</a></li>{% endif %}{% endfor %}
+	</ul>{% else %}
+	<p>Once you <a href="{{ shop.url }}/admin/custom_collections">add some collections</a>, they will be displayed like this...</p>
+	<ul>
+		<li><a href="">EXAMPLE COLLECTION 1</a></li>
+		<li><a href="">EXAMPLE COLLECTION 2</a></li>
+		<li><a href="">EXAMPLE COLLECTION 3</a></li>
+	</ul>{% endif %}{% if collection.products.size > 0 %}
 	<div id="descriptions">{% for product in collection.products %}
 		<div class="desc{% cycle 'description': ' left', '' %}">
 			<p><a href="{{ product.url | within: collection }}"><span>{{ forloop.index }}.</span> <span>{{ product.title }}</span> {{ product.description | strip_html | truncate: 120 }}</a></p>

@@ -6,7 +6,7 @@
 	</div>
 	<div id="featured">
 		<h3>{{ collections.frontpage.title }}</h3>
-		<ul>{% for product in collections.frontpage.products limit: 5 offset: 0 %}
+		<ul>{% for product in collections.frontpage.products limit: 5 %}
 			<li><span class="category">{{ product.type | upcase }}</span> <a href="{{ product.url | within: collections.all }}">{{ product.title }} for <span class="price">{{ product.price | money }}</span></a></li>{% endfor %}
 		</ul>
 		<p><a href="/collections/all">Browse all Products</a></p>

@@ -8,10 +8,9 @@
 					<option value="{{ variant.id }}">{{ variant.title }}{% if variant.price > product.price_min %} - {{ variant.price | money }}{% endif %}</option>{% else %}
 					<option value="{{ variant.id }}" disabled="disabled">{{ variant.title }} - SOLD OUT</option>{% endif %}{% endfor %}
 				</select> 
-				<span>(<a href="{{ 'sizechart.jpg' | asset_url }}" rel="lightbox" title="">size chart</a>)</span>
+				<span>(<a href="">size chart</a>)</span>
 			</div>{% if product.available %}
-			<a href="javascript:document.cartadd.submit();" id="addit">ADD TO CART</a>
-			<noscript><input type="submit" name="add" id="add" value="Add to Cart" /></noscript>{% else %}
+			<input type="submit" name="add" value="ADD TO CART" id="add-cart">{% else %}
 			<h6>TEMPORARILY UNAVAILABLE</h6>{% endif %}
 		</form>
 	</div>{% if collection %}
