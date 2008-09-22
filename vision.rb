@@ -6,7 +6,7 @@
 PORT = 3232
 
 
-# Load the nevironment
+# Load the environment
 require File.dirname(__FILE__)  + '/server/config/environment.rb'
 
 # change the current directory
