@@ -1,0 +1,32 @@
+<div id="product">
+  <h2>{{ product.title }}</h2>
+  <div id="product-main"> {% for image in product.images %}
+    {% if forloop.first %}
+    <div id="prod-img"> <img src="{{ image | product_img_url: 'large'}}" alt="{{product.title}}" /> </div>
+    {% else %}
+    <div class="prod-img-small fl"> <a href="{{ image | product_img_url: 'large' }}" class="lbOn"> <img src="{{ image | product_img_url: 'small'}}" alt="{{product.title}}" /> </a> </div>
+    {% endif %}
+    {% endfor %} </div>
+  <div id="variant-add">
+    <form action="/cart/add" method="post">
+      <ul id="variants">
+        {% for variant in product.variants %}
+        <li> {% if variant.available == true %}
+          <input type="radio" name="id" value="{{variant.id}}" id="radio_{{variant.id}}" style="vertical-align: middle;" {%if forloop.first%} checked="checked" {%endif%} />
+          <label for="radio_{{variant.id}}">{{ variant.title }} for <span class="price">{{ variant.price | money_with_currency }}</span></label>
+          {% else %} <span style="text-decoration: line-through;margin-left: 28px">{{ variant.title }}</span>&nbsp;<span class="price">Sold out!</span> {% endif %} </li>
+        {% endfor %}
+      </ul>
+      <div class="addtocart">
+        <input type="image" name="add" value="Add to Cart" id="add" class="button" src="{{ 'add.gif' | asset_url }}" />
+      </div>
+    </form>
+  </div>
+  <div id="description" class="textile"> {{ product.description }} </div>
+  <div id="tags">
+    <ul>
+      <li>Made by {{product.vendor | link_to_vendor }}</li>
+      <li>Type: {{product.type | link_to_type }}</li>
+    </ul>
+  </div>
+</div>
