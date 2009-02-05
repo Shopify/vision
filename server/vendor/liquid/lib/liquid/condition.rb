@@ -7,6 +7,8 @@ module Liquid
   #   c.evaluate #=> true
   #
   class Condition #:nodoc:
+    contains_block = lambda { |cond, left, right| left.include?(right) rescue false }
+    
     @@operators = {
       '==' => lambda { |cond, left, right|  cond.send(:equal_variables, left, right) },
       '!=' => lambda { |cond, left, right| !cond.send(:equal_variables, left, right) },
@@ -15,7 +17,8 @@ module Liquid
       '>'  => :>,
       '>=' => :>=,
       '<=' => :<=,
-      'contains' => lambda { |cond, left, right| left.include?(right) },
+      'contains' => contains_block,
+      'includes' => contains_block,
     }
     
     def self.operators
