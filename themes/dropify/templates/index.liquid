@@ -18,16 +18,24 @@
 </div></div></div>
 
 <div id="mainarticle">
-  {% for article in blogs.frontpage.articles limit:1 offset:0  %}
-		<h2>{{ article.title }}</h2>
-		<div class="article-body textile">
+	{% assign article = pages.frontpage %}
+
+  {% if article.content != "" %}
+	  <h2>{{ article.title }}</h2>
+    <div class="article-body textile">
 		  {{ article.content }}
-		</div>    
-  {% endfor %}
+		</div>
+	{% else %}
+    <div class="article-body textile">
+	  In <em>Admin &gt; Blogs &amp; Pages</em>, create a page with the handle <strong><code>frontpage</code></strong> and it will show up here.<br />
+	  {{ "Learn more about handles" | link_to "http://wiki.shopify.com/Handle" }}
+    </div>
+	{% endif %}
+  
 </div>
 <br style="clear: both;" />
 <div id="articles">
-  {% for article in blogs.frontpage.articles offset:1  %}
+  {% for article in blogs.news.articles offset:1  %}
     <div class="article">
 		<h2>{{ article.title }}</h2>
 		<div class="article-body textile">

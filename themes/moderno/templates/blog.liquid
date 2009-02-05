@@ -9,8 +9,16 @@
 <div id="content">{% for article in blog.articles limit: 1 %}
 	<a name="article-{{ article.id }}"></a>
 	<div class="article">
-		<h1>{{ article.title }}</h1>
-		{{ article.content }}
-		<p class="details">Written by {{ article.author }} on {{ article.created_at | date: "%B %d, %Y" }}</p>
+		<h1>
+		  <a href="{{article.url}}">{{ article.title }}</a>
+	  </h1>
+    {{ article.content }}
+		<p class="details">
+		  Written by {{ article.author }} on {{ article.created_at | date: "%B %d, %Y" }}
+		  {% if blog.comments_enabled? %}
+        &mdash; 
+        <a href="{{article.url}}#comments">{{ article.comments_count }} comments</a>
+      {% endif %}
+		</p>
 	</div>{% endfor %}
 </div>{% endpaginate %}

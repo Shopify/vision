@@ -1,13 +1,21 @@
 <div id="content">
 	<div class="main">
-		{% for article in blogs.frontpage.articles  %}
-		<div class="story">
-			<h2>{{ article.title }}</h2>
-			 <p class="textile">{{ article.content }}</p>
-			 <!-- superflous <p> for text filtration problems -->
-		</div>
-		{% endfor %}
-	
+	  {% assign article = pages.frontpage %}
+
+    <div class="story">
+    {% if article.content != "" %}
+  	  <h2>{{ article.title }}</h2>
+      <p class="textile">
+  		  {{ article.content }}
+  		</p>
+  	{% else %}
+      <p class="textile">
+  	  In <em>Admin &gt; Blogs &amp; Pages</em>, create a page with the handle <strong><code>frontpage</code></strong> and it will show up here.<br />
+  	  {{ "Learn more about handles" | link_to "http://wiki.shopify.com/Handle" }}
+      </p>
+  	{% endif %}
+    </div>
+  		
 	</div><!-- /.main -->
 	
 	<hr class="hide" />

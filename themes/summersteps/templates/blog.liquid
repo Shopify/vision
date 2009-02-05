@@ -4,10 +4,17 @@
 
   {% for article in blog.articles  %}
 
-      <h3 class="article-title">{{ article.title }}</h3>
-      <p>{{ article.created_at | date: "%Y %B %d" }}</p>
+      <h3 class="article-title">
+        <a href="{{article.url}}">{{ article.title }}</a>
+      </h3>
+      <p>
+        {{ article.created_at | date: "%Y %B %d" }}
+        {% if blog.comments_enabled? %}
+          &mdash; <a href="{{article.url}}#comments">{{ article.comments_count }} comments</a>
+        {% endif %}
+      </p>
       <div class="article-body textile">
-        {{ article.content }}
+        {{ article.content | strip_html | truncate: 250 }}
         <span class="author">{{ article.author }}</span>
       </div>    
   
