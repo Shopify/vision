@@ -391,8 +391,9 @@ ul#featuring li {
 #product-variants {
 	font-size: 11px;
 	margin: 10px 0 15px;
-	padding: 3px;
+  padding: 10px 10px 0px 10px;
 	border: 1px solid #e1ddc8;
+	background: #f7f5f0 url(excerpt.png) repeat-x center top;
 }
 
 #product-variants ul {
@@ -417,6 +418,29 @@ ul#featuring li {
 .radio {
 	margin-left: 3px;
 }
+
+#product-variants #price-field {
+  float: right;
+  font-size: 14px;
+}
+
+#product-variants select {
+  margin: 0 0 10px 0;
+}
+
+#product-right label {
+  font-weight: bold;
+  display: block;
+  margin: 0 0 5px 0;
+  font-size: 12px;
+}
+
+#purchase.disabled {
+  -moz-opacity: 0.65;
+	opacity:.65;
+	filter: alpha(opacity=65);
+}
+
 
 /* @end */
 
@@ -533,6 +557,16 @@ ul#blogs li {
 
 #basket p {
 	padding-bottom: 2px;
+}
+
+.additional-checkout-buttons p {
+  position: relative;
+  right: 27px;
+  margin-top: 10px;
+}
+
+.additional-checkout-buttons input {
+  margin: 10px 0 0 0;
 }
 
 /* @end */

@@ -348,7 +348,7 @@ li.productv ul.buttons li a:hover {
 	padding: 30px 0 30px 60px;
 	color: #c00;
 	font-size: 26px;
-	}
+}
 
 ul#details {font-size: 11px; padding: 10px 0 0 30px;}
 ul#details li {margin-right: 5px;}
@@ -358,7 +358,22 @@ ul#details li {margin-right: 5px;}
 #variants span.variant-price {color: #c00;}
 #variants span.soldout {background: #ffd; color: #c00;}
 
-input#add {margin-bottom: 40px;}
+input#add {margin: 15px 0 40px 0;}
+
+#price-field {
+  margin: 15px 20px 0 0;
+  font-weight: bold;
+  font-size: 14px;
+  float: left;
+}
+
+#product label {
+  font-weight: bold;
+  display: block;
+  margin: 15px 0 5px 0;
+  font-size: 12px;
+}
+
 
 
 /* 6: CART
@@ -378,13 +393,13 @@ input#add {margin-bottom: 40px;}
 #cart .money {color: #c00; font-size: 16px;}
 #cart h3.small {
 	margin: 0;
-  	padding: 5px 30px;
+  padding: 5px 30px;
 	border-bottom: 1px solid #ccc;
-  	color: #c60;
+  color: #c60;
 	font-size: 12px;
 	font-weight: normal;
 	font-family: "Lucida Grande", Arial, Verdana, sans-serif;
-  	text-align: right;
+  text-align: right;
 	}
 #cart .right {
   	position: absolute;
@@ -413,7 +428,7 @@ input#add {margin-bottom: 40px;}
 	}
 
 li#total {
-	margin: 30px 0 60px;
+	margin: 30px 0 10px;
 	border: 1px solid #c60;
   	border-width: 1px 0;
   	background: #ffd;
@@ -424,7 +439,20 @@ li#total {
 	}
 li#total .money {font-size: 20px;}
 
-#update-cart { position: relative; right:180px;}
+#bottom-cart-functions {
+  border-bottom: none !important;
+  padding-bottom: 5px !important;
+}
+
+#additional-checkout-buttons {
+  text-align: right;
+}
+
+#additional-checkout-buttons p {
+  margin: 0 0 15px 0;
+  position: relative;
+  right: 50px;
+}
 
 /* Cart status box */
 
@@ -466,7 +494,7 @@ a:hover {
 	border-bottom: 1px solid #7ab8da;
 	color: #fff;
 	}
-a.img {border: none; background: none;}
+a.img, a img, a:hover img { border: none !important; background: none !important; }
 
 /* b) Typography */
 

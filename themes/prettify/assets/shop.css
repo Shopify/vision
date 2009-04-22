@@ -441,6 +441,32 @@ ul#variants {
 	padding:15px 5px;
 }
 
+.selector-wrapper {
+  margin: 10px 0 0 0;
+}
+
+input#add {margin: 15px 0 40px 0;}
+input#add.disabled {
+  -moz-opacity: 0.65;
+	opacity:.65;
+	filter: alpha(opacity=65);
+}
+
+#price-field {
+  margin: 15px 20px 0 0;
+  font-weight: bold;
+  font-size: 14px;
+  float: left;
+}
+
+#product label {
+  font-weight: bold;
+  display: block;
+  margin: 15px 0 5px 0;
+  font-size: 12px;
+}
+
+
 /* CART.LIQUID */
 
 #shoppingcart {
@@ -508,6 +534,10 @@ ul#variants {
   	margin: 5px;
   	padding: 5px;
   	text-align:center;
+}
+
+.additional-checkout-buttons {
+  margin-top: 15px;
 }
 
 /* PAGE.LIQUID */

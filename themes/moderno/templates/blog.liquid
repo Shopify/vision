@@ -2,7 +2,7 @@
 	<ul id="blog-list">{% for article in blog.articles %}
 		<li><a href="{{ article.url }}">{{ article.title }}</a></li>{% endfor %}
 	</ul>{% if paginate.pages > 1 %}
-	<div id="pagination">
+	<div id="paginate">
 		{{ paginate | default_pagination }}
 	</div>{% endif %}
 </div>

@@ -231,6 +231,22 @@ li#total .money {
 	border-color: #000;
 	}
 
+.additional-checkout-buttons {
+  text-align: right;
+}
+
+.additional-checkout-buttons p {
+  position: relative;
+  right: 122px;
+  margin-top: 10px;
+  color: #777;
+}
+
+.additional-checkout-buttons input {
+  margin: 10px 0 0 0;
+}
+
+
 /* ARTICLES */
 #page {
 	margin: 20px 0;
@@ -411,6 +427,29 @@ ul#variants { list-style: none; margin: 0; padding: 0; }
 ul#variants li { line-height: 2em; font-size: 120%; }
 ul#variants li input, ul#variants li label { vertical-align: middle; }
 .addtocart { margin: 10px; }
+
+#price-field {
+  float: right;
+  font-size: 14px;
+}
+
+#productdetails select {
+  margin: 0 0 10px 0;
+}
+
+#productdetails label {
+  font-weight: bold;
+  display: block;
+  margin: 0 0 5px 0;
+  font-size: 12px;
+}
+
+#add.disabled {
+  -moz-opacity: 0.65;
+	opacity:.65;
+	filter: alpha(opacity=65);
+}
+
 
 .description {
 	color: #333;

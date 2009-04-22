@@ -28,19 +28,14 @@
               {% if product.available %}
 
 		<form action="/cart/add" method="post">
+
+			<div id="price-field" class="price"></div>
 		  
-		  <ul id="variants">
-			{% for variant in product.variants %}
-			<li>
-			  {% if variant.available %}
-				<input type="radio" name="id" value="{{variant.id}}" id="radio_{{variant.id}}" style="vertical-align: middle;" {%if forloop.first%} checked="checked" {%endif%} />
-				<label for="radio_{{variant.id}}">{%if variant.title != 'Default' %}{{ variant.title }} for {%endif%} <span class="price">{{ variant.price | money_with_currency }}</span></label>
-			  {% else %}
-				<del style="margin-left: 26px">{{ variant.title }}</del>&nbsp;<span>Sold Out!</span>
-			  {% endif %}
-			</li>
-			{% endfor %}
-		  </ul>
+			<select id="variant-select" name="id" class="product-info-options">
+        {% for variant in product.variants %}
+          <option value="{{ variant.id }}">{{ variant.title }} - {{ variant.price | money }}</option>
+        {% endfor %}
+			</select>
 		
 			<div class="addtocart"><input type="image" name="add" value="Add to Cart" id="add" src="{{ 'add_to_cart.gif' | asset_url }}" /></div>
 		</form>
@@ -54,3 +49,27 @@
 	  </div>
   </div>
 </div>
+
+<script type="text/javascript">
+<!--
+  // prototype callback for multi variants dropdown selector
+  var selectCallback = function(variant, selector) {
+    if (variant && variant.available == true) {
+      // selected a valid variant
+      $('add').removeClassName('disabled'); // remove unavailable class from add-to-cart button
+      $('add').disabled = false;           // reenable add-to-cart button
+      $('price-field').innerHTML = Shopify.formatMoney(variant.price, "{{shop.money_with_currency_format}}");  // update price field
+    } else {
+      // variant doesn't exist
+      $('add').addClassName('disabled');      // set add-to-cart button to unavailable class
+      $('add').disabled = true;              // disable add-to-cart button      
+      $('price-field').innerHTML = (variant) ? "Sold Out" : "Unavailable"; // update price-field message
+    }
+  };
+
+  // initialize multi selector for product
+  Event.observe(document, 'dom:loaded', function() {
+    new Shopify.OptionSelectors("variant-select", { product: {{ product | json }}, onVariantSelected: selectCallback }); 
+  });
+-->
+</script>

@@ -1,0 +1,25 @@
+{% paginate collection.products by 20 %}
+
+<ul id="productsv">
+  {% for product in collection.products %}
+  <li class="productv clearfix">
+    <div class="thumb">
+      <a href="{{product.url}}"><img src="{{ product.featured_image | product_img_url: 'small' }}" /></a>
+      <p class="money">{{ product.price_min | money }}{% if product.price_varies %} - {{ product.price_max | money }}{% endif %}</p>
+    </div>
+    <div class="pbody">
+      <h3><a href="{{product.url}}">{{product.title}}</a></h3>
+      {{ product.description | strip_html | truncatewords: 50 }}
+      <ul class="buttons clearfix">
+        <li><a href="{{ product.url }}" title="View Details">View Details</a></li>
+      </ul>
+   </div>
+  </li>
+  {% endfor %}
+</ul>
+
+<div id="pagination">
+    {{ paginate | default_pagination }}
+</div>
+
+{% endpaginate %}

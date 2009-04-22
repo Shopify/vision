@@ -1,0 +1,1277 @@
+/*
+
+Theme Name: Tribble		
+Theme URI:  http://cssrockstars.com
+Description: http://cssrockstars.com/blog/tribble-a-shopify-theme/
+Version: V1.1		
+Author: CSSRockstars.com
+License:
+
+The MIT License
+
+Copyright (c) 2009 Twenty Six Media LLC
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.
+
+
+*/	
+
+
+/* Global Layout */
+
+
+body {
+  font-size: .75em;
+  margin: 0px;
+  text-align: center;
+  background: #F0EAE3 url(bg.gif) top left repeat-x;
+  color: #333;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+#wrap{
+  position: relative;
+  margin: auto;
+  width: 802px;
+}
+
+#top{
+  position: relative;
+  height: 100px;
+  margin-top: 11px;
+  text-align: left;
+}
+
+#site-title{
+  position: relative;
+  float: left;
+  padding: 38px 0 0 14px;
+}
+
+#site-title h3{
+  position: relative;
+  font-size: 1.8em;
+  color: #000;
+  font-weight: normal;
+  font-weight: bold;
+  line-height: 1em;
+  padding: 0;
+  margin: 0 0 0 0;
+  z-index: 10;
+}
+
+#site-title a{
+  color: #000;
+  text-decoration: none;
+}
+
+#site-title a:hover{
+  background: #fff;
+}
+
+#site-title h4{
+  position: relative;
+  display: block;
+  font-weight: normal;
+  font-size: .9em;
+  padding: 0;
+  margin: 0;
+  color: #333;
+}
+
+#site-title h4 span{
+  position: relative;
+  padding: 1px 3px 1px 3px;
+  background: #fff;
+}
+
+#cart{
+  position: relative;
+  float: right;
+  width: 284px;
+  padding: 8px;
+  background: #9BE7FF;
+}
+
+#cart h3{
+  position: relative;
+  font-size: 1.2em;
+  font-weight: bold;
+  padding: 1px 0 7px 0;
+}
+
+.cart-count{
+  position: relative;
+  padding: 10px;
+  background: #5DD7FE;
+  color: #fff;
+}
+
+.cart-count span{
+  position: relative;
+  padding: 0 5px 0 5px;
+}
+
+.cart-count a{
+  color: #fff;
+}
+
+.cart-links{
+  position: relative;
+  padding: 10px 0 4px 0;
+  text-align: right;
+  color: #003366;	
+  font-size: 11px;
+  font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+}
+
+.cart-links a{
+  position: relative;
+  color: #003366;
+  margin: 0 2px 0 2px;
+  text-decoration: underline;
+}
+
+
+
+#nav{
+  position: relative;
+  height: 50px;
+  padding-left: 3px;
+  background: url(navbg.gif) top left;
+  overflow: hidden;
+}
+
+#nav li{
+  position: relative;
+  float: left;
+  padding: 9px 0 0 12px;
+  height: 35px;	
+}
+
+#nav li a{
+  position: relative;
+  float: left;
+  padding: 8px 17px 0 17px;
+  height: 25px;
+  border: 1px solid #990000;
+  border-bottom: 0;
+  color: #fff;
+  text-transform: uppercase;
+  font-weight: bold;
+  color: #fff;
+  text-decoration: none;	
+}
+
+#nav li a:hover{
+  background: url(hover-bg.gif) top left;
+}
+
+
+#gwrap{
+  position: relative;
+  padding: 10px;
+  text-align: left;
+  background: #D9F2CC;	
+  border-right: 1px solid #ccc;
+  border-left: 1px solid #ccc;
+}
+
+#gbox{
+  position: relative;
+  border: 1px solid #ccc;
+  height: 128px;
+  background: #fff url(guarantee.gif) top right no-repeat;
+}
+
+#gbox h1{
+  position: relative;
+  height: 44px;
+  width: 603px;
+  padding: 10px 0 0 15px;
+  margin: 8px 0 0 8px;
+  font-size: 2em;
+  font-weight: bold;
+  color: #222;
+  background: url(title-3.gif) top left no-repeat;
+}
+
+#gbox ul{
+  position: relative;
+  height: 64px;
+  padding-left: 10px;
+  font-family: "Trebuchet MS";
+}
+
+#gbox li{
+  position: relative;
+  float: left;
+  width: 142px;
+  padding: 16px 0 0 68px;	
+  height: 48px;
+}
+
+.gbox1{
+  background: url(3-a.gif) left top no-repeat;
+}
+
+.gbox2{
+  background: url(3-b.gif) left top no-repeat;
+}
+
+.gbox3{
+  background: url(3-c.gif) left top no-repeat;
+}
+
+#gbox h2{
+  position: relative;
+  font-size: 1.6em;
+  font-weight: normal;
+  color: #666666;
+  line-height: 1.1em;
+}
+
+#gbox p{
+  position: relative;
+  font-size: .9em;
+  color: #B2B2B2;
+}
+
+
+
+#page{
+  position: relative;
+  padding: 18px;
+  border-right: 1px solid #ccc;
+  border-left: 1px solid #ccc;
+  background: #fff;
+}
+
+#page p.latest-news, #page div.latest-news p, #page div.latest-news-box{
+  position: relative;
+  padding: 7px 5px 8px 12px;
+  background: #FFFFCC;
+  border: 1px solid #ccc;
+  color: #222;
+  font-size: 12px;	
+  text-align: left;
+  line-height: 1.5em;
+  margin-bottom: 16px;	
+}
+
+.latest-news strong{
+  font-weight: bold;
+}
+
+#page p.latest-news a{
+  color: #2274A9;
+  text-decoration: underline;
+  margin: 0 5px 0 5px;
+}
+
+#page.inner, #page.innerpage{
+  position: relative;
+  text-align: left;
+  background: #fff url(guarantee.gif) top right no-repeat;
+}
+
+div.inner h1, div.innerpage h1{
+  position: relative;
+  font-size: 2em;
+  font-family: "Trebuchet MS";
+  color: #CC0001;
+  font-weight: bold;
+  padding-bottom: 12px;
+}
+
+div.inner h1 span, div.innerpage h1 span{
+  position: relative;
+  color: #333;
+}
+
+div.inner h1.other-products, div.innerpage h1.other-products{
+  position: relative;
+  font-size: 1.6em;
+  padding-top: 18px;
+}
+
+
+#text-page{
+  position: relative;
+}
+
+.entry{
+  position: relative;
+  padding-bottom: 25px;
+  border-bottom: 1px solid #ccc;
+  margin-bottom: 25px;
+}
+
+.entry-post{
+  position: relative;
+  font-size: 1.2em;
+  line-height: 1.5em;	
+}
+
+.entry-post p{
+  position: relative;
+  line-height: 1.5em;
+  padding-bottom: 1.2em;
+}
+
+.entry a{
+  color: #333;
+  text-decoration: underline;
+}
+
+.entry ul, .entry ol{
+  position: relative;
+  padding-bottom: 1em;
+}
+
+.entry li{
+  position: relative;
+  font-size: .9em;
+  padding: 2px 0 2px 8px;
+}
+
+
+.product{
+  position: relative;
+  padding: 15px;
+  border: 1px solid #ccc;
+  margin-bottom: 18px;
+  background: #fff;
+}
+
+.product-images{
+  position: relative;
+  float: left;
+  width: 363px;
+}
+
+.product-image-large{
+  position: relative;
+  padding: 10px;
+  background: #E3F7FF;
+  margin-bottom: 14px;
+  text-align: center;		
+}
+
+.product-image-large img{
+  position: relative;
+  max-width: 341px;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  border: 1px solid #9EE3FF;
+  background: #fff;
+}
+
+.product-thumbs{
+  position: relative;
+  padding: 11px 0 0 0;	
+  background: #D9F2CC;
+  overflow: hidden;	
+}
+
+.product-thumbs li{
+  position: relative;
+  float: left;
+  width: 77px;
+  height: 77px;
+  padding: 0 0 11px 11px;
+}
+
+ul.product-thumbs li a{
+  position: relative;
+  float: left;
+  height: 75px;
+  width: 75px;
+  overflow: hidden;
+  text-align: center;
+  border: 1px solid #82C761;
+  background: #fff;
+  padding: 0;
+}
+
+.product-thumbs li a img{
+  position: relative;
+
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+
+.product-info{
+  position: relative;
+  float: right;
+  width: 343px;
+}
+
+.product-info h2{
+  position: relative;
+  font-size: 1.5em;
+  font-family: "Trebuchet MS";
+  color: #333;
+  font-weight: bold;
+  padding: 5px 0 10px 0;	
+}
+
+.product-info-description{
+  position: relative;
+  font-size: 1.2em;
+  color: #666666;
+  line-height: 1.5em;
+}
+
+.product-info-description p{
+  position: relative;
+  line-height: 1.5em;
+  padding-bottom: 1em;
+}
+
+.product-info-description a{
+  color: #666666;
+  text-decoration: underline;
+  background: #fff;
+}
+
+.product-info-options{
+  position: relative;
+  line-height: 1.4em;
+  width: 204px;
+  margin-left: 0;
+}
+
+.product-info-options li{
+  position: relative;
+  padding: 5px 3px 5px 30px;
+  height: 16px;
+  border: 1px solid #ccc;
+  background: #FFFFCF;
+  color: #333;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.product-info-options li input{
+  position: absolute;
+  top: 5px;
+  left: 3px;
+}
+
+.product-purchase-btn input{
+  position: relative;
+  float: right;
+  margin-top: -28px;
+  padding: 5px 8px 5px 8px;
+  height: 28px;
+  border: 1px solid #9EE3FF;
+  background: #E3F7FF;
+  font-size: .9em;
+  color: #333;
+  font-weight: bold;							
+}
+
+#add-this-to-cart.disabled {
+  background: #ddd;
+  border: 1px solid #bbb;
+  color: #999;
+}
+
+#price-field {
+  margin-top: 15px;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.product label {
+  font-weight: bold;
+  display: block;
+  margin: 15px 0 5px 0;
+  font-size: 12px;
+}
+
+ul.item-list{
+  position: relative;
+  margin-left: -18px;
+  width: 785px;
+}
+
+.item-list li{
+  position: relative;
+  float: left;
+  width: 373px;
+  height: 190px;	
+  padding-left: 18px;
+}
+
+.item-list-item /* ili - */{
+  position: relative;
+  border: 1px solid #CCCCCC;
+  padding: 5px;
+  text-align: left;
+}
+
+.ili-top{
+  position: relative;
+  padding: 11px 0 11px 10px;
+  border-bottom: 15px solid #fff;
+  background: #fff url(item-bg.gif) top center repeat-y;
+}
+
+.ili-top-image{
+  position: relative;
+  float: left;						
+  text-align: center;
+  width: 110px;
+  height: 88px;
+  overflow: hidden;
+}
+
+.ili-top-image img{
+  position: relative;
+  margin: 0;
+  padding: 0;
+  border: 1px solid #9FE0FF;
+  max-height: 86px;
+  max-width: 108px;
+  background: #fff;
+}
+
+.ili-top-content{
+  position: relative;
+  float: right;
+  width: 217px;	
+}
+
+.ili-top-content h2{
+  position: relative;
+  font-weight: bold;
+  padding: 2px 0 2px 24px;
+  margin-bottom: 8px;	
+  background: url(check.gif) left center no-repeat;	
+  border-bottom: 1px solid #BAE8A2;						
+}
+
+.ili-top-content h2 a{
+  color: #000;
+}
+
+.ili-top-content p{
+  position: relative;
+  padding: 0 8px 0 0;
+  font-size: .9em;
+  line-height: 1.7em;
+}
+
+.ili-bottom{
+  position: relative;
+  height: 28px;
+  overflow: hidden;
+  border-bottom: 5px solid #fff;
+}
+
+.ili-bottom input{
+  position: relative;
+  float: right;
+  padding: 0px 10px 3px 10px;
+  width: 120px;
+  height: 28px;
+  font-weight: bold;
+  background: #E1F5FF;
+  border: 1px solid #9FE0FF;
+  color: #333;
+  font-size: 12px;
+  cursor: pointer;
+  font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+}
+
+.ili-bottom p{
+  position: relative;
+  float: left;
+  width: 222px;
+  padding: 6px 0 0 0;
+  height: 20px;
+  font-size: .9em;
+  border-top: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+}
+
+.ili-bottom span{
+  position: relative;
+  color: #CD0E15;	
+}
+
+.ili-bottom strong{
+  position: relative;
+  font-weight: bold;
+}
+
+.ili-bottom a{
+  position: relative;
+  float: right;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: #333;
+}
+
+
+#one-two{
+  position: relative;
+  font-size: .9em;
+  text-align: left;
+  color: #333333;			
+}		
+
+#one-two h3{
+  position: relative;
+  padding: 8px 0 7px 28px;
+  background: #EDE9E0 url(tick.gif) left center no-repeat;
+  background-position: 8px 8px;
+  margin-bottom: 7px;
+  font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+}
+
+#one{
+  position: relative;
+  float: left;
+  min-height: 180px;
+  width: 250px;
+  padding: 10px;
+  background: #fff;
+  border: 1px solid #ccc;
+}
+
+#one ul{
+  position: relative;
+  line-height: 1.8em;
+}
+
+#one p:last-child{
+  position: relative;
+  line-height: 1.8em;
+  padding: 5px 0 10px 0;
+  border-bottom: 1px solid #ccc;
+}
+
+#one a{
+  position: relative;
+  color: #C43C02;
+  text-decoration: underline;
+}
+
+#two{
+  position: relative;
+  float: right;
+  min-height: 180px;
+  width: 454px;
+  padding: 10px;
+  background: #fff;
+  border: 1px solid #ccc;
+  font-family: "Trebuchet MS";
+}
+
+#two h4{
+  position: relative;
+  font-size: 1.9em;
+  color: #666666;	
+  line-height: 1.1em;				
+}
+
+#two p{
+  position: relative;
+  color: #999;
+}
+
+#two ul{
+  position: relative;
+  padding: 11px 0 0 4px;
+}
+
+#two ul li{
+  position: relative;
+  float: left;
+  padding: 10px 0 10px 60px;
+  margin-bottom: 9px;
+  height: 37px;
+  width: 164px;
+}
+
+.two-a{
+  background: url(why1.gif) left center no-repeat;
+}
+
+.two-b{
+  background: url(why2.gif) left center no-repeat;
+}
+
+.two-c{
+  background: url(why3.gif) left center no-repeat;
+}
+
+.two-d{
+  background: url(why4.gif) left center no-repeat;
+}
+
+#three-reasons{
+  position: relative;
+  padding: 10px;
+  background: #fff;
+  border: 1px solid #ccc;
+  font-size: .9em;
+}
+
+#three-reasons h3{
+  position: relative;
+  padding: 8px 0 7px 28px;
+  background: #EDE9E0 url(tick.gif) left center no-repeat;
+  background-position: 8px 8px;
+  margin-bottom: 7px;
+  font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+}
+
+#three-reasons li{
+  position: relative;
+  float: left;
+  padding: 10px 0 10px 60px;
+  margin-bottom: 9px;
+  height: 37px;
+  width: 187px;
+}
+
+#three-reasons h4{
+  position: relative;
+  font-size: 1.9em;
+  color: #666666;	
+  line-height: 1.1em;				
+}
+
+#three-reasons p{
+  position: relative;
+  color: #999;
+}
+
+.paginate{
+  position: relative;
+  margin-bottom: 18px;
+  padding: 13px 0 6px 0;
+  height: 22px;				
+  text-transform: uppercase;
+  text-align: center;
+  font-size: 1.1em;
+  font-weight: bold;
+}
+
+.paginate span{
+  position: relative;
+  padding: 0 3px 0 3px;
+  display: inline;	
+}
+
+.paginate span.current a{
+  background: #EDE9E0;
+  color: #333;
+}
+
+.paginate span a{
+  color: #CC0001;
+  text-decoration: none;
+}
+
+.paginate span a:hover{
+  color: #333;
+}
+
+.paginate a{
+  color: #333;
+  z-index: 1000;
+}
+
+.paginate span.next{
+  position: absolute;
+  top: 6px;
+  right: 0;
+}
+
+.paginate span.next a{
+  position: relative;
+  border-right: 1px solid #fff;
+  font-weight: bold;
+  display: block;
+  padding: 7px 34px 0 15px;
+  height: 21px;
+  background: #EDE9E0 url(next.gif) right center no-repeat; 
+}
+
+.paginate span.next a{
+  border-right: 1px solid #ccc;
+}
+
+.paginate span.prev{
+  position: absolute;
+  top: 6px;
+  left: 0;
+}
+
+.paginate span.prev a{
+  position: relative;
+  display: block;
+  font-weight: bold;
+  border-left: 1px solid #fff;
+  padding: 7px 15px 0 34px;
+  height: 21px;
+  background: #EDE9E0 url(previous.gif) left center no-repeat; 
+}
+
+.paginate span.prev a{
+  border-left: 1px solid #ccc;
+}
+
+
+
+#cart-wrap{
+  position: relative;
+  padding: 15px;
+  border: 1px solid #ccc;
+  text-align: left;
+  background: #fff;
+}	
+
+#cart-wrap table{
+  margin-bottom: 15px;
+}
+
+/* cart TH */
+#cart-wrap th{
+  position: relative;
+  padding: 5px 0 10px 15px;
+  font-size: 1.2em;
+  font-weight: bold;
+  color: #000;
+  border-bottom: 1px solid #ccc;
+}
+
+#cart-wrap th.td-image{
+  border-left: 0;
+}
+
+#cart-wrap th.td-delete{
+  border-right: 0;
+}
+
+#cart-wrap table table{
+  position: relative;
+  padding-top: 8px;
+  margin: 0;
+}
+
+#cart-wrap table table td{
+  position: relative;
+  padding: 15px 0 15px 15px;
+  border-top: 1px solid #9EE3FF;
+  border-bottom: 1px solid #9EE3FF;
+  background: #E3F7FF;
+  font-size: 1.2em;
+  vertical-align: middle;
+}
+
+#cart-wrap table tr.alt table td{
+  border-top: 1px solid #9AD37D;
+  border-bottom: 1px solid #9AD37D;
+  background: #D9F2CC;
+}
+
+/* image TD */
+#cart-wrap .td-image{
+  position: relative;
+  width: 80px;
+  border-left: 1px solid #9EE3FF;
+}
+
+#cart-wrap table tr.alt .td-image{
+  border-left: 1px solid #9AD37D;
+}
+
+#cart-wrap .td-image a{
+  position: relative;
+  display: block;
+  height: 57px;
+  width: 57px;
+  overflow: hidden;
+  text-align: center;
+  background: #fff;
+  border: 1px solid #82C761;
+}
+
+#cart-wrap .td-image a img{
+  position: relative;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;				
+}
+
+
+/* title TD */
+#cart-wrap .td-title{
+  position: relative;
+  width: 320px;
+
+}
+#cart-wrap .td-title p{
+  position: relative;
+  padding: 6px 4px 6px 14px;
+  background: #fff;
+  border: 1px solid #9EE3FF;
+  width: 300px;
+  cursor: default;
+}
+
+/* count TD */
+#cart-wrap .td-count{
+  position: relative;
+  width: 100px;
+}
+
+#cart-wrap td.td-count label{
+  position: relative;
+  font-weight: bold;
+  float: left;
+  padding: 8px 7px 0 0;
+}
+
+#cart-wrap .td-count input{
+  position: relative;
+  float: left;
+  width: 25px;
+  text-align: center;
+  font-size: 14px;
+  padding: 6px 0 6px 0;
+  color: #000;
+  background: #fff;
+  border: 1px solid #9EE3FF;
+}
+
+/* price TD */
+#cart-wrap .td-price{
+  position: relative;
+  width: 70px;
+}
+
+/* delete TD */
+#cart-wrap .td-delete{
+  padding-right: 15px;
+  text-align: center;
+  border-right: 1px solid #9EE3FF;
+}
+
+#cart-wrap table tr.alt .td-delete{
+  border-right: 1px solid #9AD37D;
+}
+
+.td-delete a{
+  color: #C10E12;
+  font-size: 12px;
+  font-weight: bold;
+  padding: 2px;
+  background: #fff;
+}
+
+#finish-up{
+  position: relative;
+  padding-bottom: 12px;
+}
+
+#finish-up .latest-news-box{
+  position: relative;
+  float: left;
+  width: 60%;
+  padding-right: 5%;
+  z-index: 10;
+}
+
+#finish-up strong{
+  font-weight: bold;
+}
+
+.order-total, .update-cart, .go-checkout{
+  position: relative;
+  padding: 5px 0 5px 0;
+  font-size: 1.2em;
+  text-align: right;
+}
+
+.order-total span{
+  padding: 3px;
+  background: #FFFFCC;
+  border: 1px solid #F2F1AF;
+}
+
+.additional-checkout-buttons {
+  text-align: right;
+}
+
+.additional-checkout-buttons p {
+  margin: 10px 0;
+  position: relative;
+  right: 50px;
+}
+
+#finish-up input{
+  position: relative;
+  padding: 3px;
+}
+
+
+
+#foot{
+  position: relative;
+  padding: 20px;
+  background: #292929;	
+  text-align: left;
+  font-family: Tahoma;
+  line-height: 1.3em;
+  margin-bottom: 15px;
+}
+
+#foot h4{
+  position: relative;
+  color: #BCE9A7;
+  font-size: 1.2em;
+  font-weight: bold;
+  padding-bottom: 6px;
+  margin-bottom: 9px;
+  background: url(bottom-title-bg.gif) bottom left repeat-x;
+}
+
+.quick-links{
+  position: relative;
+  float: left;
+  width: 300px;
+  padding-right: 40px;
+  padding-bottom: 28px;	
+}
+
+.quick-links li{
+  position: relative;
+  float: left;
+  width: 140px;
+  font-size: .9em;
+  padding: 2px 10px 2px 0;
+}
+
+.quick-links li a{
+  position: relative;
+  display: block;
+  color: #999999;
+  display: block;
+  text-decoration: underline;
+  border-bottom: 1px solid #333;
+  padding: 4px 0 6px 3px;
+}
+
+.quick-links li a:hover{
+  background: #333;
+  text-decoration: none;
+}
+
+.quick-contact{
+  position: relative;
+  float: left;
+  width: 300px;
+  color: #999999;
+  padding-bottom: 28px;	
+}
+
+.vcard{
+  position: relative;
+  margin-top: -2px;
+  font-size: .9em;
+}
+
+.organization-name, .adr, .locality-wrap, .vcard a.email, .tel{
+  position: relative;
+  display: block;
+  padding: 6px 0 8px 3px;
+  color: #ccc;
+  display: block;
+  border-bottom: 1px solid #333;
+}
+
+.organization-name{
+  font-weight: bold;
+}
+
+.vcard a{
+  color: #999;
+  text-decoration: underline;
+}
+
+.vcard .tel .type{
+  font-weight: bold;
+}
+
+.vcard a:hover{
+  background: #333;
+  text-decoration: none;
+}
+
+#foot p{
+  position: relative;
+  padding: 15px 0 0px 0;
+  clear: left;
+  font-size: .9em;
+  color: #999;
+  background: url(bottom-title-bg.gif) top left repeat-x;			
+}
+
+.we-made{
+  position: relative;
+  float: right;
+  color: #ccc;
+  padding: 2px 5px 2px 5px;
+  margin: -2px 0 0 5px;
+  background: #333;
+}
+
+.we-made a{
+  background: #333;
+  color: #ccc;
+}
+
+#foot-rss{
+  position: absolute;
+  top: -45px;
+  right: 0px;
+  height: 34px;
+  width: 35px;
+  background: url(rss.gif) top left;
+  display: block;
+  text-indent: -9999em;
+}
+
+
+#comment-list li{
+  position: relative;
+  padding: 10px; 
+  background: #FFFFCF;
+  border: 2px solid #CCCCCC;
+  margin-bottom: 10px;
+  font-size: 14px;
+}
+
+#comment-list li a{
+  color: #333;
+}
+
+#comment-list li div.comment-details{
+  font-size: 11px;
+}
+
+#comment-list li p{
+  position: relative;
+  line-height: 1.5em;
+  padding-bottom: 1em;
+}
+
+#comments h2{
+  position: relative;
+  font-size: 1.6em;
+  font-weight: normal;
+  color: #666666;
+  line-height: 1.1em;
+}
+
+#comment-form label{
+  position: relative;
+  padding: 10px 0 2px 0;
+  display: block;
+  font-weight: bold;
+  color: #333;
+}
+
+#comment-form input{
+  position: relative;
+  padding: 4px;	
+  border: 1px solid #9EE3FF;
+}
+
+#comment_body{
+  position: relative;
+  padding: 4px;
+  width: 400px;
+  height: 85px;
+  border: 1px solid #9EE3FF;
+}
+
+#comment-submit{
+  border: 1px solid #9EE3FF;
+  background: #E3F7FF;
+}
+
+#comment-form{
+  position: relative;
+  padding: 15px;
+  margin-right: 150px;
+  background: #f3f3f3;
+  border: 1px solid #CCCCCC;
+}
+
+
+.stitle{
+  position: relative;
+  font-size: 16px;
+  color: #333;	
+  font-weight: bold;
+}
+
+.stitle a{
+  color: #333;	
+  text-decoration: underline;
+}
+
+.sinfo{
+  position: relative;
+  font-size: 14px;
+  line-height: 1.5em;
+  padding-bottom: 1em;
+}
+
+.search-list li{
+  position: relative;
+  padding: 10px;
+  border: 1px solid #ccc;
+  margin-bottom: 10px;
+  background: #f3f3f3;
+}
+
+.search-list p a{
+  color: #7B080B;
+  text-decoration: underline;
+}
+
+input{
+  cursor: pointer;
+}	
+
+
+
+

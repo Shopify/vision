@@ -7,7 +7,7 @@ body {
 	background: #755840 url(drip.gif) no-repeat top right fixed;
 	padding: 0;
 	margin: 0;
-	font: 1em/1.4em Lucida Grande, Lucida Sans, Helvetica, Arial, sans-serif;
+	font: 1em/1.4em "Lucida Grande", "Lucida Sans", Lucida, Helvetica, Arial, sans-serif;
 	color: #444;
 	}
 h1, h2, h3, h4, h5, h6 {
@@ -248,6 +248,15 @@ li#total .money {
 	float: left;
 	}
 
+.additional-checkout-buttons {
+  text-align: center;
+}
+
+.additional-checkout-buttons p {
+  margin-top: 0;
+  font-size: 14px;
+  color: #777;
+}
 
 /* ARTICLES */
 #page {
@@ -388,7 +397,6 @@ li.singleproduct {
 	}
 h3 a {
 	text-decoration: none;
-	letter-spacing: -0.1em;
 	color: #444;
 	}
 h3 a:hover {
@@ -487,6 +495,29 @@ ul#details, ul#variants {
 	color: #555;
 	}
 
+#price-field {
+  float: right;
+  font-size: 14px;
+}
+
+#productpage select {
+  margin: 0 0 10px 0;
+}
+
+#productpage label {
+  font-weight: bold;
+  display: block;
+  margin: 0 0 5px 0;
+  font-size: 12px;
+}
+
+#add.disabled {
+  -moz-opacity: 0.65;
+	opacity:.65;
+	filter: alpha(opacity=65);
+}
+
+
 
 /* FOOTER */
 #footer {
@@ -531,8 +562,8 @@ ul#details, ul#variants {
 
 /* Lightbox modifications */
 
-#lightbox{
-	border: 2px solid #EA3A41 !important;
+#outerImageContainer {
+	border-top: 2px solid #EA3A41 !important;
 	}
 
 #overlay{
