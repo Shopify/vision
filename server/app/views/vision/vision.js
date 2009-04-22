@@ -2,39 +2,28 @@ var Vision = {
   Version: '0.9'
 }
 
-Vision.Palette = Class.create();
-Vision.Palette.prototype = {
-  initialize: function(rhtml, options) {
-    this.rhtml = rhtml;
-    Event.observe(window, 'load', this.onLoad.bindAsEventListener(this));
-  },
+Vision.Palette = function(rhtml, options) {
+  this.rhtml = rhtml;
+  document.body.innerHTML = document.body.innerHTML + this.rhtml;
+  // var find_el = document.getElementById('find');
+  // if (find_el.addEventListener) {
+  //   var palette = this;
+  //   find_el.addEventListener('focus', this.focusCallback, false);
+  //   find_el.addEventListener('blur', this.blurCallback, false);
+  // } else {
+    // doesn't support add event listener
+  // }
+};
 
-  onLoad: function(event) {
-    new Insertion.Bottom(document.body, this.rhtml);
-    
-    this.search       = $('find');
-    this.cachedValues = {
-      search: $F(this.search)
-    }    
-        
-    // Change the theme
-    Event.observe(this.search, 'focus', this.onTextFieldFocus.bindAsEventListener(this));
-    Event.observe(this.search, 'blur', this.onTextFieldBlur.bindAsEventListener(this));
-  },
-  
-  onTextFieldFocus: function(event) {
-    Field.clear(Event.element(event));
-  },
-  
-  onTextFieldBlur: function(event) {
-    Event.element(event).value = this.cachedValues.search;
-  },
-  
-  refresh: function() {
-    var loc = window.location.href.gsub(/#/, '');
-    window.location.href = loc;
-  }
-}
+// Vision.Palette.prototype.focusCallback = function(event) {
+//   console.log('focus');
+//   return false;
+// };
+// 
+// Vision.Palette.prototype.blurCallback = function(event) {
+//   console.log('blur');
+//   return false;
+// };
 
 var Cookie = {    
   set: function(name, value, expires, path, domain, secure) {
@@ -74,5 +63,8 @@ var Cookie = {
   }
 }
 
-new Vision.Palette(vision_html);
+
+function initVisionPalette() { 
+  new Vision.Palette(vision_html);
+};
 
