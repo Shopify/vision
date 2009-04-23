@@ -519,7 +519,7 @@ links:
   - &link-7
     id: 7
     title: Contact Us
-    url: /contact
+    url: /pages/contact
   - &link-8
     id: 8
     title: Our blog
@@ -536,6 +536,11 @@ links:
     id: 11
     title: Our Paginated blog
     url: /blogs/paginated-blog
+  - &link-12
+    id: 12
+    title: Catalog
+    url: /collections/all
+
     
 
 # =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
@@ -548,12 +553,10 @@ link_lists:
     title: 'Main Menu'
     handle: 'main-menu'
     links:
-      - *link-1
-      - *link-10
-      - *link-2
-      - *link-9
-      - *link-3
-      - *link-4
+      - *link-12      
+      - *link-5
+      - *link-7
+      - *link-8
   - &link-list-2
     id: 1
     title: 'Footer Menu'
@@ -621,13 +624,27 @@ collections:
 #   Pages and Blogs
 # =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 pages:
+  - &page-2
+    id: 1
+    title: Contact Us
+    handle: contact
+    url: /pages/contact
+    author: Tobi
+    content:
+      "<p>You can contact us via phone under (555) 567-2222.</p>
+      <p>Our retail store is located at <em>Rue d'Avignon 32, Avignon (Provence)</em>.</p>
+      <p><strong>Opening Hours:</strong><br />Monday through Friday: 9am - 6pm<br />Saturday: 10am - 3pm<br />Sunday: closed</p>"
+    created_at: 2005-04-04 12:00
+    
   - &page-3
     id: 2
-    title: About us
+    title: About Us
     handle: about
     url: /pages/about    
     author: Tobi
-    content: <p>The <strong>About Us</strong> page of your shop is vital because it&#8217;s where users go when first trying to determine a level of trust.  Since trust is such an important part of selling online, it&#8217;s a good idea to give people an fair amount information about yourself and your shop.  Here are a few things you should touch on:</p><ul><li>Who are you</li><li>Why do you sell the items you sell</li><li>Where are you from</li><li>How long have you been in business</li><li>How long have you been running your online shop</li><li>Who are the people on your team</li></ul><p>To edit this information you can to the <a href="/admin/pages">Blogs &amp; Pages Tab</a> of the administration menu.</p>
+    content:
+      "<p>Our company was founded in 1894 and we are since operating out of Avignon from the beautiful Provence.</p>
+      <p>We offer the highest quality products and are proud to serve our customers to their heart's content.</p>"
     created_at: 2005-04-04 12:00
 
   - &page-4
