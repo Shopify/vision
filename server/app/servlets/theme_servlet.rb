@@ -107,7 +107,7 @@ class ThemeServlet < LiquidServlet
     </script>
     <!-- end inject -->  
     HEADERS
-        
+#    @content_for_header = ""    
   end
     
   def template_path

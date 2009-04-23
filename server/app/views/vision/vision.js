@@ -3,27 +3,21 @@ var Vision = {
 }
 
 Vision.Palette = function(rhtml, options) {
-  this.rhtml = rhtml;
-  document.body.innerHTML = document.body.innerHTML + this.rhtml;
-  // var find_el = document.getElementById('find');
-  // if (find_el.addEventListener) {
-  //   var palette = this;
-  //   find_el.addEventListener('focus', this.focusCallback, false);
-  //   find_el.addEventListener('blur', this.blurCallback, false);
-  // } else {
-    // doesn't support add event listener
-  // }
+  var body = document.getElementsByTagName('body')[0];
+  var visiondiv = document.createElement('div');
+  visiondiv.setAttribute('id','vision');
+  visiondiv.innerHTML = rhtml;
+  body.appendChild(visiondiv);
 };
 
-// Vision.Palette.prototype.focusCallback = function(event) {
-//   console.log('focus');
-//   return false;
-// };
-// 
-// Vision.Palette.prototype.blurCallback = function(event) {
-//   console.log('blur');
-//   return false;
-// };
+// remove bar from screen
+Vision.remove = function() {
+  var body = document.getElementsByTagName('body')[0];
+  var el = document.getElementById('vision');
+  if (el) {
+    body.removeChild(el);
+  }
+};
 
 var Cookie = {    
   set: function(name, value, expires, path, domain, secure) {

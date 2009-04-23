@@ -66,10 +66,11 @@
       $('price-field').innerHTML = (variant) ? "Sold Out" : "Unavailable"; // update price-field message
     }
   };
+  var selector = null;
 
   // initialize multi selector for product
   Event.observe(document, 'dom:loaded', function() {
-    new Shopify.OptionSelectors("variant-select", { product: {{ product | json }}, onVariantSelected: selectCallback }); 
+    selector = new Shopify.OptionSelectors("variant-select", { product: {{ product | json }}, onVariantSelected: selectCallback }); 
   });
 -->
 </script>
