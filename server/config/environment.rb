@@ -7,6 +7,7 @@ $LOAD_PATH.unshift(ROOT + '/app/drops')
 $LOAD_PATH.unshift(ROOT + '/app/tags')
 $LOAD_PATH.unshift(ROOT + '/vendor/liquid/lib')
 $LOAD_PATH.unshift(ROOT + '/vendor/rubyzip/lib')
+$LOAD_PATH.unshift(ROOT + '/vendor/json_pure-1.1.4/lib')
 $LOAD_PATH.unshift(ROOT + '/lib')
 
 
@@ -20,6 +21,7 @@ require 'string_ext'
 require 'fileutils'
 require 'zip/zip'
 require 'paginate'
+require 'json'
 
 require File.dirname(__FILE__) + '/version'
 

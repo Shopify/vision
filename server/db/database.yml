@@ -5,20 +5,26 @@
 product_variants: 
   - &product-1-var-1
     id: 1
-    title: 151cm
-    price: 29900
+    title: 151cm / Normal
+    price: 19900
     weight: 1000
     compare_at_price: 49900
     available: true
     inventory_quantity: 5
+    option1: 151cm
+    option2: Normal
+    option3: 
   - &product-1-var-2
     id: 2
-    title: 155cm
+    title: 155cm / Normal
     price: 31900
     weight: 1000
     compare_at_price: 50900
     available: true
     inventory_quantity: 2
+    option1: 155cm
+    option2: Normal
+    option3: 
   - &product-2-var-1
     id: 3
     title: 162cm
@@ -45,12 +51,15 @@ product_variants:
     inventory_quantity: 6
   - &product-1-var-3
     id: 6
-    title: 158cm
+    title: 158cm / Wide
     price: 23900
     weight: 1000
     compare_at_price: 99900
     available: false
     inventory_quantity: 0
+    option1: 158cm
+    option2: Wide
+    option3:
   - &product-3-var-2
     id: 7
     title: 162cm
@@ -97,7 +106,10 @@ products:
       - pro
       - intermediate
       - wooden      
-      - freestyle            
+      - freestyle
+    options: 
+      - Length
+      - Style           
     compare_at_price: 49900
     compare_at_price_max: 50900
     compare_at_price_min: 49900

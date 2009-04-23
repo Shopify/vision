@@ -9,6 +9,10 @@ module ShopFilter
     "http://#{req.host}:#{req.port}/global/#{input}"
   end
   
+  def shopify_asset_url(input)
+    "/shopify/#{input}"
+  end
+  
   def script_tag(url)
     %(<script src="#{url}" type="text/javascript"></script>)
   end
