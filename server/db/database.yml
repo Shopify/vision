@@ -157,6 +157,18 @@ product_variants:
     option1: white
     option2: 44
     option3:
+  - &product-6-var-1
+    id: 15
+    title: red
+    price: 2179500
+    weight: 500
+    compare_at_price: 0
+    available: true
+    inventory_quantity: 0
+    option1: red
+    option2:
+    option3:
+
 
 # =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 #   Products
@@ -328,6 +340,47 @@ products:
       The Burton boots are particularly well on snowboards. The very best thing about them is that the according picture is cubic. This makes testing in a Vision testing environment very easy.
     variants: 
       - *product-5-var-1
+      - *product-5-var-2
+      - *product-5-var-3
+      - *product-5-var-4
+      - *product-5-var-5
+      - *product-5-var-6                        
+
+  - &product-6
+    id: 6
+    title: Superbike 1198 S
+    handle: superbike
+    type: Superbike
+    vendor: Ducati
+    price: 2179500
+    price_max: 2179500
+    price_min: 2179500
+    price_varies: false
+    available: true    
+    tags: 
+      - ducati
+      - superbike
+      - bike   
+      - street
+      - racing
+      - performance      
+    options:
+      - Color
+    compare_at_price: 
+    compare_at_price_max: 0
+    compare_at_price_min: 0
+    compare_at_price_varies: false
+    url: /products/superbike
+    featured_image: products/ducati.jpg
+    images:
+      - products/ducati.jpg
+    description:
+      ‘S’ PERFORMANCE
+      Producing 170hp (125kW) and with a dry weight of just 169kg (372.6lb), the new 1198 S now incorporates more World Superbike technology than ever before by taking the 1198 motor and adding top-of-the-range suspension, lightweight chassis components and a true racing-style traction control system designed for road use.
+      The high performance, fully adjustable 43mm Öhlins forks, which sport low friction titanium nitride-treated fork sliders, respond effortlessly to every imperfection in the tarmac. Beyond their advanced engineering solutions, one of the most important characteristics of Öhlins forks is their ability to communicate the condition and quality of the tyre-to-road contact patch, a feature that puts every rider in superior control. The suspension set-up at the rear is complemented with a fully adjustable Öhlins rear shock equipped with a ride enhancing top-out spring and mounted to a single-sided swingarm for outstanding drive and traction. The front-to-rear Öhlins package is completed with a control-enhancing adjustable steering damper.
+    variants: 
+      - *product-6-var-1
+
       
 # =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 #   Line Items

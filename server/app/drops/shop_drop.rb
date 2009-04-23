@@ -17,7 +17,7 @@ class ShopDrop < Liquid::Drop
   end
   
   def money_with_currency_format
-    "{{$ amount USD}}"
+    "$ {{amount}} USD"
   end
   
   def products_count
