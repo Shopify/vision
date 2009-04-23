@@ -161,13 +161,58 @@ product_variants:
     id: 15
     title: red
     price: 2179500
-    weight: 500
+    weight: 200000
     compare_at_price: 0
     available: true
     inventory_quantity: 0
     option1: red
     option2:
     option3:
+  - &product-7-var-1
+    id: 16
+    title: black / small
+    price: 1900
+    weight: 200
+    compare_at_price: 0
+    available: true
+    inventory_quantity: 20
+    option1: black
+    option2: small
+    option3:
+  - &product-7-var-2
+    id: 17
+    title: black / medium
+    price: 1900
+    weight: 200
+    compare_at_price: 0
+    available: false
+    inventory_quantity: 0
+    option1: black
+    option2: medium
+    option3:
+  - &product-7-var-3
+    id: 18
+    title: black / large
+    price: 1900
+    weight: 200
+    compare_at_price: 0
+    available: true
+    inventory_quantity: 10
+    option1: black
+    option2: large
+    option3:
+  - &product-7-var-4
+    id: 19
+    title: black / extra large
+    price: 1900
+    weight: 200
+    compare_at_price: 0
+    available: false
+    inventory_quantity: 0
+    option1: black
+    option2: extra large
+    option3:
+
 
 
 # =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
@@ -375,11 +420,47 @@ products:
     images:
       - products/ducati.jpg
     description:
-      ‘S’ PERFORMANCE
-      Producing 170hp (125kW) and with a dry weight of just 169kg (372.6lb), the new 1198 S now incorporates more World Superbike technology than ever before by taking the 1198 motor and adding top-of-the-range suspension, lightweight chassis components and a true racing-style traction control system designed for road use.
-      The high performance, fully adjustable 43mm Öhlins forks, which sport low friction titanium nitride-treated fork sliders, respond effortlessly to every imperfection in the tarmac. Beyond their advanced engineering solutions, one of the most important characteristics of Öhlins forks is their ability to communicate the condition and quality of the tyre-to-road contact patch, a feature that puts every rider in superior control. The suspension set-up at the rear is complemented with a fully adjustable Öhlins rear shock equipped with a ride enhancing top-out spring and mounted to a single-sided swingarm for outstanding drive and traction. The front-to-rear Öhlins package is completed with a control-enhancing adjustable steering damper.
+      <h3>‘S’ PERFORMANCE</h3>
+      <p>Producing 170hp (125kW) and with a dry weight of just 169kg (372.6lb), the new 1198 S now incorporates more World Superbike technology than ever before by taking the 1198 motor and adding top-of-the-range suspension, lightweight chassis components and a true racing-style traction control system designed for road use.</p>
+      <p>The high performance, fully adjustable 43mm Öhlins forks, which sport low friction titanium nitride-treated fork sliders, respond effortlessly to every imperfection in the tarmac. Beyond their advanced engineering solutions, one of the most important characteristics of Öhlins forks is their ability to communicate the condition and quality of the tyre-to-road contact patch, a feature that puts every rider in superior control. The suspension set-up at the rear is complemented with a fully adjustable Öhlins rear shock equipped with a ride enhancing top-out spring and mounted to a single-sided swingarm for outstanding drive and traction. The front-to-rear Öhlins package is completed with a control-enhancing adjustable steering damper.</p>
     variants: 
       - *product-6-var-1
+
+  - &product-7
+    id: 7
+    title: Shopify Shirt
+    handle: shopify-shirt
+    type: Shirt
+    vendor: Shopify
+    price: 1900
+    price_max: 1900
+    price_min: 1900
+    price_varies: false
+    available: true    
+    tags: 
+      - shopify
+      - shirt
+      - apparel  
+      - tshirt
+      - clothing
+    options:
+      - Color
+      - Size
+    compare_at_price: 
+    compare_at_price_max: 0
+    compare_at_price_min: 0
+    compare_at_price_varies: false
+    url: /products/shopify-shirt
+    featured_image: products/shopify_shirt.png
+    images:
+      - products/shopify_shirt.png
+    description:
+      High Quality Shopify Shirt. Wear your e-commerce solution with pride and attract attention anywhere you go.
+    variants: 
+      - *product-7-var-1
+      - *product-7-var-2
+      - *product-7-var-3
+      - *product-7-var-4            
 
       
 # =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
