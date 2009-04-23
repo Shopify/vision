@@ -59,6 +59,8 @@ class VisionServlet < Servlet
        ['/products/arbor-draft', 'Product Page'], 
        ['/cart', 'Shopping Cart'], 
        ['/pages/about', 'Solo Page'],
+       ['/blogs/bigcheese-blog/1', 'Article Page (with comments)'],
+       ['/blogs/bigcheese-blog/2', 'Article Page (no comments)'],       
        ['/blogs/bigcheese-blog', 'Blog Page'],
        ['/blogs/paginated-blog', 'Blog Page (Paginated, Page Nr.1)']
        ]
