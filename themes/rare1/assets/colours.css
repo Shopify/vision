@@ -1,0 +1,186 @@
+body {
+  background: #576b3f;
+}
+
+.small a:link, .small a:visited, .small a:hover, .small a:active {
+  color: #8F8669;
+}
+
+.product {
+  color: #000;
+}
+
+.product a:link, .product a:visited, .product a:active, .product a:hover {
+  color: #606e5d;
+}
+
+.product-image img {
+  border: 7px solid white;
+}
+
+.product-image {
+  background-color: #fff;
+  border: 1px solid #aaa;
+}
+
+.original-price {
+  color: #666;
+}
+
+.price {
+  color: #000;
+}
+
+#frame {
+	background-color: #DDDAC0;
+	border: 3px solid #fff;
+}
+
+#contentcenter {
+  color: #606e5d;
+}
+
+#contentcenter h2 {
+  color: #606e5d;
+}
+
+/*#header {
+  background-color: #f8fcf4;
+}*/
+
+#header a:link, #header a:visited, #header a:hover, #header a:active {
+  color: #617c5b;
+}
+
+#shopping-cart {
+  background: #96c55d;
+  color: #363834;
+}
+
+#shopping-cart a:link, #shopping-cart a:visited, #shopping-cart a:hover, #shopping-cart a:active {
+  color: #363834;
+}
+
+#footer {
+  color: #ccc;
+}
+
+#footer a:link, #footer a:visited, #footer a:active {
+  color: #ccc;
+}
+
+#footer a:hover {
+  color: #fff;
+}
+
+ul.side-links {
+  color: #8F8669;
+}
+
+ul.side-links a:link, ul.side-links a:visited, ul.side-links a:hover, ul.side-links a:active {
+  color: #000;
+}
+
+ul.side-links a:hover {
+  color: #666;  
+}
+
+#articles {
+  border-top: 1px dotted #2F3535;
+}
+
+.pimage {
+  background-color: white;
+  border: 2px solid #c0bda0;
+}
+
+.pimage img {
+  border: 10px solid white;
+}
+
+.pimage-small {
+  background-color: white;
+  border: 2px solid #c0bda0;
+}
+
+.pimage-small img {
+  border: 11px solid white;
+}
+
+#product h2 {
+  color: #606e5d;
+}
+
+#product a:link, #product a:visited, #product a:active, #product a:hover {
+  color: #660000;
+}
+
+#product a:hover {
+  border-bottom: 1px dashed #660000;
+}
+
+ul#variants {
+  color: #555;
+}
+
+#description {
+  border-top: 1px dotted #3C302D;  
+}
+
+#shoppingcart h2 {
+  color: #000;
+}
+
+#shoppingcart h2 a:link, #shoppingcart h2 a:visited, #shoppingcart h2 a:hover, #shoppingcart h2 a:active {
+  color: #606e5d;
+}
+
+#shoppingcart h2 a 
+  color: #606e5d;
+}
+
+#shoppingcart h2>a:hover {
+  border-bottom: 1px dashed #660000;
+}
+
+#disclaimer {
+  border-top: 1px dotted #666;
+}
+
+td.sum-line {
+  border-top: 1px solid #3C302D;
+}
+
+.checkout-product-image img {
+  border: 4px solid white;
+}
+
+.checkout-product-image {
+  background-color: #fff;
+  border: 1px solid #999;
+}
+
+#page h2 {
+  color: #606e5d;
+}
+
+.headline {
+  color: #fff;
+  background-color: #8F8669; 
+}
+
+.title {
+  background: #2F3535 url('headline.gif') top right no-repeat;
+}
+
+.date {
+  background: #666 url('date.gif') top left no-repeat;
+  color: #eee;
+}
+
+.date h4 {
+  color: #fff;
+}
+
+
+

@@ -23,6 +23,14 @@
   <div class="checkout">
     <a href="/"><img src="{{ 'continueshopping.gif' | asset_url }}" alt="continue shopping" /></a>
     <input type="image" value="Proceed to Checkout" name="checkout" src="{{ 'checkout.gif' | asset_url }}"/>
+
+		{% if additional_checkout_buttons %}
+    <div class="additional-checkout-buttons">
+      <p>- or -</p>
+      {{ content_for_additional_checkout_buttons }}
+    </div>
+    {% endif %}
+    
   </div>
 </form>
 {% endif %}

@@ -1,0 +1,66 @@
+<script type="text/javascript">
+  function remove_item(id) {
+      document.getElementById('updates_'+id).value = 0;
+      document.getElementById('cartform').submit();
+  }
+</script>
+
+<div>
+
+  {% if cart.item_count == 0 %} 
+    <p>Your shopping cart is empty...</p>
+  {% else %}
+  
+  <h3 class="small">You have selected the items below for purchase</h3>
+  
+  <form action="/cart" method="post" id="cartform">
+
+  <div id="review-cart">
+
+    <table id="line-items" cellspacing="2" cellpadding="0">
+
+      <tr class="proceed">
+        <td colspan="3"><a class="continue-link" href="{{ shop.url }}">continue shopping</a> <input type="submit" value="Continue to checkout" name="checkout" class="primary" /></td>
+      </tr>
+
+
+      {% tablerow item in cart.items cols:3  %}
+  
+        <h3>{{ item.title }}</h3>
+        <div class="cart-thumb">
+          <img src="{{item.product.featured_image | product_img_url: 'thumb' }}" alt="{{item.title | escape }}" title="{{item.title | escape }}" />
+        </div>
+        <span class="money fl">{{ item.price | money}} each.</span>
+        
+        <p class="cl">
+          <label for="updates_{{item.variant.id}}">How many do you want? </label> 
+          <input type="text" size="4" name="updates[{{item.variant.id}}]" id="updates_{{item.variant.id}}" value="{{item.quantity}}" onfocus="this.select();"/><br />
+          <a href="/cart/change/{{item.variant.id}}?quantity=0" onclick="remove_item({{item.variant.id}}); return false;" class="remove">(remove this item)</a>
+        </p>
+  
+      {% endtablerow %}
+
+      <tr class="info">
+        <td>
+          <input type="submit" id="update-cart" name="update" value="Update My Cart" />
+        </td>
+        <td colspan="2">
+          Subtotal: 
+          <span class="money">{{ cart.total_price | money_with_currency }}</span>
+        </td>
+      </tr>
+
+      <tr class="proceed">
+        <td colspan="3"><a class="continue-link" href="{{ shop.url }}">continue shopping</a> <input type="submit" value="Continue to checkout" name="checkout" class="primary" /></td>
+      </tr>
+
+    </table>
+
+  </div>
+  
+  
+  </form>
+
+  {% endif %}
+
+</div>

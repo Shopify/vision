@@ -39,6 +39,14 @@
 		<strong>Subtotal:</strong> {{cart.total_price | money_with_currency }}
 		</p>
     <p class="checkout"><input type="image" src="{{ 'checkout_icon.gif' | asset_url }}" alt="Proceed to Checkout" value="Proceed to Checkout" name="checkout"  /></p>
+
+		{% if additional_checkout_buttons %}
+    <div class="additional-checkout-buttons">
+      <p>- or -</p>
+      {{ content_for_additional_checkout_buttons }}
+    </div>
+    {% endif %}
+
   </form>
 	
   {% endif %}

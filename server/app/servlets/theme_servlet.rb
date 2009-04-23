@@ -100,13 +100,14 @@ class ThemeServlet < LiquidServlet
     <!-- We inject some stuff here which you won't find on the live server. -->
     <!-- if you need prototype yourself you need to manually include it in your layout --> 
     <link rel="stylesheet" href="/stylesheets/vision/vision.css" type="text/css" media="screen" charset="utf-8" />
-    <script type="text/javascript" src="/javascripts/prototype.js"></script>
-    <script type="text/javascript" src="/javascripts/effects.js"></script>
     <script type="text/javascript" src="/javascripts/vision/vision_html.js?action=#{@action_name}"></script>
     <script type="text/javascript" src="/javascripts/vision/vision.js?action=#{@action_name}"></script>
+    <script>
+      window.onload = function() { initVisionPalette(); }
+    </script>
     <!-- end inject -->  
     HEADERS
-        
+#    @content_for_header = ""    
   end
     
   def template_path

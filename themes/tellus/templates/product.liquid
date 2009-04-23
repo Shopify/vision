@@ -5,14 +5,14 @@
   	{% when 1 %}  
 	
       <div class="pimage">
-        <a href="{{ product.featured_image | product_img_url: 'large' }}" class="lbOn">{{ product.featured_image | product_img_url: 'medium' | img_tag }}</a>          	    
+        <a href="{{ product.featured_image | product_img_url: 'large' }}" rel="lightbox">{{ product.featured_image | product_img_url: 'medium' | img_tag }}</a>          	    
       </div>
     
     {% else %}
 
   	  {% for image in product.images %}
   	  <div id="pimage-{{forloop.index}}" class="pimage" {% if forloop.first %} style="display: block;" {% else %} style="display: none;" {% endif %}>
-        <a href="{{ image | product_img_url: 'large' }}" class="lbOn">{{ image | product_img_url: 'medium' | img_tag }}</a>          	    
+        <a href="{{ image | product_img_url: 'large' }}" rel="lightbox">{{ image | product_img_url: 'medium' | img_tag }}</a>          	    
   	  </div>
   	  {% endfor %}	 	  
   
@@ -41,24 +41,40 @@
     
     <form action="/cart/add" method="post">
       <h3>Variations of this product</h3>
-      <ul id="variants">
+
+      <select id="variants" name='id'>
         {% for variant in product.variants %}
-        <li>
-          {% if variant.available == true %}
-            <input type="radio" name="id" value="{{variant.id}}" id="radio_{{variant.id}}" style="vertical-align: middle;" {%if forloop.first%} checked="checked" {%endif%} />
-            <label for="radio_{{variant.id}}"><span class="variant-price">{{ variant.price | money_with_currency }}</span> - {{ variant.title }}</label>
-          {% else %}
-            <span class="soldout">Sold Out!</span> - {{ variant.title }}
-          {% endif %}
-        </li>
+          <option value="{{ variant.id }}">{{ variant.title }} - {{ variant.price | money }}</option>
         {% endfor %}
-      </ul>
-      
-      <ul class="buttons clearfix">
-        <li><input type="submit" name="add" value="Add to Cart" id="add" class="primary" /></li>
-      </ul>    
+      </select>
+
+      <div id="price-field"></div>
+    
+      <input type="submit" name="add" value="Add to Cart" id="add" class="primary clearfix" />
       
     </form>
     
   </div>
 </div>
+
+<script type="text/javascript">
+// <![CDATA[  
+  // prototype callback for multi variants dropdown selector
+  var selectCallback = function(variant, selector) {
+    if (variant && variant.available == true) {
+      // selected a valid variant
+      $('add').disabled = false;           // reenable add-to-cart button
+      $('price-field').innerHTML = Shopify.formatMoney(variant.price, "{{shop.money_with_currency_format}}");  // update price field
+    } else {
+      // variant doesn't exist
+      $('add').disabled = true;              // disable add-to-cart button      
+      $('price-field').innerHTML = (variant) ? "Sold Out" : "Unavailable"; // update price-field message
+    }
+  };
+
+  // initialize multi selector for product
+  Event.observe(document, 'dom:loaded', function() {  
+    new Shopify.OptionSelectors("variants", { product: {{ product | json }}, onVariantSelected: selectCallback }); 
+  });
+// ]]>
+</script>

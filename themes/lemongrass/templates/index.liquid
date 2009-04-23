@@ -1,0 +1,29 @@
+
+<table id="products" cellspacing="0" cellpadding="0">
+{% tablerow product in collections.frontpage.products cols:3  %}
+  <div class="product">
+    <h3><a href="{{product.url}}">{{product.title}}</a></h3>
+    <div class="product-image"><a href="{{product.url}}"><img src="{{ product.featured_image | product_img_url: 'small' }}" alt="{{ product.title | escape }}"/></a></div>
+    <div class="money">{{product.price_min | money}}
+    {% if product.compare_at_price %} 
+     {% if product.price_min != product.compare_at_price %}
+      <div class="original-price">{{product.compare_at_price | money}}</div>
+     {% endif %}
+    {% endif %}      
+    </div>
+  </div>
+{% endtablerow %}
+</table>
+
+<div id="articles">
+  {% for article in blogs.frontpage.articles  %}
+
+    <h2>{{ article.title }}</h2>
+    <div class="article-body textile">
+      {{ article.content }}
+    </div>    
+
+  {% endfor %}
+</div>
+
+

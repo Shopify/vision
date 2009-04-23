@@ -16,6 +16,10 @@ class ShopDrop < Liquid::Drop
     'http://vision.shopify.com'    
   end
   
+  def money_with_currency_format
+    "{{$ amount USD}}"
+  end
+  
   def products_count
     5
   end

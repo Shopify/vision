@@ -5,125 +5,158 @@
 product_variants: 
   - &product-1-var-1
     id: 1
-    option1: 151cm
-    price: 29900
+    title: 151cm / Normal
+    price: 19900
     weight: 1000
     compare_at_price: 49900
     available: true
     inventory_quantity: 5
+    option1: 151cm
+    option2: Normal
+    option3: 
   - &product-1-var-2
     id: 2
-    option1: 155cm
+    title: 155cm / Normal
     price: 31900
     weight: 1000
     compare_at_price: 50900
     available: true
     inventory_quantity: 2
+    option1: 155cm
+    option2: Normal
+    option3: 
   - &product-2-var-1
     id: 3
-    option1: 162cm
+    title: 162cm
     price: 29900
     weight: 1000
     compare_at_price: 52900
     available: true
     inventory_quantity: 3
+    option1: 162cm
+    option2: 
+    option3: 
   - &product-3-var-1
     id: 4
-    option1: 159cm
+    title: 159cm
     price: 19900
     weight: 1000
     compare_at_price: 
     available: true
     inventory_quantity: 4
+    option1: 159cm
+    option2: 
+    option3: 
   - &product-4-var-1
     id: 5
-    option1: 159cm
+    title: 159cm
     price: 19900
     weight: 1000
     compare_at_price: 32900
     available: true
     inventory_quantity: 6
+    option1: 159cm
+    option2: 
+    option3: 
   - &product-1-var-3
     id: 6
-    option1: 158cm
+    title: 158cm / Wide
     price: 23900
     weight: 1000
     compare_at_price: 99900
     available: false
     inventory_quantity: 0
+    option1: 158cm
+    option2: Wide
+    option3:
   - &product-3-var-2
     id: 7
-    option1: 162cm
+    title: 162cm
     price: 19900
     weight: 1000
     compare_at_price: 
     available: false
     inventory_quantity: 0
+    option1: 162cm
+    option2: 
+    option3: 
   - &product-3-var-3
     id: 8
-    option1: 165cm
+    title: 165cm
     price: 22900
     weight: 1000
     compare_at_price:
     available: true
     inventory_quantity: 4
+    option1: 165cm
+    option2: 
+    option3: 
   - &product-5-var-1
     id: 9
-    option1: black
-    option2: 42
+    title: black / 42
     price: 11900
     weight: 500
     compare_at_price: 22900
     available: true
     inventory_quantity: 1
+    option1: black
+    option2: 42
+    option3:
   - &product-5-var-2
     id: 10
-    option1: beige
-    option2: 42
+    title: beige / 42
     price: 11900
     weight: 500
     compare_at_price: 22900
     available: true
     inventory_quantity: 3
+    option1: beige
+    option2: 42
+    option3:
   - &product-5-var-3
     id: 11
-    option1: white
-    option2: 42
+    title: white / 42
     price: 13900
     weight: 500
     compare_at_price: 24900
     available: true
     inventory_quantity: 1
+    option1: white
+    option2: 42
+    option3:
   - &product-5-var-4
     id: 12
-    option1: black
-    option2: 44
+    title: black / 44
     price: 11900
     weight: 500
     compare_at_price: 22900
     available: true
     inventory_quantity: 2
+    option1: black
+    option2: 44
+    option3:
   - &product-5-var-5
     id: 13
-    option1: beige
-    option2: 44
+    title: beige / 44
     price: 11900
     weight: 500
     compare_at_price: 22900
     available: false
     inventory_quantity: 0
+    option1: beige
+    option2: 44
+    option3:
   - &product-5-var-6
     id: 14
-    option1: white
-    option2: 44
+    title: white / 44
     price: 13900
     weight: 500
     compare_at_price: 24900
     available: false
     inventory_quantity: 0
-
-
-
+    option1: white
+    option2: 44
+    option3:
 
 # =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 #   Products
@@ -146,9 +179,10 @@ products:
       - pro
       - intermediate
       - wooden      
-      - freestyle            
-    options:
-      - size
+      - freestyle
+    options: 
+      - Length
+      - Style           
     compare_at_price: 49900
     compare_at_price_max: 50900
     compare_at_price_min: 49900
@@ -180,7 +214,7 @@ products:
       - wooden          
       - freestyle
     options:
-      - size 
+      - Length 
     compare_at_price: 52900
     compare_at_price_max: 52900
     compare_at_price_min: 52900
@@ -210,7 +244,7 @@ products:
       - freestyle      
       - purple
     options:
-      - size
+      - Length
     price_varies: true
     available: true    
     compare_at_price: 
@@ -248,7 +282,7 @@ products:
       - freestyle   
       - orange
     options:
-      - size
+      - Length
     compare_at_price: 32900
     compare_at_price_max: 32900
     compare_at_price_min: 32900
@@ -280,8 +314,8 @@ products:
       - intermediate   
       - boots
     options:
-      - color
-      - shoe size
+      - Color
+      - Shoe Size
     compare_at_price: 22900
     compare_at_price_max: 22900
     compare_at_price_min: 22900

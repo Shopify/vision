@@ -4,19 +4,20 @@
     {% if forloop.first %}
     <div id="prod-img"> <img src="{{ image | product_img_url: 'large'}}" alt="{{product.title}}" /> </div>
     {% else %}
-    <div class="prod-img-small fl"> <a href="{{ image | product_img_url: 'large' }}" class="lbOn"> <img src="{{ image | product_img_url: 'small'}}" alt="{{product.title}}" /> </a> </div>
+    <div class="prod-img-small fl"> <a href="{{ image | product_img_url: 'large' }}" rel="lightbox"> <img src="{{ image | product_img_url: 'small'}}" alt="{{product.title}}" /> </a> </div>
     {% endif %}
     {% endfor %} </div>
   <div id="variant-add">
     <form action="/cart/add" method="post">
-      <ul id="variants">
+    
+      <select id="variants" name='id'>
         {% for variant in product.variants %}
-        <li> {% if variant.available == true %}
-          <input type="radio" name="id" value="{{variant.id}}" id="radio_{{variant.id}}" style="vertical-align: middle;" {%if forloop.first%} checked="checked" {%endif%} />
-          <label for="radio_{{variant.id}}">{{ variant.title }} for <span class="price">{{ variant.price | money_with_currency }}</span></label>
-          {% else %} <span style="text-decoration: line-through;margin-left: 28px">{{ variant.title }}</span>&nbsp;<span class="price">Sold out!</span> {% endif %} </li>
+          <option value="{{ variant.id }}">{{ variant.title }} - {{ variant.price | money }}</option>
         {% endfor %}
-      </ul>
+      </select>
+
+      <div id="price-field"></div>
+      
       <div class="addtocart">
         <input type="image" name="add" value="Add to Cart" id="add" class="button" src="{{ 'add.gif' | asset_url }}" />
       </div>
@@ -30,3 +31,27 @@
     </ul>
   </div>
 </div>
+
+<script type="text/javascript">
+// <![CDATA[  
+  // prototype callback for multi variants dropdown selector
+  var selectCallback = function(variant, selector) {
+    if (variant && variant.available == true) {
+      // selected a valid variant
+      $('add').removeClassName('disabled'); // remove unavailable class from add-to-cart button
+      $('add').disabled = false;           // reenable add-to-cart button
+      $('price-field').innerHTML = Shopify.formatMoney(variant.price, "{{shop.money_with_currency_format}}");  // update price field
+    } else {
+      // variant doesn't exist
+      $('add').addClassName('disabled');      // set add-to-cart button to unavailable class
+      $('add').disabled = true;              // disable add-to-cart button      
+      $('price-field').innerHTML = (variant) ? "Sold Out" : "Unavailable"; // update price-field message
+    }
+  };
+
+  // initialize multi selector for product
+  Event.observe(document, 'dom:loaded', function() {  
+    new Shopify.OptionSelectors("variants", { product: {{ product | json }}, onVariantSelected: selectCallback }); 
+  });
+// ]]>
+</script>

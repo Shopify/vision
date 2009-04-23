@@ -19,9 +19,19 @@ h1, h2, h3, h4, h5, h6 {
 	font-weight: bold;
 }
 
+a { 
+  color: #db0a0a;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+a:hover {
+	color: #000;
+}
+
 div#container {
 	text-align: left;
-	width: 960px;
+	width: 980px;
 	margin: 0 auto;
 	border-top: 20px solid #000;
 }
@@ -387,10 +397,6 @@ div#product-select select {
 	margin-right: 5px;
 }
 
-div#product-variants {
-	padding-bottom: 25px;
-}
-
 div#product-variants span {
 	color: #db0a0a;
 	font-size: 68.75%;
@@ -496,6 +502,30 @@ div#thumbs a.show {
 
 div#thumbs a:hover {
 	background-color: #000;
+}
+
+
+#price-field {
+  font-size: 12px;
+  position: relative;
+  top: 21px;
+  left: 10px;
+  color: #fff;
+}
+
+#product-variants select {
+  margin: 0 0 10px 0;
+}
+
+#product-variants label {
+  font-weight: bold;
+  display: block;
+  margin: 0 0 5px 0;
+  font-size: 12px;
+}
+
+#add-cart.disabled {
+  background: #bbb !important;
 }
 
 /* @end */
@@ -724,6 +754,18 @@ div#checkout input#getout {
 
 div#checkout input#getout:hover {
 	text-decoration: underline;
+}
+
+.additional-checkout-buttons {
+  text-align: right;
+}
+
+.additional-checkout-buttons p {
+  position: relative;
+  right: 70px;
+  margin: 20px 0;
+  padding: 0 !important;
+  color: #999;
 }
 
 /* @end */

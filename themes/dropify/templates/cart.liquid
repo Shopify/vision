@@ -23,7 +23,7 @@
 				  <div class="prodimage">
           <a href="{{item.product.url}}" title="View {{item.title}} Page"><img src="{{item.product.featured_image | product_img_url: 'thumb' }}" alt="{{item.title | escape }}" /></a>
         </div></div>
-        <h3 style="width:400px;">
+        <h3 style="padding-right: 150px">
 			<a href="{{item.product.url}}" title="View {{item.title | escape }} Page">
 				{{ item.title }}
 				{% if item.variant.available == true %}
@@ -51,6 +51,13 @@
     <div class="info">
 		<input type="image" value="Checkout!" name="checkout" src="{{ 'checkout.gif' | asset_url }}" />
     </div>
+  
+  	{% if additional_checkout_buttons %}
+    <div class="additional-checkout-buttons">
+      <p>- or -</p>
+      {{ content_for_additional_checkout_buttons }}
+    </div>
+    {% endif %}
   
   </form>
 

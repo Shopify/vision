@@ -1,0 +1,100 @@
+{% paginate collection.products by 18 %}
+
+{% if collection.description %}
+  <div id="collection-description" class="textile">{{ collection.description }}</div>
+{% endif %}
+
+<!-- LIST 3 PER ROW -->
+<table id="products" cellspacing="0" cellpadding="10">
+{% tablerow product in collection.products cols:3  %}
+    
+  <div class="product-image"><a href="{{product.url}}"><img src="{{ product.featured_image | product_img_url: 'small' }}" alt=""/></a></div>
+
+  <div class="attributes">
+    <p id="price-field-{{product.id}}" class="money">{{product.variants.first.price | money}}</p>
+    <input type="hidden" id="price-{{ product.id }}" />
+
+    <h3><a href="{{product.url}}">{{product.title}}</a></h3>
+
+
+    {% if product.available %}
+
+    <form id="product-{{ product.id }}" action="/cart/add" method="post">
+     <input type="hidden" name="return_to" value="back" />
+
+
+     <select id="product-variants-{{product.id}}" name="id">
+       {% for variant in product.variants %}
+         {% if variant.available %}
+           <option value="{{variant.id}}" title="{{ variant.price | money }}">{{ variant.title | truncate: 14 }}</option>
+         {% endif %}
+       {% endfor %}
+     </select>
+
+     <select id="product-quantity-{{product.id}}" name="quantity" onchange="Showroom.updatePrice({{product.id}})">
+       <option>1</option>
+       <option>2</option>
+       <option>3</option>
+       <option>4</option>
+       <option>5</option>
+       <option>6</option>
+       <option>7</option>
+       <option>8</option>
+       <option>9</option>
+       <option>10</option>
+     </select>
+     
+     <input type="submit" id="add-{{ product.id}}" name="add" value="Add to cart" onclick="Shopify.addItemFromForm('product-{{product.id}}');return false" />
+
+    </form>  
+    
+    {% else %}    
+      <p class="sold-out">sold out!</p>    
+    {% endif %}
+    
+  </div>
+  {% endtablerow %}
+</table>
+<!-- /LIST 3 PER ROW  -->
+
+
+
+  {% if paginate.pages > 1 %}
+    <div id="pagination" class="r">
+      {{ paginate | default_pagination }}
+    </div>
+  {% endif %}
+
+{% endpaginate %}
+
+<script type="text/javascript">
+<!--
+  // prototype callback for multi variants dropdown selector
+  var selectCallback = function(variant, selector) {
+    if (variant && variant.available == true) {
+      // selected a valid variant
+      $('add-'+selector.product.id).removeClassName('disabled'); // remove unavailable class from add-to-cart button
+      $('add-'+selector.product.id).disabled = false;           // reenable add-to-cart button
+      $('product-quantity-'+selector.product.id).disabled = false; // reenable quantity dropdown
+
+      var field = $('product-quantity-'+selector.product.id); // get qty field
+      $('price-field-'+selector.product.id).innerHTML = Shopify.formatMoney((variant.price * field.options[field.selectedIndex].text), "{{shop.money_with_currency_format}}");  // update price field
+      $('price-'+selector.product.id).value = variant.price; // save price in hidden input field so it can be accessed by qty dropdown
+    } else {
+      // variant doesn't exist
+      $('add-'+selector.product.id).addClassName('disabled');     // set add-to-cart button to unavailable class
+      $('add-'+selector.product.id).disabled = true;              // disable add-to-cart button
+      $('product-quantity-'+selector.product.id).disabled = true; // disable quantity dropdown
+      $('price-field-'+selector.product.id).innerHTML = (variant) ? "Sold Out" : "Unavailable"; // update price-field message
+    }
+  };
+
+
+  // initialize multi selector for product
+  Event.observe(document, 'dom:loaded', function() {
+    {% for product in collection.products %}
+      new Shopify.OptionSelectors("product-variants-{{product.id}}", { product: {{ product | json }}, onVariantSelected: selectCallback }); 
+    {% endfor %}
+  });
+-->
+</script>
