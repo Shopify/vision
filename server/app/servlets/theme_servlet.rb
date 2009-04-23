@@ -65,6 +65,12 @@ class ThemeServlet < LiquidServlet
     render :type => :liquid, :action => template_considering_cookies
   end
   
+  def article
+    @article = Database.find(:all, :articles).find {|a| a['id'].to_i == @params["article"].to_i}
+    @page_title = @article["title"]
+    render :type => :liquid, :action => template_considering_cookies
+  end
+  
   def checkout
     render :file => "#{ROOT}/app/views/#{controller_name}/checkout.html", :layout => false
   end
@@ -125,6 +131,7 @@ class ThemeServlet < LiquidServlet
   def path_scan
     
     matches = @request.path_info.gsub(/\+/,' ').scan(/\/([\w\s\-\.\+]+)/).flatten
+    puts "matches: #{matches.inspect}"
     @action_name      = matches[0] if matches[0]
     @params['handle'] = matches[1] if matches[1]
     @params['tags']   = matches[2] if matches[2]
@@ -132,7 +139,14 @@ class ThemeServlet < LiquidServlet
     @action_name = 'collection' if @action_name == 'collections'
     @action_name = 'product'    if @action_name == 'products'
     @action_name = 'page'       if @action_name == 'pages'
-    @action_name = 'blog'       if @action_name == 'blogs'
+    if @action_name == 'blogs'
+      if matches[2]
+        @params['article'] = matches[2]
+        @action_name = "article"
+      else
+        @action_name = 'blog'
+      end
+    end
   end
   
 end
