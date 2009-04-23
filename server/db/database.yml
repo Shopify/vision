@@ -5,7 +5,7 @@
 product_variants: 
   - &product-1-var-1
     id: 1
-    title: 151cm
+    option1: 151cm
     price: 29900
     weight: 1000
     compare_at_price: 49900
@@ -13,7 +13,7 @@ product_variants:
     inventory_quantity: 5
   - &product-1-var-2
     id: 2
-    title: 155cm
+    option1: 155cm
     price: 31900
     weight: 1000
     compare_at_price: 50900
@@ -21,7 +21,7 @@ product_variants:
     inventory_quantity: 2
   - &product-2-var-1
     id: 3
-    title: 162cm
+    option1: 162cm
     price: 29900
     weight: 1000
     compare_at_price: 52900
@@ -29,7 +29,7 @@ product_variants:
     inventory_quantity: 3
   - &product-3-var-1
     id: 4
-    title: 159cm
+    option1: 159cm
     price: 19900
     weight: 1000
     compare_at_price: 
@@ -37,7 +37,7 @@ product_variants:
     inventory_quantity: 4
   - &product-4-var-1
     id: 5
-    title: 159cm
+    option1: 159cm
     price: 19900
     weight: 1000
     compare_at_price: 32900
@@ -45,7 +45,7 @@ product_variants:
     inventory_quantity: 6
   - &product-1-var-3
     id: 6
-    title: 158cm
+    option1: 158cm
     price: 23900
     weight: 1000
     compare_at_price: 99900
@@ -53,7 +53,7 @@ product_variants:
     inventory_quantity: 0
   - &product-3-var-2
     id: 7
-    title: 162cm
+    option1: 162cm
     price: 19900
     weight: 1000
     compare_at_price: 
@@ -61,7 +61,7 @@ product_variants:
     inventory_quantity: 0
   - &product-3-var-3
     id: 8
-    title: 165cm
+    option1: 165cm
     price: 22900
     weight: 1000
     compare_at_price:
@@ -69,12 +69,61 @@ product_variants:
     inventory_quantity: 4
   - &product-5-var-1
     id: 9
-    title: black
+    option1: black
+    option2: 42
     price: 11900
     weight: 500
     compare_at_price: 22900
     available: true
     inventory_quantity: 1
+  - &product-5-var-2
+    id: 10
+    option1: beige
+    option2: 42
+    price: 11900
+    weight: 500
+    compare_at_price: 22900
+    available: true
+    inventory_quantity: 3
+  - &product-5-var-3
+    id: 11
+    option1: white
+    option2: 42
+    price: 13900
+    weight: 500
+    compare_at_price: 24900
+    available: true
+    inventory_quantity: 1
+  - &product-5-var-4
+    id: 12
+    option1: black
+    option2: 44
+    price: 11900
+    weight: 500
+    compare_at_price: 22900
+    available: true
+    inventory_quantity: 2
+  - &product-5-var-5
+    id: 13
+    option1: beige
+    option2: 44
+    price: 11900
+    weight: 500
+    compare_at_price: 22900
+    available: false
+    inventory_quantity: 0
+  - &product-5-var-6
+    id: 14
+    option1: white
+    option2: 44
+    price: 13900
+    weight: 500
+    compare_at_price: 24900
+    available: false
+    inventory_quantity: 0
+
+
+
 
 # =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 #   Products
@@ -98,6 +147,8 @@ products:
       - intermediate
       - wooden      
       - freestyle            
+    options:
+      - size
     compare_at_price: 49900
     compare_at_price_max: 50900
     compare_at_price_min: 49900
@@ -127,7 +178,9 @@ products:
       - season2005
       - pro
       - wooden          
-      - freestyle            
+      - freestyle
+    options:
+      - size 
     compare_at_price: 52900
     compare_at_price_max: 52900
     compare_at_price_min: 52900
@@ -156,6 +209,8 @@ products:
       - intermediate
       - freestyle      
       - purple
+    options:
+      - size
     price_varies: true
     available: true    
     compare_at_price: 
@@ -191,7 +246,9 @@ products:
       - beginner
       - intermediate
       - freestyle   
-      - orange 
+      - orange
+    options:
+      - size
     compare_at_price: 32900
     compare_at_price_max: 32900
     compare_at_price_min: 32900
@@ -221,7 +278,10 @@ products:
       - season2006
       - beginner
       - intermediate   
-      - boots 
+      - boots
+    options:
+      - color
+      - shoe size
     compare_at_price: 22900
     compare_at_price_max: 22900
     compare_at_price_min: 22900
@@ -420,12 +480,21 @@ pages:
     content: <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
     created_at: 2005-04-04 12:00
 
+  - &page-6
+    id: 5
+    title: Frontpage
+    handle: frontpage
+    url: /pages/frontpage    
+    author: Tobi
+    content: <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+    created_at: 2005-04-04 12:00
+
 blogs:
   - &blog-1
      id: 1
-     handle: frontpage
-     title: Frontpage
-     url: /blogs/frontpage
+     handle: news
+     title: News
+     url: /blogs/news
      articles: 
        - 
          id: 3
