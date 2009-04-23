@@ -72,59 +72,182 @@ Shopify.resizeImage = function(image, size) {
   } catch (e) { return image; }
 },
 /* API */
-  
+
+/* default mock items for callbacks */
+/* line_items.to_json =>  
+    'id'        
+    'title'     
+    'price'      
+    'line_price' 
+    'quantity'   
+    'sku'        
+    'grams'      
+    'vendor'     
+    'variant_id'
+    'url'
+    'image'
+    'handle'      
+*/
+Shopify.default_line_item = { 
+  id: 1,
+  title: 'Arbor Draft',
+  price: 29900,
+  line_price: 29900,
+  quantity: 1,
+  sku: "", 
+  grams: 1000,
+  vendor: "Arbor",
+  variant_id: 1,
+  image: "",
+  url: "/products/arbor-draft",
+  handle: "arbor-draft"
+},
+
+Shopify.default_cart = {
+  "items": [
+      {
+        id: 1,
+        title: 'Arbor Draft',
+        price: 29900,
+        line_price: 29900,
+        quantity: 1,
+        sku: "", 
+        grams: 1000,
+        vendor: "Arbor",
+        variant_id: 1,
+        image: "products/arbor_draft.jpg",
+        url: "/products/arbor-draft",
+        handle: "arbor-draft"
+      },
+      {
+        id: 2,
+        title: 'Comic ~ Orange',
+        price: 19900,
+        line_price: 39800,
+        quantity: 2,
+        sku: "", 
+        grams: 1000,
+        vendor: "Technine",
+        variant_id: 5,
+        image: "products/technine3.jpg",
+        url: "/products/comic-orange",
+        handle: "comic-orange"    
+      }
+  ],
+  "total_price": 69700, 
+  "attributes": {}, 
+  "item_count": 2, 
+  "note": "", 
+  "total_weight": 400.0
+},
+
+Shopify.default_product = {
+  "handle":"arbor-draft",
+  "options": ["Length","Style"],
+  "title":"Arbor Draft",
+  "price":23900,
+  "available":true,
+  "tags":["season2005","pro","intermediate","wooden","freestyle"],
+  "featured_image":"products\/arbor_draft.jpg",
+  "type":"Snowboards",
+  "url":"\/products\/arbor-draft",
+  "id":1,
+  "compare_at_price":49900,
+  "price_varies":true,
+  "compare_at_price_max":50900,
+  "compare_at_price_varies":true,
+  "images":["products\/arbor_draft.jpg"],
+  "description":"The Arbor Draft snowboard wouldn't exist if Polynesians hadn't figured out how to surf hundreds of years ago. But the Draft does exist, and it's here to bring your urban and park riding to a new level. The board's freaky Tiki design pays homage to culture that inspired snowboarding. It's designed to spin with ease, land smoothly, lock hook-free onto rails, and take the abuse of a pavement pounding or twelve. The Draft will pop off kickers with authority and carve solidly across the pipe. The Draft features targeted Koa wood die cuts inlayed into the deck that enhance the flex pattern. Now bow down to riding's ancestors.",
+  "price_max":31900,
+  "variants": [
+    { 
+      "option2":"Normal",
+      "option3":null,
+      "available":true,
+      "weight":1000,
+      "price":19900,
+      "title":"151cm \/ Normal",
+      "inventory_quantity":5,
+      "compare_at_price":49900,
+      "id":1,
+      "option1":"151cm"
+    },
+    { 
+      "option2":"Normal",
+      "option3":null,
+      "available":true,
+      "weight":1000,
+      "price":31900,
+      "title":"155cm \/ Normal",
+      "inventory_quantity":2,
+      "compare_at_price":50900,
+      "id":2,
+      "option1":"155cm"
+    },
+    {
+      "option2":"Wide",
+      "option3":null,
+      "available":false,
+      "weight":1000,
+      "price":23900,
+      "title":"158cm / Wide",
+      "inventory_quantity":0,
+      "compare_at_price":99900,
+      "id":6,
+      "option1":"158cm"
+    }
+  ],
+  "vendor":"Arbor",
+  "price_min":23900,
+  "compare_at_price_min":49900
+},
+
+
 Shopify.addItem = function(variant_id, quantity, callback) {            
   var quantity = quantity || 1;
-  new Ajax.Request("/cart/add.js", this.params('post', 'quantity='+quantity+'&id='+variant_id, callback || this.onItemAdded.bind(this)));
+  var data = this.default_line_item;
+  (callback) ? callback(data) : this.onItemAdded(data);
 }, 
 
 Shopify.addItemFromForm = function(form_id, callback) {        
-  new Ajax.Request("/cart/add.js", this.params('post', Form.serialize(form_id), callback || this.onItemAdded.bind(this)));
+  var data = this.default_line_item;
+  (callback) ? callback(data) : this.onItemAdded(data);
 },
 
 Shopify.getCart = function(callback) {
-  new Ajax.Request("/cart.js", this.params('get', null, (callback || this.onCartUpdate.bind(this))));
+  var data = this.default_cart;
+  (callback) ? callback(data) : this.onCartUpdate(data);
 },  
 
 Shopify.getProduct = function(handle, callback) {
-  new Ajax.Request("/products/"+handle+'.js', this.params('get', null, (callback || this.onProduct.bind(this))));
-},  
+  var data = this.default_product;
+  (callback) ? callback(data) : this.onProduct(data);
+},
 
-Shopify.changeItem = function(variant_id, quantity) {            
-  new Ajax.Request("/cart/change.js", this.params('post', 'quantity='+quantity+'&id='+variant_id, this.onCartUpdate.bind(this)));
-},  
+Shopify.changeItem = function(variant_id, quantity) { 
+  var data = this.default_cart;
+  (callback) ? callback(data) : this.onCartUpdate(data);
+},
 
-Shopify.removeItem = function(variant_id) {            
-  new Ajax.Request("/cart/change.js", this.params('post', 'quantity=0&id='+variant_id, this.onCartUpdate.bind(this)));
+Shopify.removeItem = function(variant_id) {
+  var data = this.default_cart;
+  (callback) ? callback(data) : this.onCartUpdate(data);
 },              
 
 
 Shopify.clear = function() {            
-  new Ajax.Request("/cart/clear.js", this.params('post', '', this.onCartUpdate.bind(this)));
+  var data = this.default_cart;
+  (callback) ? callback(data) : this.onCartUpdate(data);
 },
 
 Shopify.updateCart = function(updates, callback) {
-  var query = '';
-
-  if(updates.type == Array) {    
-    $A(array).flatten().each(function(qty) { 
-      query += ('updates[]=' + qty.toString()) + "&" ;
-    }); 
-  }
-  else if (updates.type == Object) {
-    $H(array).flatten().each(function(id, qty) { 
-      query += ('updates['+id.toString()+']=' + qty.toString()) + "&" ;
-    });       
-  }
-  else {
-    throw "updates parameter must be array of quantities or a hash of {item_ids: quantities}"
-  }
-
-  new Ajax.Request("/cart/update.js", this.params('post', query, (callback || this.onCartUpdate.bind(this))));
+  var data = this.default_cart;
+  (callback) ? callback(data) : this.onCartUpdate(data);
 },
 
 Shopify.updateCartFromForm = function(form_id, callback) {
-  new Ajax.Request("/cart/update.js", this.params('post', Form.serialize(form_id) , (callback || this.onCartUpdate.bind(this))));
+  var data = this.default_cart;
+  (callback) ? callback(data) : this.onCartUpdate(data);
 }
 
 /* private */
