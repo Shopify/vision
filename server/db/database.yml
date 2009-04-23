@@ -33,6 +33,9 @@ product_variants:
     compare_at_price: 52900
     available: true
     inventory_quantity: 3
+    option1: 162cm
+    option2: 
+    option3: 
   - &product-3-var-1
     id: 4
     title: 159cm
@@ -41,6 +44,9 @@ product_variants:
     compare_at_price: 
     available: true
     inventory_quantity: 4
+    option1: 159cm
+    option2: 
+    option3: 
   - &product-4-var-1
     id: 5
     title: 159cm
@@ -49,6 +55,9 @@ product_variants:
     compare_at_price: 32900
     available: true
     inventory_quantity: 6
+    option1: 159cm
+    option2: 
+    option3: 
   - &product-1-var-3
     id: 6
     title: 158cm / Wide
@@ -68,6 +77,9 @@ product_variants:
     compare_at_price: 
     available: false
     inventory_quantity: 0
+    option1: 162cm
+    option2: 
+    option3: 
   - &product-3-var-3
     id: 8
     title: 165cm
@@ -76,6 +88,9 @@ product_variants:
     compare_at_price:
     available: true
     inventory_quantity: 4
+    option1: 165cm
+    option2: 
+    option3: 
   - &product-5-var-1
     id: 9
     title: black
@@ -84,6 +99,9 @@ product_variants:
     compare_at_price: 22900
     available: true
     inventory_quantity: 1
+    option1: black
+    option2: 
+    option3: 
 
 # =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 #   Products
@@ -139,7 +157,9 @@ products:
       - season2005
       - pro
       - wooden          
-      - freestyle            
+      - freestyle
+    options:
+      - Title           
     compare_at_price: 52900
     compare_at_price_max: 52900
     compare_at_price_min: 52900
@@ -168,6 +188,8 @@ products:
       - intermediate
       - freestyle      
       - purple
+    options:
+      - Title
     price_varies: true
     available: true    
     compare_at_price: 
@@ -203,7 +225,9 @@ products:
       - beginner
       - intermediate
       - freestyle   
-      - orange 
+      - orange
+    options:
+      - Title
     compare_at_price: 32900
     compare_at_price_max: 32900
     compare_at_price_min: 32900
@@ -233,7 +257,9 @@ products:
       - season2006
       - beginner
       - intermediate   
-      - boots 
+      - boots
+    options:
+      - Title
     compare_at_price: 22900
     compare_at_price_max: 22900
     compare_at_price_min: 22900

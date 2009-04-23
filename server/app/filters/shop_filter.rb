@@ -1,5 +1,5 @@
 module ShopFilter
-    
+      
   def asset_url(input)
     "/files/shops/random_number/assets/#{input}"
   end

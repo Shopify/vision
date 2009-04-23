@@ -123,6 +123,7 @@ Shopify.formatMoney = function(cents, format) {
   var value = '';
   var patt = /\{\{\s*(\w+)\s*\}\}/;
   var formatString = (format || this.money_format);
+  console.log("format is ", formatString);
   switch(formatString.match(patt)[1]) {
   case 'amount':
     value = floatToString(cents/100.0, 2);
