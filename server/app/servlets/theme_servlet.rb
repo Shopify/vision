@@ -66,7 +66,8 @@ class ThemeServlet < LiquidServlet
   end
   
   def article
-    @article = Database.find(:all, :articles).find {|a| a['id'].to_i == @params["article"].to_i}
+    @blog = Database.find(:all, :blogs).find { |a| a['handle'] == @params['handle']}
+    @article = @blog["articles"].detect { |a| a["id"].to_i == @params["article"].to_i}
     @page_title = @article["title"]
     render :type => :liquid, :action => template_considering_cookies
   end
