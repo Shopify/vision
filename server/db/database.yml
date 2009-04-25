@@ -162,7 +162,7 @@ product_variants:
     title: red
     price: 2179500
     weight: 200000
-    compare_at_price: 0
+    compare_at_price:
     available: true
     inventory_quantity: 0
     option1: red
@@ -173,7 +173,7 @@ product_variants:
     title: black / small
     price: 1900
     weight: 200
-    compare_at_price: 0
+    compare_at_price:
     available: true
     inventory_quantity: 20
     option1: black
@@ -184,7 +184,7 @@ product_variants:
     title: black / medium
     price: 1900
     weight: 200
-    compare_at_price: 0
+    compare_at_price:
     available: false
     inventory_quantity: 0
     option1: black
@@ -195,7 +195,7 @@ product_variants:
     title: black / large
     price: 1900
     weight: 200
-    compare_at_price: 0
+    compare_at_price:
     available: true
     inventory_quantity: 10
     option1: black
@@ -206,14 +206,111 @@ product_variants:
     title: black / extra large
     price: 1900
     weight: 200
-    compare_at_price: 0
+    compare_at_price:
     available: false
     inventory_quantity: 0
     option1: black
     option2: extra large
     option3:
-
-
+  - &product-8-var-1
+    id: 20
+    title: brown / small
+    price: 5900
+    weight: 400
+    compare_at_price: 6900
+    available: true
+    inventory_quantity: 5
+    option1: brown
+    option2: small
+    option3:
+  - &product-8-var-2
+    id: 21
+    title: brown / medium
+    price: 5900
+    weight: 400
+    compare_at_price: 6900
+    available: false
+    inventory_quantity: 0
+    option1: brown
+    option2: medium
+    option3:       
+  - &product-8-var-3
+    id: 22
+    title: brown / large
+    price: 5900
+    weight: 400
+    compare_at_price: 6900
+    available: true
+    inventory_quantity: 10
+    option1: brown
+    option2: large
+    option3:
+  - &product-8-var-4
+    id: 23
+    title: black / small
+    price: 5900
+    weight: 400
+    compare_at_price: 6900
+    available: true
+    inventory_quantity: 10
+    option1: black
+    option2: small
+    option3:
+  - &product-8-var-5
+    id: 24
+    title: black / medium
+    price: 5900
+    weight: 400
+    compare_at_price: 6900
+    available: true
+    inventory_quantity: 10
+    option1: black
+    option2: medium
+    option3:
+  - &product-8-var-6
+    id: 25
+    title: black / large
+    price: 5900
+    weight: 400
+    compare_at_price: 6900
+    available: false
+    inventory_quantity: 0
+    option1: black
+    option2: large
+    option3:
+  - &product-9-var-1
+    id: 26
+    title: Body Only
+    price: 499995
+    weight: 2000
+    compare_at_price:
+    available: true
+    inventory_quantity: 3
+    option1: Body Only
+    option2:
+    option3:
+  - &product-9-var-2
+    id: 27
+    title: Kit with 18-55mm VR lens
+    price: 523995
+    weight: 2000
+    compare_at_price:
+    available: true
+    inventory_quantity: 2
+    option1: Kit with 18-55mm VR lens
+    option2:
+    option3:
+  - &product-9-var-3
+    id: 28
+    title: Kit with 18-200 VR lens
+    price: 552500
+    weight: 2000
+    compare_at_price:
+    available: true
+    inventory_quantity: 3
+    option1: Kit with 18-200 VR lens
+    option2:
+    option3:
 
 # =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 #   Products
@@ -455,12 +552,87 @@ products:
     images:
       - products/shopify_shirt.png
     description:
-      High Quality Shopify Shirt. Wear your e-commerce solution with pride and attract attention anywhere you go.
+      <p>High Quality Shopify Shirt. Wear your e-commerce solution with pride and attract attention anywhere you go.</p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
     variants: 
       - *product-7-var-1
       - *product-7-var-2
       - *product-7-var-3
       - *product-7-var-4            
+
+  - &product-8
+    id: 8
+    title: Hooded Sweater
+    handle: hooded-sweater
+    type: Sweater
+    vendor: Stormtech
+    price: 5900
+    price_max: 5900
+    price_min: 5900
+    price_varies: false
+    available: true    
+    tags: 
+      - sweater
+      - hooded
+      - apparel  
+      - clothing
+    options:
+      - Color
+      - Size
+    compare_at_price: 6900
+    compare_at_price_max: 6900
+    compare_at_price_min: 6900
+    compare_at_price_varies: false
+    url: /products/hooded-sweater
+    featured_image: products/hooded-sweater.jpg
+    images:
+      - products/hooded-sweater.jpg
+      - products/hooded-sweater-b.jpg
+    description:
+      <p>Extra comfortable zip up sweater. Durable quality, ideal for any outdoor activities.</p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+    variants: 
+      - *product-8-var-1
+      - *product-8-var-2
+      - *product-8-var-3
+      - *product-8-var-4            
+      - *product-8-var-5
+      - *product-8-var-6
+
+  - &product-9
+    id: 9
+    title: D3 Digital SLR Camera
+    handle: d3
+    type: SLR
+    vendor: Nikon
+    price: 499995
+    price_max: 552500
+    price_min: 499995
+    price_varies: true
+    available: true    
+    tags: 
+      - camera
+      - slr
+      - nikon  
+      - professional
+    options:
+      - Bundle
+    compare_at_price:
+    compare_at_price_max: 0
+    compare_at_price_min: 0
+    compare_at_price_varies: false
+    url: /products/d3
+    featured_image: products/d3.jpg
+    images:
+      - products/d3.jpg
+      - products/d3_2.jpg
+      - products/d3_3.jpg      
+    description:
+      <p>Flagship pro D-SLR with a 12.1-MP FX-format CMOS sensor, blazing 9 fps shooting at full FX resolution and low-noise performance up to 6400 ISO.</p>
+    variants: 
+      - *product-9-var-1
+      - *product-9-var-2
+      - *product-9-var-3
 
       
 # =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
@@ -576,9 +748,9 @@ collections:
     handle: frontpage
     url: /collections/frontpage
     products:
-      - *product-1
-      - *product-4
-      - *product-3
+      - *product-7
+      - *product-8
+      - *product-9
 
   - &collection-2
     id: 2
@@ -619,6 +791,22 @@ collections:
       - *product-3
       - *product-4
     products_count: 210
+
+  - &collection-6
+    id: 6
+    title: All products
+    handle: 'all'
+    url: '/collections/all'
+    products: 
+      - *product-1
+      - *product-2
+      - *product-3
+      - *product-4
+      - *product-5
+      - *product-6
+      - *product-7
+      - *product-8
+      - *product-9
           
 # =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 #   Pages and Blogs
