@@ -6,6 +6,7 @@ require 'page_collection_drop'
 require 'blog_collection_drop'
 require 'collection_collection_drop'
 require 'link_list_collection_drop'
+require 'search_drop'
 
 class ThemeServlet < LiquidServlet      
   layout '../layout/theme'
@@ -77,7 +78,19 @@ class ThemeServlet < LiquidServlet
   end
 
   def search
-    render :file => "#{ROOT}/app/views/#{controller_name}/search.html", :layout => false
+    if File.exist?("#{template_path}/search.liquid")      
+      render :type => :liquid, :action => template_considering_cookies
+    else
+      render :file => "#{ROOT}/app/views/#{controller_name}/search.html", :layout => false
+    end
+  end
+  
+  def not_found
+    if File.exist?("#{template_path}/404.liquid")
+      render :type => :liquid, :action => "404"
+    else
+      render :file => "#{ROOT}/app/views/#{controller_name}/404.html", :layout => false
+    end
   end
   
   protected
@@ -98,6 +111,7 @@ class ThemeServlet < LiquidServlet
     @linklists  = LinkListCollectionDrop.new
     @pages      = PageCollectionDrop.new   
     @blogs      = BlogCollectionDrop.new
+    @search     = SearchResultDrop.new
     
     @template     = @action_name
     @handle       = @params['handle'] if @params['handle']

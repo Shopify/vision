@@ -21,7 +21,8 @@ class Servlet < WEBrick::HTTPServlet::AbstractServlet
     @request = req
     @response = res    
     
-    filename = ROOT + '/public/' + @request.path
+    filename = ROOT + '/public' + @request.path
+    
     if File.exists?(filename) and not File.directory?(filename)
       @response['Content-Type'] = mime_types[File.extname(filename)[1..-1]]      
       @response.status = 200
@@ -108,7 +109,8 @@ class Servlet < WEBrick::HTTPServlet::AbstractServlet
     @rendered = true        
     return options[:text] if options[:text]    
     file_type = options[:type] || 'rhtml'
-    file = options[:file] || "#{template_path}/#{options[:folder]}/#{options[:action] || action_name}.#{file_type}"
+    file = options[:file] || "#{template_path}/#{options[:action] || action_name}.#{file_type}"
+    
     logger.info " - rendering #{normalize_path(file)}"
     layout = options[:layout].nil? ? self.class.layout_name : options[:layout]
     if layout
