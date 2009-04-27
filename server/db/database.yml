@@ -740,7 +740,7 @@ link_lists:
       - *link-6
       
 # =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
-#   Labels
+#   Collections
 # =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 
 collections:
@@ -768,6 +768,8 @@ collections:
     title: Snowboards
     handle: snowboards
     url: /collections/snowboards
+    description:
+      <p>This is a description for my <strong>Snowboards</strong> collection.</p>
     products: 
       - *product-1
       - *product-2
@@ -830,8 +832,8 @@ pages:
   - &page-3
     id: 2
     title: About Us
-    handle: about
-    url: /pages/about    
+    handle: about-us
+    url: /pages/about-us   
     author: Tobi
     content:
       "<p>Our company was founded in 1894 and we are since operating out of Avignon from the beautiful Provence.</p>
