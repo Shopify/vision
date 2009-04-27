@@ -39,7 +39,7 @@
 		<img src="{{ image | product_img_url: 'large' }}" alt="{{ product.title | escape }}" />
 	</div>{% endfor %}
 	<div id="thumbs">{% for image in product.images %}
-		<a href="{{ image | product_img_url: 'original' }}" rel="lightbox[images]" title="{{ product.title }}"{% if forloop.first %} class="show"{% endif %}>{{ forloop.index }}</a>{% endfor %}
+		<a href="{{ image | product_img_url: 'grande' }}" rel="lightbox[images]" title="{{ product.title }}"{% if forloop.first %} class="show"{% endif %}>{{ forloop.index }}</a>{% endfor %}
 	</div>
 </div>
 

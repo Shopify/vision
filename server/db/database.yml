@@ -629,6 +629,8 @@ products:
       - products/d3_3.jpg      
     description:
       <p>Flagship pro D-SLR with a 12.1-MP FX-format CMOS sensor, blazing 9 fps shooting at full FX resolution and low-noise performance up to 6400 ISO.</p>
+      <p><strong>Nikon's original 12.1-megapixel FX-format (23.9 x 36mm) CMOS sensor:</strong> Couple Nikon's exclusive digital image processing system with the 12.1-megapixel FX-format and you'll get breathtakingly rich images while also reducing noise to unprecedented levels with even higher ISOs.</p>
+      <p><strong>Continuous shooting at up to 9 frames per second:</strong> At full FX resolution and up to 11fps in the DX crop mode, the D3 offers uncompromised shooting speeds for fast-action and sports photography.</p>
     variants: 
       - *product-9-var-1
       - *product-9-var-2
@@ -683,7 +685,7 @@ links:
   - &link-5
     id: 5
     title: About Us
-    url: /pages/about
+    url: /pages/about-us
   - &link-6
     id: 6
     title: Policies
@@ -798,15 +800,16 @@ collections:
     handle: 'all'
     url: '/collections/all'
     products: 
+      - *product-7
+      - *product-8
+      - *product-9
+      - *product-6
       - *product-1
       - *product-2
       - *product-3
       - *product-4
       - *product-5
-      - *product-6
-      - *product-7
-      - *product-8
-      - *product-9
+
           
 # =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 #   Pages and Blogs
