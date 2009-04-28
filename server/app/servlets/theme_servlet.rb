@@ -123,7 +123,7 @@ class ThemeServlet < LiquidServlet
     <link rel="stylesheet" href="/stylesheets/vision/vision.css" type="text/css" media="screen" charset="utf-8" />
     <script type="text/javascript" src="/javascripts/vision/vision_html.js?action=#{@action_name}"></script>
     <script type="text/javascript" src="/javascripts/vision/vision.js?action=#{@action_name}"></script>
-    <script>
+    <script type="text/javascript">
       window.onload = function() { initVisionPalette(); }
     </script>
     <!-- end inject -->  
