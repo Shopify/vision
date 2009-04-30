@@ -19,7 +19,7 @@ module ActiveSupport
       DATE_REGEX = /^\d{4}-\d{2}-\d{2}|\d{4}-\d{1,2}-\d{1,2}[ \t]+\d{1,2}:\d{2}:\d{2}(\.[0-9]*)?(([ \t]*)Z|[-+]\d{2}?(:\d{2})?)?$/
 
       # Ensure that ":" and "," are always followed by a space
-      def convert_json_to_yaml(json) #:nodoc:
+      def convert_json_to_yaml(json) #:nodoc:vendor/rails/activesupport/lib/active_support/json
         scanner, quoting, marks, pos, times = StringScanner.new(json), false, [], nil, []
         while scanner.scan_until(/(\\['"]|['":,\\]|\\.)/)
           case char = scanner[1]
