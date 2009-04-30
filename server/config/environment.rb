@@ -22,7 +22,7 @@ require 'fileutils'
 require 'zip/zip'
 require 'paginate'
 require 'comment_form'
-require 'json'
+require 'json_support'
 
 require File.dirname(__FILE__) + '/version'
 
