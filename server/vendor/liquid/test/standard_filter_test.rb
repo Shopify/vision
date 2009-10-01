@@ -118,9 +118,17 @@ class StandardFiltersTest < Test::Unit::TestCase
     assert_template_result "a<br />\nb<br />\nc", "{{ source | newline_to_br }}", 'source' => "a\nb\nc"
   end
   
+  def test_append
+    assigns = {'a' => 'bc', 'b' => 'd' }
+    assert_template_result('bcd',"{{ a | append: 'd'}}",assigns)        
+    assert_template_result('bcd',"{{ a | append: b}}",assigns)        
+  end
   
-  
-  
+  def test_prepend
+    assigns = {'a' => 'bc', 'b' => 'a' }
+    assert_template_result('abc',"{{ a | prepend: 'a'}}",assigns)        
+    assert_template_result('abc',"{{ a | prepend: b}}",assigns)        
+  end
   
 end
 

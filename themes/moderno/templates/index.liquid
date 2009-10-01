@@ -1,8 +1,18 @@
 <div id="index-left">
 	<div id="excerpt">
+	  {% assign article = pages.frontpage %}
+    {% if article.content != "" %}
+  		<h3>{{ pages.frontpage.title }}</h3>
+  		{{ pages.frontpage.content }}
+  	{% else %}
+  	  In <em>Admin &gt; Blogs &amp; Pages</em>, create a page with the handle <strong><code>frontpage</code></strong> and it will show up here.<br />
+  	  {{ "Learn more about handles" | link_to "http://wiki.shopify.com/Handle" }}
+  	{% endif %}
+  	
+
 		<h3>{{ pages.about-us.title }}</h3>
 		{{ pages.about-us.content }}
-		<p><a href="/pages/about-us">More about {{ shop.name | upcase }}</a></p>
+		
 	</div>
 	<div id="featured">
 		<h3>{{ collections.frontpage.title }}</h3>
@@ -14,5 +24,5 @@
 </div>
 <div id="index-right">{% for product in collections.frontpage.products limit: 1 %}
 	<h5>{{ product.title }} by {{ product.vendor }}</h5>{% for image in product.images limit: 1 %}
-	<a href="{{ product.url | within: collections.all }}" title=""><img src="{{ image | product_img_url: 'original' }}" alt="{{ product.title | escape }}" /></a>{% endfor %}{% endfor %}
+	<a href="{{ product.url | within: collections.all }}" title=""><img src="{{ image | product_img_url: 'grande' }}" alt="{{ product.title | escape }}" /></a>{% endfor %}{% endfor %}
 </div>

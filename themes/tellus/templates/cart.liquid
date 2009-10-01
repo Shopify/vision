@@ -37,11 +37,23 @@
       </li>
       {% endfor %}
       <li id="total">
-        <input type="submit" id="update-cart" name="update" value="Update My Cart" />
         Subtotal: 
         <span class="money">{{ cart.total_price | money_with_currency }}</span>
       </li>
+      <li id="bottom-cart-functions">
+        <input type="submit" value="Continue to checkout" name="checkout" class="primary" style="float: right" />
+
+        <input type="submit" id="update-cart" name="update" value="Update My Cart" />
+      </li>
+
+      {% if additional_checkout_buttons %}
+      <li id="additional-checkout-buttons">
+        <p>- or -</p>
+        {{ content_for_additional_checkout_buttons }}
+      </li>
+      {% endif %}              
     </ul>
+
 
   </div>
   </form>

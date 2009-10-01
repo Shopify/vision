@@ -12,8 +12,10 @@
 {{ 'sea.css' | asset_url | stylesheet_tag }}
 -->
 
-{{ 'mootools.js' | global_asset_url | script_tag }}
-{{ 'slimbox.js'  | global_asset_url | script_tag }}
+{{ 'mootools.js'        | global_asset_url  | script_tag }}
+{{ 'slimbox.js'         | global_asset_url  | script_tag }}
+{{ 'option_selection.js' | shopify_asset_url | script_tag }}
+
 {{ content_for_header }}
 </head>
 
@@ -58,10 +60,10 @@
 
 		<div id="layout-right">
 			{% if template == "index" %}
-			{% if blogs.frontpage.articles.size > 1 %}
-    	<a href="{{ shop.url }}/blogs/frontpage.xml"><img src="{{ 'feed.png' | asset_url }}" alt="Subscribe" class="feed" /></a>
-    	<h3><a href="/blogs/frontpage">More news</a></h3>
-    	<ul id="blogs">{% for article in blogs.frontpage.articles limit: 6 offset: 1 %}
+			{% if blogs.news.articles.size > 1 %}
+    	<a href="{{ shop.url }}/blogs/news.xml"><img src="{{ 'feed.png' | asset_url }}" alt="Subscribe" class="feed" /></a>
+    	<h3><a href="/blogs/news">More news</a></h3>
+    	<ul id="blogs">{% for article in blogs.news.articles limit: 6 offset: 1 %}
     		<li><a href="{{ article.url }}">{{ article.title | strip_html | truncate: 30 }}</a><br />
     			<small>{{ article.content | strip_html | truncatewords: 12 }}</small>
     		</li>{% endfor %}
@@ -110,7 +112,7 @@
 			</div>
 			<span id="footer-left">
 				Copyright &copy; {{ "now" | date: "%Y" }} <a href="/">{{ shop.name }}</a>. All Rights Reserved. All prices {{ shop.currency }}.<br />
-				This website is powered by <a href="http://shopify.com">Shopify</a>.
+				This website is powered by <a href="http://www.shopify.com">Shopify</a>.
 			</span>
 		</div>
 	</div>

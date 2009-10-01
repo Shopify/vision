@@ -6,6 +6,7 @@ require 'page_collection_drop'
 require 'blog_collection_drop'
 require 'collection_collection_drop'
 require 'link_list_collection_drop'
+require 'search_drop'
 
 class ThemeServlet < LiquidServlet      
   layout '../layout/theme'
@@ -65,12 +66,31 @@ class ThemeServlet < LiquidServlet
     render :type => :liquid, :action => template_considering_cookies
   end
   
+  def article
+    @blog = Database.find(:all, :blogs).find { |a| a['handle'] == @params['handle']}
+    @article = @blog["articles"].detect { |a| a["id"].to_i == @params["article"].to_i}
+    @page_title = @article["title"]
+    render :type => :liquid, :action => template_considering_cookies
+  end
+  
   def checkout
     render :file => "#{ROOT}/app/views/#{controller_name}/checkout.html", :layout => false
   end
 
   def search
-    render :file => "#{ROOT}/app/views/#{controller_name}/search.html", :layout => false
+    if File.exist?("#{template_path}/search.liquid")      
+      render :type => :liquid, :action => template_considering_cookies
+    else
+      render :file => "#{ROOT}/app/views/#{controller_name}/search.html", :layout => false
+    end
+  end
+  
+  def not_found
+    if File.exist?("#{template_path}/404.liquid")
+      render :type => :liquid, :action => "404"
+    else
+      render :file => "#{ROOT}/app/views/#{controller_name}/404.html", :layout => false
+    end
   end
   
   protected
@@ -91,6 +111,7 @@ class ThemeServlet < LiquidServlet
     @linklists  = LinkListCollectionDrop.new
     @pages      = PageCollectionDrop.new   
     @blogs      = BlogCollectionDrop.new
+    @search     = SearchResultDrop.new
     
     @template     = @action_name
     @handle       = @params['handle'] if @params['handle']
@@ -100,13 +121,14 @@ class ThemeServlet < LiquidServlet
     <!-- We inject some stuff here which you won't find on the live server. -->
     <!-- if you need prototype yourself you need to manually include it in your layout --> 
     <link rel="stylesheet" href="/stylesheets/vision/vision.css" type="text/css" media="screen" charset="utf-8" />
-    <script type="text/javascript" src="/javascripts/prototype.js"></script>
-    <script type="text/javascript" src="/javascripts/effects.js"></script>
     <script type="text/javascript" src="/javascripts/vision/vision_html.js?action=#{@action_name}"></script>
     <script type="text/javascript" src="/javascripts/vision/vision.js?action=#{@action_name}"></script>
+    <script type="text/javascript">
+      window.onload = function() { initVisionPalette(); }
+    </script>
     <!-- end inject -->  
     HEADERS
-        
+#    @content_for_header = ""    
   end
     
   def template_path
@@ -124,6 +146,7 @@ class ThemeServlet < LiquidServlet
   def path_scan
     
     matches = @request.path_info.gsub(/\+/,' ').scan(/\/([\w\s\-\.\+]+)/).flatten
+    puts "matches: #{matches.inspect}"
     @action_name      = matches[0] if matches[0]
     @params['handle'] = matches[1] if matches[1]
     @params['tags']   = matches[2] if matches[2]
@@ -131,7 +154,14 @@ class ThemeServlet < LiquidServlet
     @action_name = 'collection' if @action_name == 'collections'
     @action_name = 'product'    if @action_name == 'products'
     @action_name = 'page'       if @action_name == 'pages'
-    @action_name = 'blog'       if @action_name == 'blogs'
+    if @action_name == 'blogs'
+      if matches[2]
+        @params['article'] = matches[2]
+        @action_name = "article"
+      else
+        @action_name = 'blog'
+      end
+    end
   end
   
 end

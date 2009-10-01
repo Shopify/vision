@@ -1,0 +1,318 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" debug="true">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+	<title>Api test</title>
+	
+	<script language="javascript" type="text/javascript" src="/global/firebug/firebug.js"></script>
+
+  
+	
+	<style type="text/css" media="screen">
+     body {
+        margin: 0;
+        margin-bottom: 25px;
+        padding: 0;
+        background-color: #f0f0f0;
+        font-family: "Lucida Grande", "Bitstream Vera Sans", "Verdana";
+        font-size: 13px;
+        color: #333;
+      }
+      
+      h1 {
+        font-size: 28px;
+        color: #000;
+      }
+      
+      h2 {
+        font-size: 15px;
+        color: #000;
+				margin-top: 2em;
+				margin-bottom: 0.5em;
+      }
+      
+      a  {color: #03c}
+
+      a:hover {
+        background-color: #03c;
+        color: white;
+        text-decoration: none;
+      }
+      
+      
+      #page {
+        width: 900px;
+        margin: 0;
+        margin-top: 20px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+      
+      #content {
+        float: left;
+        background-color: white;
+        border: 3px solid #aaa;
+        padding: 25px;
+        width: 650px;
+      }
+      
+      #sidebar {
+        float: right;
+        width: 175px;
+      }
+
+      #footer {
+        clear: both;
+				padding: 5px 2px;
+				color: #999;
+				font-size: 9px;
+      }
+      
+
+      #header, #intro {
+        padding-left: 10px;
+        padding-right: 30px;
+      }
+
+      #header h1, #header h2 {margin: 0}
+      #header h2 {
+        color: #888;
+        font-weight: normal;
+        font-size: 16px;
+      }
+            
+      #intro {
+        border-top: 1px solid #ccc;
+        margin-top: 25px;
+        padding-top: 15px;
+      }
+      #intro h1 {
+        margin: 0;
+        font-size: 20px;
+      }
+      #intro ol {
+        margin-left: 0;
+        padding-left: 0;
+      }
+      #intro li {
+        font-size: 18px;
+        color: #888;
+        margin-bottom: 25px;
+      }
+      #intro li p {
+        color: #555;
+        font-size: 13px;
+      }
+      
+      
+      #search {
+        margin: 0;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        font-size: 11px;
+      }
+      #search input {
+        font-size: 11px;
+        margin: 2px;
+      }
+      #search-text {width: 170px}
+      
+      
+      #sidebar ul {
+        margin-left: 0;
+        padding-left: 0;
+      }
+      #sidebar ul h3 {
+        margin-top: 25px;
+        font-size: 16px;
+        padding-bottom: 10px;
+        border-bottom: 1px solid #ccc;
+      }
+      #sidebar li {
+        list-style-type: none;
+      }
+      #sidebar ul.links li {
+        margin-bottom: 5px;
+      }
+			
+			#outtro {
+				border-top: 1px solid #ccc;
+				border-bottom: 1px solid #ccc;
+				background: #eee;
+				color: #555;
+				font-size: 9px;
+				padding: 10px;
+				margin: 5em 0 0 0;
+				text-align: center;
+			}
+			
+			#outtro a {
+				color: #333;
+			}
+			
+			#outtro a:hover {
+				color: white;
+			}
+			
+			fieldset{
+			  margin-top: 1em; 
+			}
+   
+	</style>
+	
+	
+	<script type="text/javascript" charset="utf-8" src="api.js"> </script>
+	<script type="text/javascript" charset="utf-8" src="/javascripts/prototype.js"> </script>
+	<script type="text/javascript" charset="utf-8">
+	 
+	  Shopify.onError = function(msg) {
+	    console.info('Shopify.onError: ', msg);	    
+	    $('message').update(msg.description);
+	  }
+	  
+	  Shopify.onItemAdded = function(line_item) {
+	    console.info('Shopify.onItemAdded: ', line_item);	    
+	    $('message').update('Added '+line_item.title + '...');
+	    Shopify.getCart();
+	  }
+	  
+	  Shopify.onCartUpdate = function(cart) {
+	    console.info('Shopify.onCartUpdate: ', cart);
+	    	    
+	    cart_ul = $('cart');
+
+	    // clear
+	    cart_ul.update('');
+
+	    // add all items
+	    for(var i = 0; i< cart.items.length; i++) {
+	      new Insertion.Bottom(cart_ul, '<li><small>(id:'+cart.items[i].variant_id+')</small>  - '+cart.items[i].quantity+'x '+ cart.items[i].title + '</li>')	    
+	    }
+      
+      // add total
+      new Insertion.Bottom(cart_ul, '<li><strong>total: '+cart.total_price +'$ </li>')	    
+	  }
+	  
+	  	    
+	</script>
+	
+	
+</head>
+
+<body>
+
+<div id="page">  
+  
+  <div id="header">
+    <h1>Shopify API</h1>
+  </div>
+
+  <div id="content">
+    <p>You have to have <a href="http://www.getfirebug.com">firebug</a> installed to see most of the debug messages of this page.</p>
+    <p>View current <a href="api.js">api.js</a>.</p>
+    
+    <p>
+      <strong id="message">
+
+      </strong>
+    </p>
+
+    <ul id="cart">
+
+    </ul>
+    
+    <fieldset>
+      <legend>Shopify.getCart</legend>
+
+
+      <a href="#" onclick="Shopify.getCart()">Shopify.getCart()</a>
+    </fieldset>
+    
+
+    <fieldset>
+      <legend>Shopify Cart</legend>
+
+      <a href="#" onclick="Shopify.addItem($F('add_item'), $F('add_item_qty')); return false">Shopify.addItem</a>(<input type="text" size="5" name="id" id="add_item" /> , <input type="text" size="3" name="quantity" id="add_item_qty" value="1" />)   
+    </fieldset>
+
+    <fieldset>
+      <legend>Shopify.addItemFromForm</legend>
+
+      <form action="#" method="POST" id="add-item-form">
+        variant: <input type="text" size="5" name="id"  /> 
+        qty:<input type="text" size="3" name="quantity" value="1" /> <br />
+      </form>
+
+      <a href="#" onclick="Shopify.addItemFromForm('add-item-form'); return false">Shopify.addItemFromForm</a>('add-item-form')
+    </fieldset>
+
+
+    <fieldset>
+      <legend>Shopify.removeItem</legend>
+
+
+      <a href="#" onclick="Shopify.removeItem($F('remove_item_id')); return false">Shopify.removeItem</a>(<input type="text" size="5" name="id" id="remove_item_id" value="" />)
+    </fieldset>    
+    
+    <fieldset>
+      <legend>Shopify.changeItem</legend>
+
+      <a href="#" onclick="Shopify.changeItem($F('change_id'), $F('change_qty')); return false">Shopify.changeItem</a>(<input type="text" size="5" name="id" id="change_id" value="" />, <input type="text" size="3" name="quantity" id="change_qty" value="1" />)
+    </fieldset> 
+         
+    <fieldset>
+      <legend>Shopify.clear</legend>
+
+      <a href="#" onclick="Shopify.clear(); return false">Shopify.clear</a>()
+    </fieldset>  
+
+    <fieldset>
+      <legend>Shopify.updateCartFromForm</legend>
+
+      <small>(requires 2 items in the cart)</small>
+      
+      <form action="#" method="POST" id="update-item-form">
+        1. <input type="text" size="3" name="updates[]" value="1" />
+        2. <input type="text" size="3" name="updates[]" value="1" />
+      </form>
+
+
+      <a href="#" onclick="Shopify.updateCartFromForm('update-item-form'); return false">Shopify.updateCartFromForm</a>('update-item-form')
+    </fieldset>    
+        
+    <fieldset>
+      <legend>Shopify.getProduct</legend>
+
+      <small>(requires the handle of a product)</small>
+      
+      <br />
+      
+      <a href="#" onclick="Shopify.getProduct($F('product_handle')); return false">Shopify.getProduct</a>(<input type="text" size="20" name="handle" id="product_handle" value="shopify-t-shirt" />)
+    </fieldset>
+    
+    <fieldset>
+      <legend>Tools</legend>
+
+      <img src="" id="image" /><br />
+      
+      <a href="#" onclick="$('image').src = Shopify.resizeImage($F('product_image_url'), $F('product_image_size')); return false">Shopify.resizeImage</a>(<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;<input type="text" size="60" name="url" id="product_image_url" value="http://turtles.myshopify.com/files/shops/0000/0010/products/1096358567_53054_Donatello.jpg" />, <br />
+      &nbsp;&nbsp;&nbsp;&nbsp;<input type="text" size="5" name="size" id="product_image_size" value="small" /> <br />
+      )
+      
+      <p id="formatted_money"></p>
+  
+
+      <a href="#" onclick="$('formatted_money').update(Shopify.formatMoney($F('amount'))); return false">Shopify.formatMoney</a>(<input type="text" size="7" name="amount" id="amount" value="60000" />)
+
+    </fieldset>
+
+  </div>
+</div>
+
+
+</body>
+</html>

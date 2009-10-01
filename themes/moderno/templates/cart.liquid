@@ -11,7 +11,7 @@
 			<div class="updater">
 				<input type="text" class="field" name="updates[]" id="updates_{{ item.variant.id }}" value="{{ item.quantity }}" onfocus="this.select();" />
 				<input type="hidden" name="id" value="{{ item.variant.id }}" />
-				<input type="submit" name="update" value="Update" id="update-cart"> <span>&#124;</span> 
+				<input type="submit" name="update" value="Update" id="update-cart" /> <span>&#124;</span> 
 				<a href="/cart/change/{{ item.variant.id }}?quantity=0">Remove</a>
 			</div>
 			<h6>TOTAL: <span>{{ item.line_price | money }} excluding tax &amp; shipping</span></h6>
@@ -23,6 +23,15 @@
 			<div id="checkout">
 				<h4>TOTAL: <span>{{ cart.total_price | money }} {{ shop.currency }}</span></h4>
 				<input type="submit" id="getout" name="checkout" value="PROCEED TO CHECKOUT" />
+			</div>
+			
+			{% if additional_checkout_buttons %}
+      <div class="additional-checkout-buttons">
+        <p>- or -</p>
+        {{ content_for_additional_checkout_buttons }}
+      </div>
+      {% endif %}  		
+			
 		</div>
 	</div>
 </form>{% endif %}

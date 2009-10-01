@@ -14,17 +14,18 @@ module Database
   end
   
   def self.db
-    db = YAML.load(File.read("#{ROOT}/db/database.yml"))
+    @db ||= begin
+      YAML.load(File.read("#{ROOT}/db/database.yml"))
     
-    # We need to add collections to the products    
-    db['products'].each do |product|
-      collections = db['collections'].find_all do |collection|
-        collection['products'].any? { |p| p['id'].to_i == product['id'].to_i }
-      end      
-      product['collections'] = collections      
+      # We need to add collections to the products    
+      db['products'].each do |product|
+        collections = db['collections'].find_all do |collection|
+          collection['products'].any? { |p| p['id'].to_i == product['id'].to_i }
+        end      
+        product['collections'] = collections      
+      end        
+      db
     end
-        
-    db
   end
   
 end

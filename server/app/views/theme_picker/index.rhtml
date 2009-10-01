@@ -13,9 +13,9 @@
     <div id="wizard" class="cfix">
       <h2>Welcome to Vision <%= Vision.version %></h2>
       <% if not Vision.uptodate? %>
-      <p class="center"><strong>Please <a href="<%= Vision.update_url  %>">update to Vision <%= Vision.latest_version %></a> </strong></p>
+      <p style="text-align:center; font-size: 16px; color: #F00"><strong>Please <a href="<%= Vision.update_url  %>" style="color: #f00">update to Vision <%= Vision.latest_version %></a> </strong></p>
       <% end %>
-      <ul id="tasks">
+      <ul id="tasks" style="margin-top: 30px">
         <li>
           <h3>Create</h3>
           <p>Create a new theme to work on.</p>

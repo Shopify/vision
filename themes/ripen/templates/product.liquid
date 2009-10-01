@@ -26,19 +26,14 @@
               {% if product.available %}
 
 		<form action="/cart/add" method="post">
-		  
-		  <ul id="product-variants">
-			{% for variant in product.variants %}
-			<li>
-			  {% if variant.available %}
-				<input type="radio" name="id" value="{{variant.id}}" id="radio_{{variant.id}}" style="vertical-align: middle;" {%if forloop.first%} checked="checked" {%endif%} />
-				<label for="radio_{{variant.id}}">{%if variant.title != 'Default' %}{{ variant.title }} for {%endif%} <span class="price">{{ variant.price | money_with_currency }}</span></label>
-			  {% else %}
-				<del style="margin-left: 26px">{{ variant.title }}</del>&nbsp;<span>Sold Out!</span>
-			  {% endif %}
-			</li>
-			{% endfor %}
-		  </ul>
+
+      <select id="product-select" name='id'>
+        {% for variant in product.variants %}
+          <option value="{{ variant.id }}">{{ variant.title }} - {{ variant.price | money }}</option>
+        {% endfor %}
+      </select>
+		
+      <div id="price-field"></div>		
 		
 			<div class="add-to-cart"><input type="image" name="add" value="Add to Cart" id="add" src="{{ 'add-to-cart.gif' | asset_url }}" /></div>
 		</form>
@@ -52,3 +47,29 @@
 	  </div>
   </div>
 </div>
+
+
+<script type="text/javascript">
+<!--
+  // mootools callback for multi variants dropdown selector
+  var selectCallback = function(variant, selector) {
+    if (variant && variant.available == true) {
+      // selected a valid variant
+      $('add').removeClass('disabled'); // remove unavailable class from add-to-cart button
+      $('add').disabled = false;           // reenable add-to-cart button
+      $('price-field').innerHTML = Shopify.formatMoney(variant.price, "{{shop.money_with_currency_format}}");  // update price field
+    } else {
+      // variant doesn't exist
+      $('add').addClass('disabled');      // set add-to-cart button to unavailable class
+      $('add').disabled = true;              // disable add-to-cart button      
+      $('price-field').innerHTML = (variant) ? "Sold Out" : "Unavailable"; // update price-field message
+    }
+  };
+
+  // initialize multi selector for product
+  window.addEvent('domready', function() {
+    new Shopify.OptionSelectors("product-select", { product: {{ product | json }}, onVariantSelected: selectCallback }); 
+  });
+-->
+</script>
+

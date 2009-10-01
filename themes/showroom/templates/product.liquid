@@ -1,0 +1,120 @@
+<div id="product">
+  
+  <h2>{{ product.title }}</h2>
+  
+  <div id="featured-image">{{ product.featured_image | product_img_url: 'large' | img_tag }}</div>
+
+  <form id='product-{{product.id}}' action="/cart/add" method="post">
+    <table id="product-table">
+      <tr>
+        <td class="desc">
+          Vendor:
+        </td>
+        <td class="l">        
+          {{product.vendor | link_to_vendor }}<br />
+        </td>
+      </tr>
+
+      <tr>
+        <td class="desc">
+          Type:
+        </td>
+        <td class="l">
+          {{product.type | link_to_type }}
+        </td>
+      </tr>
+      
+      <tr>          
+        <td colspan="2" class="st">    
+          {% if product.available %}
+            <h3>Product Options</h3>        
+
+            <select id="product-variants" name="id">
+              {% for variant in product.variants %}
+                {% if variant.available %}
+                  <option value="{{variant.id}}" title="{{ variant.price | money }}">{{ variant.title }} - {{ variant.price | money }}</option>
+                {% endif %}
+              {% endfor %}
+            </select>
+          
+          {% else %}
+          
+            sold out!
+          
+          {% endif %}
+        </td>
+      </tr>
+      <tr>
+        <td colspan="2">
+
+          <div id="price-field-{{ product.id }}" class="price"></div>
+          <input type="hidden" id="price-{{ product.id }}" />
+
+          <select id="product-quantity-{{ product.id }}" name="quantity" onchange="Showroom.updatePrice({{product.id}})">
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+            <option>6</option>
+            <option>7</option>
+            <option>8</option>
+            <option>9</option>
+            <option>10</option>
+          </select>
+
+          <input type="submit" name="add" value="Add to Cart" id="add" class="primary" onclick="Shopify.addItemFromForm('product-{{product.id}}');return false" />      
+        </td>
+      </tr>
+    </table>
+  </form>       
+  
+  <div id="description" class="textile">
+    {{ product.description }}
+  </div> 
+  
+  <div id="product-images" style="clear:left">
+
+    {% for image in product.images %}
+
+			{% if forloop.first %}
+
+      {% else %}
+    	  <div class="pimage">{{ image | product_img_url: 'medium' | img_tag }}</div>
+      {% endif %}
+
+	  {% endfor %}
+  
+  </div>
+  
+  <div style="clear:left"></div>  
+</div>
+
+<script type="text/javascript">
+<!--
+  // prototype callback for multi variants dropdown selector
+  var selectCallback = function(variant, selector) {
+    if (variant && variant.available == true) {
+      // selected a valid variant
+      $('add').removeClassName('disabled'); // remove unavailable class from add-to-cart button
+      $('add').disabled = false;           // reenable add-to-cart button
+      $('product-quantity-'+selector.product.id).disabled = false; // reenable quantity dropdown
+
+      var field = $('product-quantity-'+selector.product.id); // get qty field
+      $('price-field-'+selector.product.id).innerHTML = Shopify.formatMoney((variant.price * field.options[field.selectedIndex].text), "{{shop.money_with_currency_format}}");  // update price field
+      $('price-'+selector.product.id).value = variant.price; // save price in hidden input field so it can be accessed by qty dropdown
+    } else {
+      // variant doesn't exist
+      $('add').addClassName('disabled');     // set add-to-cart button to unavailable class
+      $('add').disabled = true;              // disable add-to-cart button
+      $('product-quantity-'+selector.product.id).disabled = true; // disable quantity dropdown
+      $('price-field-'+selector.product.id).innerHTML = (variant) ? "Sold Out" : "Unavailable"; // update price-field message
+    }
+  };
+
+  // initialize multi selector for product
+  Event.observe(document, 'dom:loaded', function() {
+      new Shopify.OptionSelectors("product-variants", { product: {{ product | json }}, onVariantSelected: selectCallback }); 
+  });
+-->
+</script>

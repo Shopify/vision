@@ -20,6 +20,8 @@ require 'string_ext'
 require 'fileutils'
 require 'zip/zip'
 require 'paginate'
+require 'comment_form'
+require 'active_support/json'
 
 require File.dirname(__FILE__) + '/version'
 
@@ -29,7 +31,9 @@ Dir[ROOT + '/app/filters/*'].each do |file|
   Liquid::Template.register_filter Object.const_get(filter)
 end
 
-Liquid::Template.register_tag 'paginate', Paginate
+
+Liquid::Template.register_tag('paginate', Paginate)
+Liquid::Template.register_tag('form', CommentForm)
 
 
 # Require mount points. thats where the servlets of this server are setup

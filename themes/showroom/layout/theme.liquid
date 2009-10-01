@@ -1,0 +1,176 @@
+<!--[if lte IE 6]><comment>This comment forces Quirksmode for IE6, otherwise comboboxes shine through shopping cart</comment><![endif]-->
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+	
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+  <meta http-equiv="imagetoolbar" content="no" />
+
+	<title>{{shop.name}} - {{page_title}}</title>
+	
+  {{ 'textile.css'  | global_asset_url | stylesheet_tag }}
+	{{ 'prototype/1.6/prototype.js' | global_asset_url  | script_tag }}
+  {{ 'scriptaculous/1.8.2/scriptaculous.js' | global_asset_url  | script_tag }}
+  {{ 'api.js'       | shopify_asset_url | script_tag }}
+  {{ 'option_selection.js'        | shopify_asset_url | script_tag }}
+
+  {{ 'shop.js'      | asset_url | script_tag }}
+  {{ 'shop.css'     | asset_url | stylesheet_tag }}
+
+  <!--[if lte IE 6]>
+     {{ 'ie.css'     | asset_url | stylesheet_tag }}
+  <![endif]-->
+  
+  <script type="text/javascript" charset="utf-8">
+    Shopify.money_format = "{{ shop.money_with_currency_format }}";
+  </script>
+  
+  {{ content_for_header }}  
+</head>
+
+<body id="page">
+
+  <div id="content">
+
+  <!-- begin div.container -->
+  <div id="container">
+    
+    <!-- begin div.header -->
+    <div id="header">
+      <div id="title">
+        <h1><a href="/">{{shop.name}}</a></h1>
+        {% if pages.about-us  %}
+        <h2>{{ pages.about-us.title}}</h2>
+        <div id="description">{{ pages.about-us.content | strip_html | truncatewords: 50 }}</div>
+        <p class="underline">{{ 'read more' | link_to: pages.about-us.url }}</p>
+        {% else %}
+        <p>Create a page with handle <strong>about-us</strong> to display text here!</p>
+        {% endif %}
+      </div>
+    </div>
+    <!-- /end div.header -->
+    
+    
+    <!-- begin div.navigation -->
+    <div id="navigation">
+
+      <!-- Don't show the cart icon on the actual cart.liquid page... -->  
+      {% if template != 'cart' %}
+
+      <div id="cart-link">
+        <a href="#" onclick="Showroom.toggleCart();return false;"><img src="{{ 'cart.gif' | asset_url }}" alt="your cart" /></a>
+      </div>
+      
+      {% endif %}
+
+      <ul id="side-links" class="vlink-list">
+        {% for link in linklists.main-menu.links %}
+           <li>{{ link.title | link_to: link.url }}</li>
+        {% endfor %}
+      </ul>
+    
+    </div>
+    
+    <div id="sub-nav">        
+      <div id="search">
+        <form action="/search" method="get">
+        <input type="text" name="q" class="searchfield" />
+        <input type="submit" value="Search" />
+        </form>
+      </div>
+      
+      {% if tags %}
+  			<ul id="tag-list">
+  			  {% for tag in collection.tags %} 
+  				  <li {% if current_tags contains tag %} class="active"{% endif %}>{{ tag | highlight_active_tag | link_to_tag: tag }}</li>
+  			  {% endfor %}
+  			</ul>
+  		{% endif %}
+
+    </div>
+    <!-- /end div.navigation -->
+    
+        
+      <!-- begin div.main 
+           This division is for rendering the main content of the shop, the liquid templates -->
+      <div id="main">
+        {{ content_for_layout }}
+      </div>
+      <!-- /end div.main -->            
+          
+    
+    <!-- begin div.footer -->
+    <div id="footer">
+      <ul>
+        {% for link in linklists.footer.links %}
+           <li>{{ link.title | link_to: link.url }}</li>
+        {% endfor %}
+          <li><a href="http://www.shopify.com" title="Shopify, Hosted E-Commerce">powered by Shopify</a></li>
+      </ul>
+    </div>
+    <!-- /end div.footer -->
+    
+  </div>
+  <!-- /end div.container -->
+  
+  </div>
+  
+  <!-- Don't show the bottom cart on the actual cart.liquid page... -->  
+  {% if template != 'cart' %}
+  
+  <!-- begin div.in-cart
+       The cart is positioned fixed (absolute for IE6) to the bottom and shows the live content of the customer's cart -->  
+  <div id="cart"{% if cart.item_count == 0 %} style="display:none"{% endif %}>
+
+    <script type="text/javascript" charset="utf-8">
+      // add cart class for IE for giving enough margin to show the cart
+      if($('cart').style.display != 'none') { $('page').addClassName('show-cart'); }
+    </script>
+    
+    <table width="100%" cellspacing="0" cellpadding="0" border="0">
+      <tr>
+        <td id="cart-shade">
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <div id="cart-content">
+
+            <div id="cart-checkout">
+              <form action="/checkout" method="post">
+              <input type="submit" name="" value="Checkout" />
+              </form>            
+              
+              or <a href="/cart">edit cart</a>
+            </div>
+
+      		  <div id="cart-count">
+      		    <h3>shopping cart</h3>
+      		    <a href="#" onclick="Showroom.hideCart();return false">hide cart</a><br />
+      		    <a href="/cart"><span id="cart-quantity">{{ cart.item_count }}</span> {{cart.item_count | pluralize: 'item', 'items'}}</a><br />
+      		    <span id="cart-total">{{ cart.total_price | money }}</span>
+      		  </div>
+
+      		  <div id="cart-items">
+      			  {% for item in cart.items %}
+			    
+      			    <div class="cart-item" id="item-{{ item.variant_id }}">
+      			      <div class="cart-item-image"><a href="{{ item.product.url }}"><img src="{{ item.product.featured_image | product_img_url: 'thumb' }}" alt="{{ item.title | escape }}" /></a></div>
+      			      {{ item.quantity }}x<br /><small><a href="{{ item.product.url }}">{{ item.title | truncate: 18 }}</a><br />
+      			      <span class="dark-link"><a href="/cart/change/{{ item.variant.id}}?quantity=0&amp;return_to=back" onclick="Shopify.removeItem('{{ item.variant_id }}');return false">remove</a></span></small>
+      			    </div>
+      			  {% endfor %}
+      		  </div>
+		  
+          </div>
+        </td>
+      </tr>
+    </table>
+  </div>
+  <!-- /end div.in-cart -->
+  {% endif %}
+  
+</body>
+</html>
