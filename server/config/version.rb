@@ -26,7 +26,7 @@ end
 
 
 
-Vision.version        = '3.3.0'  
+Vision.version        = '3.4.0'  
 Vision.latest_version = '0'
 Vision.update_url     = 'http://vision.shopify.com/update.html'
 Vision.verify_latest_version
