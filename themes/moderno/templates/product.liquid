@@ -3,15 +3,27 @@
 	{{ product.description }}
 	<div id="product-select">
 		<form action="/cart/add" method="post" name="cartadd">
-			<div id="product-variants">
-				<select name="id">{% for variant in product.variants %}{% if variant.available %}
-					<option value="{{ variant.id }}">{{ variant.title }}{% if variant.price > product.price_min %} - {{ variant.price | money }}{% endif %}</option>{% else %}
-					<option value="{{ variant.id }}" disabled="disabled">{{ variant.title }} - SOLD OUT</option>{% endif %}{% endfor %}
-				</select> 
-				<span>(<a href="">size chart</a>)</span>
-			</div>{% if product.available %}
-			<input type="submit" name="add" value="ADD TO CART" id="add-cart">{% else %}
-			<h6>TEMPORARILY UNAVAILABLE</h6>{% endif %}
+
+      {% if product.available %}
+  			<div id="product-variants">
+	
+          <select id="variant-select" name='id'>
+            {% for variant in product.variants %}
+              {% if variant.available %}
+                <option value="{{ variant.id }}">{{ variant.title }} - {{ variant.price | money }}</option>
+              {% else %}
+      					<option value="{{ variant.id }}" disabled="disabled">{{ variant.title }} - SOLD OUT</option>
+      				{% endif %}
+            {% endfor %}
+          </select>
+  			</div>      			
+
+  			<span id="price-field"></span><br />
+
+  			<input type="submit" name="add" value="ADD TO CART" id="add-cart">
+			{% else %}
+			  <h6>TEMPORARILY UNAVAILABLE</h6>
+			{% endif %}
 		</form>
 	</div>{% if collection %}
 	<div id="navigate-collection">
@@ -27,6 +39,30 @@
 		<img src="{{ image | product_img_url: 'large' }}" alt="{{ product.title | escape }}" />
 	</div>{% endfor %}
 	<div id="thumbs">{% for image in product.images %}
-		<a href="{{ image | product_img_url: 'original' }}" rel="lightbox[images]" title="{{ product.title }}"{% if forloop.first %} class="show"{% endif %}>{{ forloop.index }}</a>{% endfor %}
+		<a href="{{ image | product_img_url: 'grande' }}" rel="lightbox[images]" title="{{ product.title }}"{% if forloop.first %} class="show"{% endif %}>{{ forloop.index }}</a>{% endfor %}
 	</div>
 </div>
+
+<script type="text/javascript">
+<!--
+  // mootools callback for multi variants dropdown selector
+  var selectCallback = function(variant, selector) {
+    if (variant && variant.available == true) {
+      // selected a valid variant
+      $('add-cart').removeClass('disabled'); // remove unavailable class from add-to-cart button
+      $('add-cart').disabled = false;           // reenable add-to-cart button
+      $('price-field').innerHTML = Shopify.formatMoney(variant.price, "{{shop.money_with_currency_format}}");  // update price field
+    } else {
+      // variant doesn't exist
+      $('add-cart').addClass('disabled');      // set add-to-cart button to unavailable class
+      $('add-cart').disabled = true;              // disable add-to-cart button      
+      $('price-field').innerHTML = (variant) ? "Sold Out" : "Unavailable"; // update price-field message
+    }
+  };
+
+  // initialize multi selector for product
+  window.addEvent('domready', function() {
+    new Shopify.OptionSelectors("variant-select", { product: {{ product | json }}, onVariantSelected: selectCallback }); 
+  });
+-->
+</script>

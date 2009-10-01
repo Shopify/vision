@@ -19,9 +19,19 @@ h1, h2, h3, h4, h5, h6 {
 	font-weight: bold;
 }
 
+a { 
+  color: #e95200;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+a:hover {
+	color: #000;
+}
+
 div#container {
 	text-align: left;
-	width: 960px;
+	width: 980px;
 	margin: 0 auto;
 	border-top: 20px solid #000;
 }
@@ -387,10 +397,6 @@ div#product-select select {
 	margin-right: 5px;
 }
 
-div#product-variants {
-	padding-bottom: 25px;
-}
-
 div#product-variants span {
 	color: #e95200;
 	font-size: 68.75%;
@@ -497,6 +503,31 @@ div#thumbs a.show {
 div#thumbs a:hover {
 	background-color: #000;
 }
+
+#price-field {
+  font-size: 12px;
+  position: relative;
+  top: 21px;
+  left: 10px;
+  color: #fff;
+  z-index: 9999;
+}
+
+#product-variants select {
+  margin: 0 0 15px 0;
+}
+
+#product-variants label {
+  font-weight: bold;
+  display: block;
+  margin: 0 0 5px 0;
+  font-size: 12px;
+}
+
+#add-cart.disabled {
+  background: #bbb !important;
+}
+
 
 /* @end */
 
@@ -726,6 +757,19 @@ div#checkout input#getout:hover {
 	text-decoration: underline;
 }
 
+.additional-checkout-buttons {
+  text-align: right;
+}
+
+.additional-checkout-buttons p {
+  position: relative;
+  right: 70px;
+  margin: 20px 0;
+  padding: 0 !important;
+  color: #999;
+}
+
+
 /* @end */
 
 /* @group Blogs & Pages */
@@ -871,7 +915,7 @@ div#searchresults {
 	padding-top: 5px;
 }
 
-div#searchresults input#q {
+div#searchresults input#result-q {
 	color: #000;
 	font-size: 12px;
 	width: 200px;
@@ -981,5 +1025,62 @@ div#footer p#right-foot a:hover {
 }
 
 /* @end */
+
+
+/* Comments */
+
+#comments { margin: 20px 0; }
+#comments dt { margin-top: 10px; }
+#comments dd input, #comments dd textarea { width: 300px; }
+#comments>ul { margin-top: 10px; }
+#comments>ul>li { margin: 10px 0; list-style-type: none; }
+
+.comment {
+	padding: 10px;
+	font-size: 14px;
+	border: 1px solid #ddd;
+	background: #f5f5f5;
+}
+
+.comment-details {
+	font-size: 90%;
+  background: #ddd;
+  padding: 2px 5px;
+}
+
+.notice {
+  font-size: 10pt;
+  margin: 15px 0;  
+  border: 1px solid #eFeBd5;
+  border-bottom: 1px solid #dFdBc5;
+  border-right: 1px solid #dFdBc5;
+  padding: 5px 15px;
+  background: #FFFBE5;
+  color: #6a9c30;
+  text-align: center;
+}
+
+.error { color: #933; }
+.input-error { background: #FFFBE5; }
+
+.comment-form { 
+	margin-top: 40px;
+}
+
+.comment-form .hint {
+	font-size: 11px;
+	font-style: italic;
+	color: #666;
+}
+
+.comment-form dt {
+	font-weight: bold;
+}
+
+.comment-form input[type=submit] {
+	margin-top: 8px;
+}
+
+
 
 /* End of Stylesheet */

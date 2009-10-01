@@ -6,4 +6,12 @@ class CollectionCollectionDrop < Liquid::Drop
     collection['products_count'] ||= collection['products'].size
     collection
   end
+
+  def each
+    Database.find(:all, :collections).each { |c| yield c }
+  end
+  
+  def size
+    Database.find(:all, :collections).size
+  end
 end

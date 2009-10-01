@@ -56,11 +56,15 @@ class VisionServlet < Servlet
        ['/collections/snowboards', 'Collection Page'], 
        ['/collections/snowboards/season2006+beginner', 'Collection Page (with tags)'], 
        ['/collections/paginated-sale', 'Collection Page (Paginated, Page Nr.5)'], 
-       ['/products/arbor-draft', 'Product Page'], 
+       ['/products/hooded-sweater', 'Product Page'], 
        ['/cart', 'Shopping Cart'], 
-       ['/pages/about', 'Solo Page'],
+       ['/pages/about-us', 'Solo Page'],
+       ['/blogs/bigcheese-blog/1', 'Article Page (with comments)'],
+       ['/blogs/news/3', 'Article Page (no comments)'],       
        ['/blogs/bigcheese-blog', 'Blog Page'],
-       ['/blogs/paginated-blog', 'Blog Page (Paginated, Page Nr.1)']
+       ['/blogs/paginated-blog', 'Blog Page (Paginated, Page Nr.1)'],
+       ['/not_found', '404 File Not Found'],
+       ['/search', 'Product Search ("clothing")']
        ]
   end
 

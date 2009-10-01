@@ -26,7 +26,11 @@ end
 
 
 
+<<<<<<< HEAD
 Vision.version        = '3.4.0'  
+=======
+Vision.version        = '4.0.1'  
+>>>>>>> 505ecf2b26424d0732067886bbaf5925f1f08a5e
 Vision.latest_version = '0'
 Vision.update_url     = 'http://vision.shopify.com/update.html'
 Vision.verify_latest_version

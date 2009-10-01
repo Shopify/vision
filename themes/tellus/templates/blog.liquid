@@ -4,9 +4,16 @@
 
   {% for article in blog.articles  %}
 
-      <h3 class="blog">{{ article.title }}</h3>
-      <p class="posted"> posted {{ article.created_at | date: "%Y %h" }} by {{ article.author }}</p>
-      <div class="article-body textile">
+      <h3 class="blog">
+        <a href="{{article.url}}">{{ article.title }}</a>
+      </h3>
+      <p class="posted"> posted {{ article.created_at | date: "%Y %h" }} by {{ article.author }}
+        {% if blog.comments_enabled? %}
+          &mdash;
+          <a href="{{article.url}}#comments">{{ article.comments_count }} comments</a>
+        {% endif %}  
+      </p>
+      <div class="article-body-truncated textile">
         {{ article.content }}
       </div>    
   

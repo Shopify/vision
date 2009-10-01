@@ -1,5 +1,5 @@
 module ShopFilter
-    
+      
   def asset_url(input)
     "/files/shops/random_number/assets/#{input}"
   end
@@ -7,6 +7,10 @@ module ShopFilter
   def global_asset_url(input)
     req = @context.registers[:request]
     "http://#{req.host}:#{req.port}/global/#{input}"
+  end
+  
+  def shopify_asset_url(input)
+    "/shopify/#{input}"
   end
   
   def script_tag(url)
@@ -56,12 +60,12 @@ module ShopFilter
     end
     
     case style
-    when 'large'
+    when 'original'
       return '/files/shops/random_number/' + url 
-    when 'medium', 'small', 'thumb', 'icon'
+    when 'grande', 'large', 'medium', 'small', 'thumb', 'icon'
       "/files/shops/random_number/products/#{$1}_#{style}.#{$2}"              
     else
-      raise ArgumentError, 'valid parameters for filter "size" are: large, medium, small, thumb and icon '      
+      raise ArgumentError, 'valid parameters for filter "size" are: original, grande, large, medium, small, thumb and icon '      
     end
   end
   

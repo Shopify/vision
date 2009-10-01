@@ -23,6 +23,10 @@ h2 {
   text-align: center;
 }
 
+code {
+  font-size: 150%;
+}
+
 #wizard {
   font-size: 70%;
   text-align: left;

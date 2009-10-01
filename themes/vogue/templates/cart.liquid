@@ -48,5 +48,11 @@
 		<h3>Subtotal {{ cart.total_price | money }}</h3>
 		<input type="image" src="{{ 'update.png' | asset_url }}" id="update-cart" name="update" value="Update" />
 		<input type="image" src="{{ 'checkout.png' | asset_url }}" name="checkout" value="Checkout" />
+		{% if additional_checkout_buttons %}
+    <div class="additional-checkout-buttons">
+      <p>- or -</p>
+      {{ content_for_additional_checkout_buttons }}
+    </div>
+    {% endif %}
 	</div>
 </form>{% endif %}

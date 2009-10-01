@@ -113,6 +113,7 @@ lightbox.prototype = {
 	
 	displayLightbox: function(display){
 		$('overlay').style.display = display;
+		$('overlay').onclick = function(){ lightbox.prototype.deactivate(); return false; };
 		$('lightbox').style.display = display;
 		if(display != 'none') this.loadInfo();
 	},

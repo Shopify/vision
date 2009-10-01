@@ -2,39 +2,22 @@ var Vision = {
   Version: '0.9'
 }
 
-Vision.Palette = Class.create();
-Vision.Palette.prototype = {
-  initialize: function(rhtml, options) {
-    this.rhtml = rhtml;
-    Event.observe(window, 'load', this.onLoad.bindAsEventListener(this));
-  },
+Vision.Palette = function(rhtml, options) {
+  var body = document.getElementsByTagName('body')[0];
+  var visiondiv = document.createElement('div');
+  visiondiv.setAttribute('id','vision');
+  visiondiv.innerHTML = rhtml;
+  body.appendChild(visiondiv);
+};
 
-  onLoad: function(event) {
-    new Insertion.Bottom(document.body, this.rhtml);
-    
-    this.search       = $('find');
-    this.cachedValues = {
-      search: $F(this.search)
-    }    
-        
-    // Change the theme
-    Event.observe(this.search, 'focus', this.onTextFieldFocus.bindAsEventListener(this));
-    Event.observe(this.search, 'blur', this.onTextFieldBlur.bindAsEventListener(this));
-  },
-  
-  onTextFieldFocus: function(event) {
-    Field.clear(Event.element(event));
-  },
-  
-  onTextFieldBlur: function(event) {
-    Event.element(event).value = this.cachedValues.search;
-  },
-  
-  refresh: function() {
-    var loc = window.location.href.gsub(/#/, '');
-    window.location.href = loc;
+// remove bar from screen
+Vision.remove = function() {
+  var body = document.getElementsByTagName('body')[0];
+  var el = document.getElementById('vision');
+  if (el) {
+    body.removeChild(el);
   }
-}
+};
 
 var Cookie = {    
   set: function(name, value, expires, path, domain, secure) {
@@ -74,5 +57,8 @@ var Cookie = {
   }
 }
 
-new Vision.Palette(vision_html);
+
+function initVisionPalette() { 
+  new Vision.Palette(vision_html);
+};
 

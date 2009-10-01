@@ -13,6 +13,5 @@ def mount(server)
   server.mount('/files/shops/random_number/assets/', StaticAssetsServlet)
 
   server.mount('/dashboard/', ThemePickerServlet)
-  
   $webrick = server
 end
