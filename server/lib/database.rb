@@ -15,7 +15,7 @@ module Database
   
   def self.db
     @db ||= begin
-      YAML.load(File.read("#{ROOT}/db/database.yml"))
+      db = YAML.load(File.read("#{ROOT}/db/database.yml"))
     
       # We need to add collections to the products    
       db['products'].each do |product|
