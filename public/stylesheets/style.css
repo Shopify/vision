@@ -1,0 +1,66 @@
+/* Don't mess up this style sheet or I will make IE5.5 your default browser */
+/* =============== */
+/* = General CSS = */
+/* =============== */
+* {margin:0; padding:0;}
+img { border:0px ;}
+
+html { background: #1b1b1b url('../images/bg-body.jpg') repeat-x;}
+body { font-family: "Lucida Grande", "Lucida Sans Unicode", Helvetica, Arial, serif; font-size:12.5px; color: #d4d4d4; background:url('../images/bg-banner.jpg') no-repeat  center top ; min-height:655px; }
+
+h2 { margin-bottom:10px;}
+p { line-height:1.3em; margin-bottom:15px;}
+a { color:#fff; }
+a:hover {  text-decoration:none; }
+
+ul { margin-bottom:20px; margin-left:20px;}
+
+/* ========== */
+/* = Layout = */
+/* ========== */
+.content, .header  { width:925px; margin:auto;}
+.header { height:204px; margin-bottom:25px;  padding-top:60px;   }
+.header a.download  { margin:15px 0 0 180px; display:block; outline:none; width:185px;}
+.header a.download:hover { opacity:0.8;}
+
+
+/* the grid */
+.col-1, .col-2, .col-3, .col-4, .col-4-5, .col-5, .col-6, .col-7, .col-8, .col-9, .col-10, .col-11, .col-12 {margin-right:35px; float:left;}
+.col-12 { margin-right:0px;}
+
+.col-12 {width:925px;}
+.col-11 {width:845px;}
+.col-10 {width:765px;}
+.col-9 {width:685px;}
+.col-8 { width:605px;}
+.col-7 {width:525px;}
+.col-6 {width:445px;}
+.col-5 {width:365px;}
+.col-4-5 {width:307px;}
+.col-4 {width:285px;}
+.col-3 {width:205px;}
+.col-2 {width:125px;}
+.col-1 {width:45px;}
+
+.last {margin-right:0 !important;}
+
+
+/* ==================== */
+/* = Support Nav = */
+/* ==================== */
+/* Shopify support nav aka the only section of css that actually  makes sense */
+.support-nav { padding:0 ;height: 53px; margin:0 0 40px 0; background: url('../images/bg-supportbanner.png') repeat-x ; width:100%; }
+.support-nav img { float:left; }
+.support-nav ul { margin:0px 0 0 0; padding:0; float:right;  }
+.support-nav li { float:left;  padding:19px 10px 20px 10px; list-style:none; line-height:15px; }
+.support-nav li a { color:#DDD; text-decoration:none; }
+.support-nav li a:hover { color:#72b700; text-decoration:underline; }
+.support-nav li.current { background:url('../images/bg-activelink-header.gif') repeat-x;  }
+.support-nav li.current a { color:#FFF;}
+.support-nav li.current a:hover { color:#FFF; }
+.support-nav li.back-to-shopify a { padding-right: 24px; color:#999;}
+.support-nav li.back-to-shopify a:hover { color:#Fff;}
+
+/* ============ */
+/* = Lightbox = */
+/* ============ */

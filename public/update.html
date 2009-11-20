@@ -6,44 +6,29 @@
     <meta name="keywords" content="e-commerce, shopping cart, shopping, ruby on rails, rails, shoppingcart, content management, selling goods, jaded pixel, software development" />
     <meta name="description" content="Jaded Pixel is a small Web 2.0 software company that is focused simplifying the complex world of e-commerce." />
 
-    <link rel="stylesheet" href="stylesheets/vision.css" type="text/css" media="screen" />				
+    <link rel="stylesheet" href="stylesheets/style.css" type="text/css" media="screen" />				
     <title>Vision - Version Update</title>
     <script src="http://shopify.com/mint/?js" type="text/javascript"></script>
-    
     <script src="http://shopify.com/mint/?js" type="text/javascript"></script>
+    
+    
+    
 		
   </head>
 
-<body style="background-image:none;">
+<body style="background-image:none">
 
   <div id="container">
     <div id="highlight" class="round clear" style="margin: 50px;">
+      <div id="hright">
+        <ul>
+          <li id ="download">
+            <h3><a href="files/<%= @file_zip %>">Download Vision <%= @version %> update</a></h3>
+          </li>
+        </ul>
+      </div>
       <div id="hleft" class="clearfix">
-        <h2 class="tagline">You need to update.</h2>
-        <h3 class="stdout">4.1.0:</h3>      
-        <ul class="changes">        
-          <li>Made vision a universal binary so that it works correctly on Snow Leopard.</li>
-        </ul>
-        <h2 class="tagline">You need to update.</h2>
-        <h3 class="stdout">4.0.1:</h3>      
-        <ul class="changes">        
-          <li>Fixed bug in Windows for json encoder that prevented Vision from starting.</li>
-        </ul>
-        
-        <h3 class="stdout">4.0.0:</h3>      
-        <ul class="changes">        
-          <li>Now supports themes with jQuery &amp; Mootools libraries (previously prototype only).</li>
-          <li>Support for products with multiple options.</li>
-          <li>Updated all the themes and added a couple new ones.</li>
-          <li>Support for api.js, asynchronous adding of products, editing or requesting the cart.</li>
-          <li>Updated Liquid to latest version</li>
-          <li>Updated Database with correct handles for blogs &amp; pages as well as new products with product images of different aspect ratios than snowboards.</li>
-          <li>Several bug fixes.</li>
-        </ul>
-        <h3 class="stdout">3.3.0:</h3>      
-        <ul class="changes">        
-          <li>Fixed a problem with exporting themes when vision is installed in a path with spaces.</li>
-        </ul>
+
         <h3 class="stdout">3.1.0:</h3>      
         <ul class="changes">        
           <li>Added new theme ripen...</li>
@@ -54,18 +39,18 @@
         </ul>
         <h3 class="stdout">2.9.0:</h3>      
         <ul class="changes">        
-          <li>Internet Explorer 7 fixes.<li>
+          <li>Internet Explorer 7 fixes.</li>
         </ul>
         <h3 class="stdout">2.8.0:</h3>      
         <ul class="changes">        
-          <li>Updated to the latest liquid: elsif, array notation and similar updates.</li>
+          <li>Updated to the latest liquid: elsif, array notation and similar updates. .</li>
           <li>Added paginate tag and applied it to all templates 
 for blogs and collections.</li>
         </ul>
         <h3 class="stdout">2.5.0:</h3>      
         <ul class="changes">        
           <li>Improved the DB to be more like a real shopify DB.</li>
-          <li>Updated all themes to adhere to new global_asset_url system. Common files are hosted globally in shopify so that they can be cached and customoer's load times improve.</li>
+          <li>Updated all themes to adhere to new global_asset_url system. Common files are hosted globally in shopify so that they can be cached and customoer's load times improve.'</li>
         </ul>
         <h3 class="stdout">2.3.1:</h3>      
         <ul class="changes">        
@@ -97,21 +82,9 @@ for blogs and collections.</li>
         <ul class="changes">        
           <li>Added a textile.css to all themes, include it and add the class <em>textile</em> everywhere formatted html appears. This is a new (soft) convention for shopify themes.</li>
         </ul>
-        <h2 class="tagline">You need to update.</h2>
-        <h3 class="stdout">2.0.0:</h3>      
-        <ul class="changes">        
-          <li>Included all the themes which won the shopify theme contest. Congrats guys!</li>
-        </ul>
-      </div>
-      <div id="hright">
 
-        <ul>
-          <li id ="download">
-            <h3><a href="files/<%= @file_zip %>">Download Vision <%= @version %> update</a></h3>
-            <p>Download Vision and get rolling.  For those about to rock, we salute you.</p>
-          </li>
-        </ul>
       </div>
+
     </div>
 
 
