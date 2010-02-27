@@ -19,7 +19,7 @@ Vision.remove = function() {
   }
 };
 
-var Cookie = {    
+Vision.Cookie = {    
   set: function(name, value, expires, path, domain, secure) {
     path = path != null ? path : "/"
     document.cookie= name + "=" + escape(value) +

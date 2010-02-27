@@ -30,11 +30,11 @@ class VisionServlet < Servlet
 
   def templates_for_view
 
-    available_templates = [["Cookie.destroy('#{@params['action']}'); window.location.reload();", "#{@params['action']}.liquid"]]
+    available_templates = [["Vision.Cookie.destroy('#{@params['action']}'); window.location.reload();", "#{@params['action']}.liquid"]]
     
     Dir["#{theme_template_path}/#{@params['action']}.*.liquid"].each do |f|
       variant = File.basename(f, File.extname(f))
-      available_templates << ["Cookie.set('#{@params['action']}', '#{variant}'); window.location.reload();", "#{variant}.liquid"]
+      available_templates << ["Vision.Cookie.set('#{@params['action']}', '#{variant}'); window.location.reload();", "#{variant}.liquid"]
     end
     
     available_templates << ['', '-------------']      

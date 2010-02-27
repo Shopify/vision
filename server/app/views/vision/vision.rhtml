@@ -6,7 +6,7 @@
       </li>
       <li id="theme-list">
         <label for="themes">Theme:</label> 
-        <select name="themes" id="themes" onchange="Cookie.set('theme', this.value); window.location.reload(); return false;">
+        <select name="themes" id="themes" onchange="Vision.Cookie.set('theme', this.value); window.location.reload(); return false;">
         <% for theme in @themes %>
           <option value="<%= theme %>" <%= 'selected="selected"' if theme == @current_theme %>><%= theme %></option>
         <% end %>
